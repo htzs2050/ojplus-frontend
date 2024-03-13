@@ -1,0 +1,42 @@
+// styles/element/index.scss
+/* 只需要重写你需要的即可 */
+@forward "element-plus/theme-chalk/src/common/var.scss" with (
+  $colors: (
+    "primary": (
+      "base": #00b96b,
+    ),
+  )
+);
+// 如果只是按需导入，则可以忽略以下内容。
+// 如果你想导入所有样式:
+@use "element-plus/theme-chalk/src/index.scss" as *;
+
+html.dark {
+  --el-color-primary: #00b96b;
+  --el-color-primary-light-3: #2f8e5a;
+  --el-color-primary-light-5: #276b40;
+  --el-color-primary-light-7: #1f4835;
+  --el-color-primary-light-8: #1c3726;
+  --el-color-primary-light-9: #18251a;
+  --el-color-primary-dark-2: #61ce92;
+}
+
+// .el-card {
+//   transition: initial;
+// }
+
+.el-dropdown {
+  line-height: normal;
+}
+
+.el-tooltip__trigger:focus-visible {
+  outline: unset;
+}
+
+.el-menu{
+  background-color: var(--el-bg-color);
+}
+
+.el-input__wrapper{
+  background-color: initial;
+}

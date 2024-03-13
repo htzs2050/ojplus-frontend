@@ -1,0 +1,96 @@
+.markdown-body {
+  background-color: var(--el-bg-color-overlay) !important;
+  border-radius: initial !important;
+  color: var(--el-text-color-primary) !important;
+  height: 0;
+}
+.markdown-body.fullscreen {
+  height: initial !important;
+}
+.markdown-body code {
+  font-size: var(--el-font-size-base) !important;
+}
+.markdown-body h6 {
+  color: var(--el-text-color-regular) !important;
+}
+
+// Edit
+.markdown-body .v-note-op {
+  background-color: var(--el-bg-color-overlay) !important;
+  border-radius: initial !important;
+  border-bottom: 1px solid var(--el-card-border-color) !important;
+}
+.markdown-body .content-input-wrapper {
+  background-color: var(--el-bg-color-overlay) !important;
+}
+.markdown-body .content-input-wrapper .auto-textarea-block {
+  font-size: var(--el-font-size-medium) !important;
+}
+.markdown-body .auto-textarea-wrapper .auto-textarea-input {
+  font-size: var(--el-font-size-medium) !important;
+  background-color: var(--el-bg-color-overlay);
+  color: var(--el-text-color-primary);
+}
+
+//Preview
+.markdown-body .v-show-content {
+  background-color: var(--el-bg-color-overlay) !important;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  background-color: var(--el-bg-color-page) !important;
+}
+.markdown-body .hljs {
+  color: var(--el-text-color-primary);
+  background-color: var(--el-bg-color-page) !important;
+}
+.markdown-body table tr {
+  background-color: var(--el-bg-color-overlay) !important;
+}
+.markdown-body table tr:nth-child(2n) {
+  background-color: var(--el-bg-color-page) !important;
+}
+
+//Help
+.v-note-help-wrapper .v-note-help-content .v-note-help-show {
+  background-color: var(--el-bg-color-overlay) !important;
+}
+.v-note-help-wrapper .v-note-help-content i {
+  color: inherit !important;
+}
+
+//Icon
+.v-note-wrapper .v-note-op .v-left-item .op-icon:hover, .v-note-wrapper .v-note-op .v-right-item .op-icon:hover{
+  color: var(--el-text-color-primary) !important;
+  background: var(--el-fill-color-darker) !important;
+}
+
+//Code
+html.dark .hljs-meta .hljs-string,
+html.dark .hljs-regexp,
+html.dark .hljs-string {
+  color: var(--el-color-warning) !important;
+}
+
+//Dropdown
+.op-icon.dropdown-wrapper.dropdown .popup-dropdown {
+  background-color: var(--el-bg-color-overlay) !important;
+  border: var(--el-border) !important;
+}
+
+.op-icon.dropdown-wrapper.dropdown .dropdown-item {
+  color: var(--el-text-color-primary) !important;
+}
+.op-icon.dropdown-wrapper.dropdown .dropdown-item:hover {
+  background-color: var(--el-fill-color-dark) !important;
+}
+
+.v-note-wrapper .v-note-panel .v-note-show .v-show-content, .v-note-wrapper .v-note-panel .v-note-show .v-show-content-html{
+  background-color: var(--el-bg-color-overlay) !important;
+}
+
+.v-note-wrapper .v-note-read-model
+{
+  background-color: var(--el-bg-color-overlay) !important;
+}
