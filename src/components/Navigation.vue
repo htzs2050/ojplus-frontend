@@ -1,14 +1,22 @@
 <template>
+
   <el-affix>
     <el-row class="border-bottom nav">
       <el-col :xs="0" :sm="0" :md="5"></el-col>
       <el-col :xs="24" :sm="24" :md="4">
         <el-menu :default-active="props.activeIndex" mode="horizontal" :ellipsis="false">
           <div class="flex-grow"></div>
-          <el-menu-item size="large" index="1">首页</el-menu-item>
-          <el-menu-item size="large" index="2">题库</el-menu-item>
+          <el-menu-item size="large" index="Home">
+                      <router-link to="/home">首页</router-link>
+
+          </el-menu-item>
+
+          <el-menu-item size="large">
+            <router-link to="/paste"> 题库</router-link>
+           </el-menu-item>
           <el-menu-item size="large" index="3">问答</el-menu-item>
           <themeSwitch class="h-100 ps-1"></themeSwitch>
+
           <div class="flex-grow"></div>
         </el-menu>
       </el-col>
@@ -106,16 +114,18 @@
             </el-dropdown>
           </el-col>
         </el-row>
-        <div class="flex-grow"></div>
+<!--        <div class="flex-grow"></div>-->
       </el-col>
     </el-row>
   </el-affix>
+  <router-view/>
 </template>
     
 <script setup lang="ts">
 import themeSwitch from "@/components/Button/ThemeSwitch.vue";
 import search from "@/components/Form/Search.vue";
 import avatar from "@/components/TheAvatar.vue"
+import Paste from "@/views/paste/Paste.vue";
 import { Bell } from '@element-plus/icons-vue'
 import { UserFilled } from '@element-plus/icons-vue'
 import { User } from '@element-plus/icons-vue'
@@ -126,6 +136,9 @@ import { Tickets } from '@element-plus/icons-vue'
 import { MuteNotification } from '@element-plus/icons-vue'
 import { useStore } from "vuex";
 const store = useStore()
+//fix
+// import Component from 'vue-class-component'
+// import Home from "../views/home/Home.vue";   //都用的@
 const openLoginView = () => {
   store.commit('auth/toggleLoginViewVisible')
 }
@@ -135,6 +148,9 @@ const logout = () => {
 const props = defineProps({
   activeIndex: String,
 })
+
+
+
 </script>
     
 <style scoped>

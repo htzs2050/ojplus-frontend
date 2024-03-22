@@ -9,8 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@element-plus/icons": "^0.0.11",
     "axios": "^1.6.2",
-    "element-plus": "^2.4.3",
+    "element-plus": "^2.6.1",
     "jwt-decode": "^4.0.0",
     "mavon-editor": "^3.0.1",
     "sass": "^1.69.5",

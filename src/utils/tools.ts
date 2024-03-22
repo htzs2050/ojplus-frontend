@@ -1,3 +1,4 @@
+
 export namespace Tools {
     export function getAllValues(dict: { [x: string]: any; }): any[] {
         const values: any[] = [];
