@@ -7,6 +7,7 @@ import {
 import Home from "../views/home/Home.vue";   //都用的@
 import Paste from "../views/paste/Paste.vue";
 import Table from "../views/paste/Table.vue";
+import Test from "../views/test/test.vue"
 import PasteShare from "../views/paste/PasteShare.vue";
   // const routes = new Router({//尝试修复
   //   mode: 'history',
@@ -23,6 +24,10 @@ import PasteShare from "../views/paste/PasteShare.vue";
       path: "/home",
       name: "home",
       component: Home,  //标注组件
+    }, {
+      path: "/test",
+      name: "test",
+      component:Test,
     },
     {
       path: "/paste",

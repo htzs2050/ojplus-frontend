@@ -1,50 +1,98 @@
 <template>
-  <baseComponent activeIndex="1"/>
-    <el-row>
-      <el-container class="content"  style="display: flow;height: 900px;background-color: chocolate;">
-        <div class="block  caculate" style="text-align: center;height: 100px;background-color: rgb(45, 195, 216)">
-          <el-row>
+<!--  <baseComponent activeIndex="1"/>-->
+  <baseComponent/>
 
-            <el-col :span="8">
-              <el-statistic title="Daily activate student" :value="268500" />
-            </el-col>
+    <div style="height: 300px;width: 100%">
+      <div style="height: 900px;background-color: mediumvioletred">
+      <el-container class="content"  style="display: flex;width:90%;height: 900px;background-color: chocolate;">
+      <div class = "div1" style="width:600px;height: 900px;background-color: hotpink;margin-left: 25px;margin-top: 20px">
+          <div class="clanav content" style="">
+            <div class="cardm">
+                <div class="cardb">
+                  <div class="cardimg">
+                    <img src="https://assets.leetcode.cn/aliyun-lc-upload/study_plan_v2/top-interview-150/cover"
+                    height="80px">
+                  </div>
+                  <div class="cardtxt">
+                    <p>
+                      2024 春招冲刺百题计划
+                    </p>
+                  </div>
+                </div>
+                <div class="cardb">
+                  <div style="height: 80px;width: 80px;margin-left: 10px;">
+                    <img  class="img_radius" src="https://assets.leetcode.cn/aliyun-lc-upload/study_plan_v2/top-interview-150/cover"
+                    height="80px">
+                  </div>
+                </div>
 
-            <el-col :span="8">
-              <el-statistic title="Answer Accept" :value="outputValue" />
-            </el-col>
-            <el-col :span="8">
-              <el-statistic title="Submit Number" :value="562">
-                <template #suffix>
-                  <el-icon style="vertical-align: -0.125em">
-                    <ChatLineRound />
-                  </el-icon>
-                </template>
-              </el-statistic>
-            </el-col>
-          </el-row>
-        </div>
-        <div class="content block" style="background-color: red;width: 80%;height: 100%">
+            </div>
+            <div class="cardm" style="">
+              <div class="cardb">
+                <div class="cardimg">
+                  <img src="https://assets.leetcode.cn/aliyun-lc-upload/study_plan_v2/top-interview-150/cover"
+                       height="80px">
+                </div>
+                <div class="cardtxt">
+                  <p>
+                    2024 春招冲刺百题计划
+                  </p>
+                </div>
+              </div>
+              <div class="cardb">
+                <div style="height: 80px;width: 80px;margin-left: 10px;">
+                  <img  class="img_radius" src="https://assets.leetcode.cn/aliyun-lc-upload/study_plan_v2/top-interview-150/cover"
+                        height="80px">
+                </div>
+              </div>
+            </div>
+            <div class="cardm">
+              <div class="cardb">
+                <div class="cardimg">
+                  <img src="https://assets.leetcode.cn/aliyun-lc-upload/study_plan_v2/top-interview-150/cover"
+                       height="80px">
+                </div>
+                <div class="cardtxt">
+                  <p>
+                    2024 春招冲刺百题计划
+                  </p>
+                </div>
+              </div>
+              <div class="cardb">
+                <div style="height: 80px;width: 80px;margin-left: 10px;">
+                  <img  class="img_radius" src="https://assets.leetcode.cn/aliyun-lc-upload/study_plan_v2/top-interview-150/cover"
+                        height="80px">
+                </div>
+              </div>
+            </div>
 
-          <div class="flex-grow" style="text-align: center;height: 5%;background-color: yellow;">
-            <h1>通知</h1>
 
           </div>
-          <div class="flex-grow" style="width: 100%;height:100%;background-color: #00b96b">
-            <el-table :data="tableData" stripe style="width: 100%" :row-style="{height: '80px'}">
-              <el-table-column prop="address" label="Address" />
-              <el-table-column prop="date" label="Date" width="180" />
-              <el-table-column prop="name" label="Name" width="180" />
 
-
-            </el-table>
+          <div class="list-nav" >
+            <el-tabs  v-model="activeName" class="demo-tabs" @tab-click="handleClick" type="card">
+              <el-tab-pane label="User" name="first">User</el-tab-pane>
+              <el-tab-pane label="Config" name="second">Config</el-tab-pane>
+              <el-tab-pane label="Role" name="third">Role</el-tab-pane>
+              <el-tab-pane label="Task" name="fourth">Task</el-tab-pane>
+            </el-tabs>
           </div>
 
+      </div>
+        <div class = "div2" style="width:400px;height: 600px;background-color: blue;margin-left: 25px">
+          <div class="content" style="height: 200px;width: 90%;margin-top: 20px" >
+            <el-calendar :range="[new Date(2024, 4, 3), new Date(2024, 4, 16)]" />
+<!--                                              日历组件-->
+          </div>
         </div>
-
 
 
       </el-container>
-    </el-row>
+      </div>
+
+    </div>
+
+
 </template>
 
 <script  lang="ts" setup> //setup应该删除  lang="ts" 也被删除了
@@ -56,10 +104,10 @@ import Paste from '../paste/Paste.vue';
 //
 
 
-// import ElementUI from 'element-ui'
+// import ElementUI from 'element-plus'
 // element-ui所提供的css样式
 // import 'element-ui/theme-chalk/index.css'
-import 'element-plus/theme-chalk/index.css'
+// import 'element-plus/theme-chalk/index.css'
 import { defineComponent, defineAsyncComponent, reactive, onMounted } from "vue";
 import baseComponent from '@/components/BaseComponent.vue';
 import { ref } from 'vue'
@@ -128,14 +176,86 @@ const tableData = [
     address: 'No. 189, Grove St, Los Angeles',
   },
 ]
+// 帖子列表部分
 
+// import type { TabsPaneContext } from 'element-plus'
+
+// const activeName = ref('first')
+//
+// const handleClick = (tab: TabsPaneContext, event: Event) => {
+//   console.log(tab, event)
+// }
+import type { TabsPaneContext } from 'element-plus'
+const activeName = ref('first');
+
+function handleClick(tab: any, event: Event) {
+  console.log(tab, event);
+}
 </script>
 
 <style scoped>
+.div1  {
+  flex: 8;
+}
+.div2 {
+  flex: 3;
+}
 
+
+img {
+  /*使得图片自适应div的高和宽*/
+  border-radius: 6px;
+  flex: 1 1 auto; /* 图片根据容器调整尺寸 */
+  object-fit: cover; /* 补充，确保图片填充而不改变其宽高比 */
+}
+/*卡片外的边框，就是一列上的两个小卡片*/
+.cardm {
+  flex: 3;
+  float: left;
+  width: 33.33%;
+  height:100%;
+}
+.cardb {
+  /*小卡片的主体*/
+  height: 48%;
+  display:flex;
+  align-items: center;
+  border-radius: 4px;
+  margin: 2px;
+
+  box-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
+
+
+}
+.cardb:hover {
+
+  border: 1px solid black;
+  background-color: red;
+  box-shadow: 0 0 10px rgba(254, 206, 40);
+}
+.cardimg {
+  height: 80px;
+  width: 80px;
+  padding: 10px;
+}
+.cardtxt {
+/*小卡片的文本*/
+}
 
 .caculate {
   padding-top: 40px;
   margin: 0 auto;
+}
+.clanav{
+
+  width: 96%;
+  height: 200px;
+  background-color: aqua;
+  margin-top: 20px;
+}
+.list-nav {
+    background-color: navajowhite;
+  height: 300px;
+  margin-top: 20px;
 }
 </style>
