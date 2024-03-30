@@ -1,3 +1,4 @@
+
 export namespace Validators {
     export function isQQEmail(email: string): boolean {
         const qqEmailRegex = /^\d{5,10}@qq\.com$/;
@@ -33,4 +34,4 @@ export namespace Validators {
         }
         return [true, ""]
     }
-}
+}//密码校验模块

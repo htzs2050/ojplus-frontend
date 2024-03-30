@@ -244,6 +244,7 @@ body {
 }
 .flex-grow {
   flex-grow: 1 !important;
+
 }
 
 .full-page {
@@ -253,4 +254,8 @@ body {
 
 .block {
   display: block !important;
+}
+.content {
+  margin: 0 auto;
+
 }

@@ -84,7 +84,7 @@ const sendSignup = () => {
     }
     // 实际发送验证码的逻辑在此处
     isLoading.value = true
-    axios.post('/users/', {
+    axios.post('/users/', { //post请求
         username: form.username,
         password: form.password,
         confirm_password: form.confirm_password,
