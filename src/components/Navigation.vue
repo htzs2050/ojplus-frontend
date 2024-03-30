@@ -1,7 +1,7 @@
 <template>
 
   <el-affix>
-    <div style="height: 200px">
+    <div>
       <el-row class="border-bottom nav">
         <el-col :xs="0" :sm="0" :md="5"></el-col>
         <el-col :xs="24" :sm="24" :md="4">

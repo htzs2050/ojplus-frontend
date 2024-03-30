@@ -1,7 +1,7 @@
 <template>
 <!--  <div class="flex-grow" style="display:flex;height: 20px;height: 20px">-->
-      <Navigation :activeIndex="props.activeIndex"></Navigation>
-<!--      <Nav></Nav>-->
+<!--      <Navigation :activeIndex="props.activeIndex"></Navigation>-->
+      <Nav></Nav>
 <!--      <Navigation></Navigation>-->
 <!--      <Navigation></Navigation>-->
       <AuthDialog></AuthDialog>

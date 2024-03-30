@@ -77,7 +77,7 @@ const state = reactive({
 const { circleUrl, squareUrl, sizeList } = toRefs(state)
 </script>
 
-<style>
+<style scoped>
 .invitation {
   border-radius: 5px;
   height: 180px;

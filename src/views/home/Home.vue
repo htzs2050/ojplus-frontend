@@ -2,11 +2,16 @@
 <!--  <baseComponent activeIndex="1"/>-->
   <baseComponent/>
 
-    <div style="height: 300px;width: 100%">
-      <div style="height: 900px;background-color: mediumvioletred">
-      <el-container class="content"  style="display: flex;width:90%;height: 900px;background-color: chocolate;">
-      <div class = "div1" style="width:600px;height: 900px;background-color: hotpink;margin-left: 25px;margin-top: 20px">
+    <div style="height: 1900px;width: 100%">
+      <div style="height: 1900px;background-color: mediumvioletred">
+      <el-container class="content"  style="width:90%;height: 900px;background-color: chocolate;">
+      <div class = "home_nav" style="align-items: normal">
+<!--        <div style="width: 100%;height: 300px;background-color: yellow;margin:  20px">-->
+
+<!--        </div>-->
           <div class="clanav content">
+<!--            <div class="content">-->
+
             <div class="cardm">
                 <div class="cardb">
                   <div class="cardimg">
@@ -93,7 +98,7 @@
           </div>
 
       </div>
-        <div class = "div2" style="width:400px;height: 600px;background-color: blue;margin-left: 25px">
+        <div class = "bulletin" style="width:400px;height: 600px;background-color: blue;margin-left: 25px">
           <div class="content" style="height: 200px;width: 90%;margin-top: 20px" >
             <el-calendar :range="[new Date(2024, 4, 3), new Date(2024, 4, 16)]" />
 <!--                                              日历组件-->
@@ -208,10 +213,16 @@ function handleClick(tab: any, event: Event) {
 </script>
 
 <style scoped>
-.div1  {
+.home_nav  {
+  width:600px;
+  height: 900px;
+  background-color: hotpink;
+  margin-left: 25px;
+  margin-top: 40px;
+  align-items: normal;
   flex: 8;
 }
-.div2 {
+.bulletin {
   flex: 3;
 }
 
@@ -233,7 +244,7 @@ img {
   /*小卡片的主体*/
   height: 48%;
   display:flex;
-  align-items: center;
+  /*align-items: center;*/
   border-radius: 4px;
   margin: 2px;
 
