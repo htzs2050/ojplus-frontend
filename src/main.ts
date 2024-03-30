@@ -15,12 +15,12 @@ import store from "@/store/index.ts"
 import axios from './http'
 import mavonEditor from 'mavon-editor'
 import installElementPlus from './plugins/element'
-
+// import 'virtual:svg-icons-register'
 const app = createApp(App);
 
-// axios
-// axios.defaults.baseURL = 'https://localhost:4000/api/v1' //被注释
-// app.config.globalProperties.$http = axios
+axios
+axios.defaults.baseURL = 'https://localhost:4000/api/v1' //被注释
+app.config.globalProperties.$http = axios
 
 
 

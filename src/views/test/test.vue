@@ -31,6 +31,15 @@
     <Articles>
 
     </Articles>
+    <Articles>
+
+    </Articles>
+    <Articles>
+
+    </Articles>
+    <Articles>
+
+    </Articles>
   </div>
 <!--    <CommentsSection></CommentsSection>-->
 </template>
@@ -59,8 +68,9 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
 }
 .article-list {
   height: 2000px;
-  width: 200px;
+  width: 750px;
   border:1px solid #000;
+  border-radius: 6px;
 }
 
 </style>

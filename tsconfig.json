@@ -10,7 +10,7 @@
     },
     /* Bundler mode */
     "moduleResolution": "node", //Changed "bundler" to "node".
-    "allowImportingTsExtensions": true,
+    // "allowImportingTsExtensions": true,//被注释
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
@@ -18,7 +18,7 @@
 
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "types": ["element-plus/global"]

@@ -6,7 +6,7 @@
       <div style="height: 900px;background-color: mediumvioletred">
       <el-container class="content"  style="display: flex;width:90%;height: 900px;background-color: chocolate;">
       <div class = "div1" style="width:600px;height: 900px;background-color: hotpink;margin-left: 25px;margin-top: 20px">
-          <div class="clanav content" style="">
+          <div class="clanav content">
             <div class="cardm">
                 <div class="cardb">
                   <div class="cardimg">
@@ -27,7 +27,7 @@
                 </div>
 
             </div>
-            <div class="cardm" style="">
+            <div class="cardm">
               <div class="cardb">
                 <div class="cardimg">
                   <img src="https://assets.leetcode.cn/aliyun-lc-upload/study_plan_v2/top-interview-150/cover"
@@ -71,11 +71,25 @@
 
           <div class="list-nav" >
             <el-tabs  v-model="activeName" class="demo-tabs" @tab-click="handleClick" type="card">
-              <el-tab-pane label="User" name="first">User</el-tab-pane>
-              <el-tab-pane label="Config" name="second">Config</el-tab-pane>
-              <el-tab-pane label="Role" name="third">Role</el-tab-pane>
-              <el-tab-pane label="Task" name="fourth">Task</el-tab-pane>
+              <el-tab-pane label="就业" name="first"></el-tab-pane>
+              <el-tab-pane label="题解" name="second"></el-tab-pane>
+              <el-tab-pane label="技术" name="third"></el-tab-pane>
+              <el-tab-pane label="校园" name="fourth"></el-tab-pane>
             </el-tabs>
+            <div class="article-list">
+              <Articles>
+
+              </Articles>
+              <Articles>
+
+              </Articles>
+              <Articles>
+
+              </Articles>
+              <Articles>
+
+              </Articles>
+            </div>
           </div>
 
       </div>
@@ -113,7 +127,7 @@ import baseComponent from '@/components/BaseComponent.vue';
 import { ref } from 'vue'
 import { useTransition } from '@vueuse/core'
 import { ChatLineRound, Male } from '@element-plus/icons-vue'
-
+import Articles from "../../components/Articles.vue";
 import { createApp } from 'vue'
 
 // import ElementPlus from 'element-plus'
@@ -254,8 +268,17 @@ img {
   margin-top: 20px;
 }
 .list-nav {
-    background-color: navajowhite;
-  height: 300px;
+  background-color: navajowhite;
+  height: 200px;
+  width: 100%;
+  /*width: 750px;*/
   margin-top: 20px;
+}
+.article-list {
+  height: 2000px;
+  /*width: 750px;*/
+  width: 100%;
+  border:1px solid #000;
+  border-radius: 6px;
 }
 </style>
