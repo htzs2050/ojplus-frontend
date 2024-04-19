@@ -6,9 +6,11 @@ import {
   
 import Home from "../views/home/Home.vue";   //都用的@
 import Paste from "../views/paste/Paste.vue";
-import Table from "../views/paste/Table.vue";
+
 import Test from "../views/test/test.vue"
 import PasteShare from "../views/paste/PasteShare.vue";
+import Community from "../views/home/Community.vue"
+import Articledisplay from "../views/home/Articledisplay.vue"
   // const routes = new Router({//尝试修复
   //   mode: 'history',
   //   base: process.env.BASE_URL,
@@ -34,6 +36,11 @@ import PasteShare from "../views/paste/PasteShare.vue";
       name: "paste",
       component: Paste,
     },
+    {
+      path: "/pasteshare",
+      name: "pasteshare",
+      component: PasteShare,
+    },//加入这段可能会导致share界面中的返回出问题
     // {
     //   path: "/pastes",
     //   name: "paste",
@@ -45,10 +52,17 @@ import PasteShare from "../views/paste/PasteShare.vue";
       component: PasteShare,
     },
     {
-      path: "/table",
-      name: "table",
-      component: Table,
+      path: "/community",
+      name: "community",
+      component: Community,
     },
+    {
+      path: "/articledisplay",
+      name: "articledisplay",
+      component: Articledisplay,
+    },
+    
+   
   ];
 
   const router = createRouter({

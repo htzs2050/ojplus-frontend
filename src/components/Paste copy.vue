@@ -8,6 +8,7 @@
 						<template #header>
 							<el-row class="card-header flex w-100">
 								<el-col class="flex" :span="8">
+									
 									<el-button type="danger">返回</el-button>
 									<el-button type="primary">保存</el-button>
 									<div class="flex-grow"></div>
@@ -24,7 +25,7 @@
 							</el-row>
 						</template>
 						<div class="card-body flex flex-col">
-							<mavon-editor v-if="editModel" class="flex-grow" v-model="advancedContext" :placeholder="`在此处开始编辑\n点击菜单栏【问号图标】以获取【Markdown语法帮助】`" :toolbars="editToolbars" :subfield="false" defaultOpen="edit" boxShadowStyle="none" />
+							<-editor v-if="editModel" class="flex-grow" v-model="advancedContext" :placeholder="`在此处开始编辑\n点击菜单栏【问号图标】以获取【Markdown语法帮助】`" :toolbars="editToolbars" :subfield="false" defaultOpen="edit" boxShadowStyle="none" />
 							<el-scrollbar v-if="!editModel" class="flex-grow h-0">
 								<el-form class="p-3">
 									<el-form-item label="标题">
@@ -63,8 +64,8 @@
 							</el-row>
 						</template>
 						<div class="card-body flex flex-col">
-							<mavon-editor class="flex-grow" v-show="editModel" v-model="advancedContext" :toolbars="previewToolbars" :subfield="false" defaultOpen="preview" boxShadowStyle="none" />
-							<mavon-editor class="flex-grow" v-show="!editModel" v-model="simpleContext" :toolbars="previewToolbars" :subfield="false" defaultOpen="preview" boxShadowStyle="none" />
+							<-editor class="flex-grow" v-show="editModel" v-model="advancedContext" :toolbars="previewToolbars" :subfield="false" defaultOpen="preview" boxShadowStyle="none" />
+							<-editor class="flex-grow" v-show="!editModel" v-model="simpleContext" :toolbars="previewToolbars" :subfield="false" defaultOpen="preview" boxShadowStyle="none" />
 						</div>
 					</el-card>
 				</el-col>

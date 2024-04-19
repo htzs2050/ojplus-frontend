@@ -4,7 +4,7 @@ import ElementPlus from 'element-plus'
 import 'element-plus/theme-chalk/index.css'
 import 'element-plus/dist/index.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
-// import 'mavon-editor/dist/css/index.css'
+// import '-editor/dist/css/index.css'
 import '@/assets/css/element.scss'
 import '@/assets/css/style.scss'
 import '@/assets/css/mavon.scss'
@@ -15,11 +15,16 @@ import router from './router/index';
 import store from "@/store/index"
 //此处修改了扩展名
 import axios from './http'
-import mavonEditor from 'mavon-editor'
+// import Editor from '-editor'
 // import installElementPlus from './plugins/element.'
 // import 'virtual:svg-icons-register'
 const app = createApp(App);
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
+
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component)
+}
 axios
 axios.defaults.baseURL = 'https://localhost:4000/api/v1' //被注释
 app.config.globalProperties.$http = axios
@@ -29,7 +34,7 @@ app.config.globalProperties.$http = axios
 app.use(store)
 app.use(ElementPlus)
 
-app.use(mavonEditor)
+app.use(Editor)
 app.use(router)
 app.mount('#app')
 

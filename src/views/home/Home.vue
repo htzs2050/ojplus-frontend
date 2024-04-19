@@ -1,284 +1,377 @@
+<!-- <el-color-picker v-model="color" show-alpha :predefine="predefineColors" /> -->
 <template>
-<!--  <baseComponent activeIndex="1"/>-->
-  <baseComponent/>
+  <el-header style="backgroundcolor: green"><baseComponent activeIndex="9" /></el-header>
+  <div class="main-div">
+      <el-container class="main-container">
+          <el-main class="submain" id="hidden_scroll">
+              <el-row class="nav" :gutter="5">
+                  <el-col :span="5" class="nav-col">
+                    <router-link to="/paste">
+                      <el-button class="nav-button" type="success">
+                          <div class="textbox">
+                              <div class="upper" style="height: 45px">
+                                  <span class="underline1">快捷贴码</span>
+                              </div>
+                              <div class="lower">
+                                  <span class="underline2">+50经验</span>
+                              </div>
+                          </div>
+                          <el-icon :size="50" color="white">
+                              <DocumentCopy />
+                          </el-icon>
+                      </el-button>
+                    </router-link>
+                  </el-col>
+                  <el-col :span="5" class="nav-col">
+                      <el-button class="nav-button" type="primary">
+                          <div class="textbox">
+                              <div class="upper" style="height: 45px">
+                                  <span class="underline1">发帖求助</span>
+                              </div>
+                              <div class="lower">
+                                  <span class="underline2">+50经验</span>
+                              </div>
+                          </div>
+                          <el-icon :size="50" color="white">
+                              <Edit />
+                          </el-icon>
+                      </el-button>
+                  </el-col>
+                  <el-col :span="5" class="nav-col">
+                    <router-link to="/test">
+                      <el-button class="nav-button" type="primary" >
+                          <div class="textbox">
+                              <div class="upper" style="height: 45px">
+                                  <span class="underline1">发布题解</span>
+                              </div>
+                              <div class="lower">
+                                  <span class="underline2">+15经验</span>
+                              </div>
+                          </div>
+                          <el-icon :size="50" color="white">
+                              <Finished />
+                          </el-icon>
+                      </el-button>
+                    </router-link>
+                  </el-col>
 
-    <div style="height: 300px;width: 100%">
-      <div style="height: 900px;background-color: mediumvioletred">
-      <el-container class="content"  style="display: flex;width:90%;height: 900px;background-color: chocolate;">
-      <div class = "div1" style="width:600px;height: 900px;background-color: hotpink;margin-left: 25px;margin-top: 20px">
-          <div class="clanav content">
-            <div class="cardm">
-                <div class="cardb">
-                  <div class="cardimg">
-                    <img src="https://assets.leetcode.cn/aliyun-lc-upload/study_plan_v2/top-interview-150/cover"
-                    height="80px">
-                  </div>
-                  <div class="cardtxt">
-                    <p>
-                      2024 春招冲刺百题计划
-                    </p>
-                  </div>
-                </div>
-                <div class="cardb">
-                  <div style="height: 80px;width: 80px;margin-left: 10px;">
-                    <img  class="img_radius" src="https://assets.leetcode.cn/aliyun-lc-upload/study_plan_v2/top-interview-150/cover"
-                    height="80px">
-                  </div>
-                </div>
+                  <el-col style="display: flex" :span="9">
+                      <el-col :span="12" style="flex: 1" class="button-container">
+                          <el-button type="default"
+                              >个人中心<el-icon :size="25" color="blue" class="el-icon--right">
+                                  <User />
+                              </el-icon>
+                          </el-button>
+                          <el-button type="default">
+                              随机答疑<el-icon :size="25" color="red" class="el-icon--right">
+                                  <Connection />
+                              </el-icon>
+                          </el-button>
+                      </el-col>
+                      <el-col :span="12" style="flex: 1" class="button-container">
+                          <el-button type="default">
+                              帮助中心<el-icon :size="25" color="green" class="el-icon--right">
+                                  <QuestionFilled />
+                              </el-icon>
+                          </el-button>
+                          <el-button type="default">
+                              意见反馈<el-icon :size="25" color="orange" class="el-icon--right">
+                                  <Promotion />
+                              </el-icon>
+                          </el-button>
+                      </el-col>
+                  </el-col>
+              </el-row>
+              <el-row class="article-nav">
+                  <el-row class="list-nav">
+                    <div v-loading="loading">
+                      <el-tabs v-model="activeTab" type="border-card" @tab-click="handleTabClick" >
+                        
+                          <el-tab-pane label="User" name="user">
+<!--                             
+                              <UserProfile v-for="userData in usersProfileData" :key="userData.userId" v-bind="userData" /> -->
+                            
+                            
+                          
+                        </el-tab-pane>
+                        
+                          
 
-            </div>
-            <div class="cardm">
-              <div class="cardb">
-                <div class="cardimg">
-                  <img src="https://assets.leetcode.cn/aliyun-lc-upload/study_plan_v2/top-interview-150/cover"
-                       height="80px">
-                </div>
-                <div class="cardtxt">
-                  <p>
-                    2024 春招冲刺百题计划
-                  </p>
-                </div>
-              </div>
-              <div class="cardb">
-                <div style="height: 80px;width: 80px;margin-left: 10px;">
-                  <img  class="img_radius" src="https://assets.leetcode.cn/aliyun-lc-upload/study_plan_v2/top-interview-150/cover"
-                        height="80px">
-                </div>
-              </div>
-            </div>
-            <div class="cardm">
-              <div class="cardb">
-                <div class="cardimg">
-                  <img src="https://assets.leetcode.cn/aliyun-lc-upload/study_plan_v2/top-interview-150/cover"
-                       height="80px">
-                </div>
-                <div class="cardtxt">
-                  <p>
-                    2024 春招冲刺百题计划
-                  </p>
-                </div>
-              </div>
-              <div class="cardb">
-                <div style="height: 80px;width: 80px;margin-left: 10px;">
-                  <img  class="img_radius" src="https://assets.leetcode.cn/aliyun-lc-upload/study_plan_v2/top-interview-150/cover"
-                        height="80px">
-                </div>
-              </div>
-            </div>
-
-
-          </div>
-
-          <div class="list-nav" >
-            <el-tabs  v-model="activeName" class="demo-tabs" @tab-click="handleClick" type="card">
-              <el-tab-pane label="就业" name="first"></el-tab-pane>
-              <el-tab-pane label="题解" name="second"></el-tab-pane>
-              <el-tab-pane label="技术" name="third"></el-tab-pane>
-              <el-tab-pane label="校园" name="fourth"></el-tab-pane>
-            </el-tabs>
-            <div class="article-list">
-              <Articles>
-
-              </Articles>
-              <Articles>
-
-              </Articles>
-              <Articles>
-
-              </Articles>
-              <Articles>
-
-              </Articles>
-            </div>
-          </div>
-
-      </div>
-        <div class = "div2" style="width:400px;height: 600px;background-color: blue;margin-left: 25px">
-          <div class="content" style="height: 200px;width: 90%;margin-top: 20px" >
-            <el-calendar :range="[new Date(2024, 4, 3), new Date(2024, 4, 16)]" />
-<!--                                              日历组件-->
-          </div>
-        </div>
-
-
+                          <el-tab-pane label="Config" name="config">
+                            <div element-loading-background="white">
+                              <Articles v-for="item in articleks" :key="item.id" v-bind="item" />
+                            </div>
+                           
+                          </el-tab-pane>
+                          <el-tab-pane label="Role" name="role">Role Content </el-tab-pane>
+                          <el-tab-pane label="Article" name="article">Article Content</el-tab-pane>
+                          <el-tab-pane label="Task" name="task">Task Content</el-tab-pane>
+                      </el-tabs>
+                    </div>
+                  </el-row>
+              </el-row>
+          </el-main>
+          <el-aside class="subaside">
+              <Bulletin
+                  maintenance="请遵守社区规则，禁止发布敏感消息，一经发现删帖并上报学校和执法部门"
+                  punish="请遵守社区规则，禁止发布敏感消息，一经发现删帖并上报学校和执法部门"
+                  public="请遵守社区规则，禁止发布敏感消息，一经发现删帖并上报学校和执法部门请遵守社区规则，禁止发布敏感消息，一经发现删帖并上报学校和执法部门请遵守社区规则，禁止发布敏感消息，一经发现删帖并上报学校和执法部门"
+                  mess="请遵守社区规则，禁止发布敏感消息，一经发现删帖并上报学校和执法部门社区规则，禁止发布敏感消息，一经发现删帖并上报学校和执法部门">
+              </Bulletin>
+          </el-aside>
+          
       </el-container>
-      </div>
-
-    </div>
-
-
+  </div>
+ 
 </template>
 
-<script  lang="ts" setup> //setup应该删除  lang="ts" 也被删除了
+<!--    <CommentsSection></CommentsSection>-->
 
-//fix
-
-// import Paste from "@/views/paste/Paste.vue";
-import Paste from '../paste/Paste.vue';
-//
-
-
-// import ElementUI from 'element-plus'
-// element-ui所提供的css样式
-// import 'element-ui/theme-chalk/index.css'
-// import 'element-plus/theme-chalk/index.css'
-import { defineComponent, defineAsyncComponent, reactive, onMounted } from "vue";
-import baseComponent from '@/components/BaseComponent.vue';
-import { ref } from 'vue'
-import { useTransition } from '@vueuse/core'
-import { ChatLineRound, Male } from '@element-plus/icons-vue'
-import Articles from "../../components/Articles.vue";
-import { createApp } from 'vue'
-
-// import ElementPlus from 'element-plus'
-let app = "";
-let containerSelector = "#app";
-
-// check if app has been mounted already
-const mountPoint = document.querySelector(containerSelector);
-
-// if (mountPoint && mountPoint.__vue_app__ !== undefined) {
-//
-//   // Set the existing mount point to 'app'.
-//   app = mountPoint.__vue_app__._instance.proxy;
-// }
-// else {
-//
-//   // create a new app instance
-//   app = createApp(App);
-//
-//   // Install the required instances like plugin, component and directive.
-//
-// }
-// createApp(App).use(ElementPlus).mount('#app')
-// setup script`语法糖提供了三个新的`API`来供我们使用：`defineProps`、`defineEmits`和`useContext
-// defineProps 用来接收父组件传 来的值props。
-//
-// defineEmits 用来声明触发的事件表。
-//
-// useContext 用来获取组件上下文context。
-//
-// 原文链接：https://blog.csdn.net/qq_54753561/article/details/121044074
-// import { useContext, defineProps, defineEmits } from 'vue'
-
-const source = ref(0)
-const outputValue = useTransition(source, {
-  duration: 1500,
-})
+<script lang="ts" setup>
+  import { useStore } from "vuex";
+  import CommentsSection from "../../components/CommentsSection.vue";
+  import { ref } from "vue";
+  import type { TabsPaneContext } from "element-plus";
+  import baseComponent from "@/components/BaseComponent.vue";
 
 
-source.value = 172000
-const tableData = [
-  {
-    date: '2016-05-03',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-]
-// 帖子列表部分
+  import Articles from "../../components/Articles.vue";
+  import Bulletin from "../../components/bulletinboard.vue";
 
-// import type { TabsPaneContext } from 'element-plus'
+  import UserProfileProps from "../../UserProfileProps.ts";
 
-// const activeName = ref('first')
-//
-// const handleClick = (tab: TabsPaneContext, event: Event) => {
-//   console.log(tab, event)
-// }
-import type { TabsPaneContext } from 'element-plus'
-const activeName = ref('first');
+  // 在 <script setup> 中定义
+  const usersProfileData = ref([
+      { userId: 123, userName: "John Doe", age: 30 },
+      { userId: 456, userName: "Jane Doe", age: 25 },
+      // 更多用户数据...
+  ]);
+  // 模拟加载
+  const loading = ref(true);
+  function handleTabClick(tab, event) {
+    loading.value = true  // 点击标签页时显示加载动画
+    // 模拟异步数据加载，1秒后隐藏加载动画
+    setTimeout(() => {
+      loading.value = false
+    }, 3000)
+  }
+  // 假设数据加载需要2秒
+  setTimeout(() => {
+      loading.value = false;
+  }, 2000);
+  const articleks = ref([
+      {
+          id: 1,
+          title: "第一篇文章",
+          nickname:"张三",
+          class: "21级计算机科学技术1班",
+          abstract:
+              "最近在项目中遇到一个前端问题Uncaught (in promise) TypeError: Cannot read properties of undefined(reading ‘randomExtend') ，感觉很是莫名其妙，明明定义了返回的变量，可是返回却没有值。另附部分语言的编译命令行（不包括源码和二进制文件路径、开启 O2 优化的参数和 gcc 的语言标准限定参数）：另附部分语言的编译命令行（不包括源码和二进制文件路径、开启 O2 优化的参数和 gcc 的语言标准限定参数）：另附部分语言的编译命令行（不包括源码和二进制文件路径、开启 O2 优化的参数和 gcc 的语言标准限定参数）：另附部分语言的编译命令行（不包括源码和二进制文件路径、开启 O2 优化的参数和 gcc 的语言标准限定参数）：",
+          likes: 321,
+          favorites: 5,
+          comments: 0,
+      },
+      { 
+          id: 2,
+          nickname:"张三",
+          class: "21级计算机科学技术1班",
+          title: "你好",
+          abstract: "摘要1...",
+          likes: 10,
+          favorites: 5,
+          comments: 0,
+      },
+      {
+        id: 3,
+        title: "第一篇文章",
+        nickname:"张三",
+        class: "21级计算机科学技术1班",
+        abstract:
+            "最近在项目中遇到一个前端问题Uncaught (in promise) TypeError: Cannot read properties of undefined(reading ‘randomExtend') ，感觉很是莫名其妙，明明定义了返回的变量，可是返回却没有值。另附部分语言的编译命令行（不包括源码和二进制文件路径、开启 O2 优化的参数和 gcc 的语言标准限定参数）：另附部分语言的编译命令行（不包括源码和二进制文件路径、开启 O2 优化的参数和 gcc 的语言标准限定参数）：另附部分语言的编译命令行（不包括源码和二进制文件路径、开启 O2 优化的参数和 gcc 的语言标准限定参数）：另附部分语言的编译命令行（不包括源码和二进制文件路径、开启 O2 优化的参数和 gcc 的语言标准限定参数）：",
+        likes: 321,
+        favorites: 5,
+        comments: 0,
+    },
 
-function handleClick(tab: any, event: Event) {
-  console.log(tab, event);
-}
+      // 更多文章对象...
+  ]);
+
+  const activeTab = ref("user");
+
+  const handleClick = (tab: TabsPaneContext, event: Event) => {
+      console.log(tab, event);
+  };
+
+  const categories = ref<Category[]>([
+      {
+          name: "tech",
+          posts: [
+              { id: 1, title: "Vue.js 3.0 发布", abstract: "摘要1...", likes: 120, favorites: 30, comments: 10 },
+              // 更多帖子对象...
+          ],
+      },
+      // 更多类别...
+  ]);
 </script>
+<style>
+  :root {
+      --gutter-large: 15px;
+      --gutter-medium: 10px;
+      --gutter-small: 5px;
+  }
 
-<style scoped>
-.div1  {
-  flex: 8;
-}
-.div2 {
-  flex: 3;
-}
+  .row {
+      margin-right: calc(var(--gutter-large) * -1);
+      margin-left: calc(var(--gutter-large) * -1);
+  }
 
+  .col {
+      padding-right: var(--gutter-large);
+      padding-left: var(--gutter-large);
+  }
 
-img {
-  /*使得图片自适应div的高和宽*/
-  border-radius: 6px;
-  flex: 1 1 auto; /* 图片根据容器调整尺寸 */
-  object-fit: cover; /* 补充，确保图片填充而不改变其宽高比 */
-}
-/*卡片外的边框，就是一列上的两个小卡片*/
-.cardm {
-  flex: 3;
-  float: left;
-  width: 33.33%;
-  height:100%;
-}
-.cardb {
-  /*小卡片的主体*/
-  height: 48%;
-  display:flex;
-  align-items: center;
-  border-radius: 4px;
-  margin: 2px;
+  @media (max-width: 767.98px) {
+      .row {
+          margin-right: calc(var(--gutter-medium) * -1);
+          margin-left: calc(var(--gutter-medium) * -1);
+      }
 
-  box-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
+      .col {
+          padding-right: var(--gutter-medium);
+          padding-left: var(--gutter-medium);
+      }
+  }
 
+  @media (max-width: 575.98px) {
+      .row {
+          margin-right: calc(var(--gutter-small) * -1);
+          margin-left: calc(var(--gutter-small) * -1);
+      }
 
-}
-.cardb:hover {
+      .col {
+          padding-right: var(--gutter-small);
+          padding-left: var(--gutter-small);
+      }
+  }
 
-  border: 1px solid black;
-  background-color: red;
-  box-shadow: 0 0 10px rgba(254, 206, 40);
-}
-.cardimg {
-  height: 80px;
-  width: 80px;
-  padding: 10px;
-}
-.cardtxt {
-/*小卡片的文本*/
-}
+  .main-div {
+      display: flex;
+      justify-content: center; /* 水平居中 */
+      /* align-items: center;  */
+      margin: 0 auto;
+      /* 垂直居中 */
+      height: 100vh; /* 或者其他根据你需求的高度 */
+      width: 100%;
+  }
 
-.caculate {
-  padding-top: 40px;
-  margin: 0 auto;
-}
-.clanav{
+  #hidden_scroll {
+      overflow-y: hidden; /* 隐藏水平滚动条 */
+  }
+  .main-container {
+      height: 1900px;
+      background-color: aqua;
+      display: flex;
+      
+      margin: 0 auto;
+      width: 100px; /* 示例宽度，可以根据需要进行调整 */
+      /* width: 100px; */
+  }
+  .common-layout {
+      display: flex;
 
-  width: 96%;
-  height: 200px;
-  background-color: aqua;
-  margin-top: 20px;
-}
-.list-nav {
-  background-color: navajowhite;
-  height: 200px;
-  width: 100%;
-  /*width: 750px;*/
-  margin-top: 20px;
-}
-.article-list {
-  height: 2000px;
-  /*width: 750px;*/
-  width: 100%;
-  border:1px solid #000;
-  border-radius: 6px;
-}
+      justify-content: center; /* 水平居中 */
+  }
+
+  .nav-button {
+      height: 100%;
+      width: 100%;
+  }
+  .submain {
+      /* background-color: red; 这里设置的是一个灰色背景，你可以根据需要更改颜色代码 */
+      /* width: 200px;
+height: 500px */
+      background-color: blueviolet;
+      height: 800px;
+      flex: 10;
+  }
+  .subaside {
+      /* background-color: yellow; */
+
+      background-color: rgb(255, 255, 255);
+      flex: 5;
+  }
+  .nav {
+      height: 80px;
+      width: 100%;
+  }
+  .nav-col {
+      margin: 0 0;
+      height: 100%;
+  }
+  .textbox {
+      /* width: 120px; */
+      height: 70px;
+  }
+  .upper {
+      margin-top: 5px;
+      /*
+margin-left: 20px; */
+  }
+  .lower {
+      /* margin-left: 20px; */
+  }
+  .iconbox {
+      height: 70px;
+      width: 65px;
+      margin: 10px;
+  }
+  .underline1 {
+      color: white;
+      font-size: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #fff;
+      font-family: "Microsoft YaHei";
+  }
+  .underline2 {
+      color: white;
+      font-size: 14px;
+      font-family: "Microsoft YaHei";
+  }
+  .article-nav {
+      width: 100%;
+  }
+  .list-nav {
+      /*  background-color: rgb(191, 173, 255);*/
+
+      width: 100%;
+
+      margin-top: 20px;
+  }
+
+  .button-container {
+      display: flex;
+      flex-direction: column; /* 设置flex容器的主轴方向为垂直方向 
+*/
+  }
+  .button-container > .el-button {
+      width: 100%;
+      margin: 0 0 2px;
+      height: 40%;
+  }
+  .el-button + .el-button {
+      margin-left: 0px;
+  }
+  .demo-tabs > .el-tabs__content {
+      padding: 32px;
+      color: #6b778c;
+      font-size: 32px;
+      font-weight: 600;
+  }
+  .article-list {
+      /* height: 2000px; */
+
+      border: 1px solid #000;
+      border-radius: 6px;
+      /* margin-top: 300px; */
+  }
 </style>

@@ -9,7 +9,10 @@
 						<template #header>
 							<el-row class="card-header flex w-100">
 								<el-col class="flex" :span="10">
-									<el-button type="danger">返回</el-button>
+									
+										<el-button type="danger"  @click="goBack">返回</el-button>
+									
+									
 									<div class="flex-grow"></div>
 								</el-col>
 								<el-col class="flex" :span="4">
@@ -57,10 +60,13 @@
 import baseComponent from "@/components/BaseComponent.vue"
 import { Messages } from "@/utils";
 import axios from "axios";
-import { ElMessage } from "element-plus";
+import { ElMessage , ElMessageBox} from "element-plus";
 import { reactive, ref } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from 'vue-router'
+
+
+
 const store = useStore()
 const router = useRouter()
 const form = reactive({
@@ -195,6 +201,27 @@ const createPaste = () => {
 			Messages.formErrors(error, "创建失败")
 		})
 }
+
+
+function goBack() {
+	ElMessageBox.confirm(
+	  '您确定要跳转到 主页面吗?您未保存的内容将丢失',
+	  '提示',
+	  {
+		confirmButtonText: '确定',
+		cancelButtonText: '取消',
+		type: 'warning',
+	  }
+	)
+	.then(() => {
+	  // 用户点击确定按钮后的逻辑，这里是进行路由跳转
+	  router.push('/home');
+	})
+	.catch(() => {
+	  // 用户点击取消按钮后的逻辑，这里什么也不做
+	  console.log('取消跳转');
+	});
+  }
 </script>
 
 <style scoped>
