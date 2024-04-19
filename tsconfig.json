@@ -21,8 +21,9 @@
     "noUnusedLocals": false,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["element-plus/global"]
-    
+    "types": ["element-plus/global"],
+  
+    "useUnknownInCatchVariables": false,
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]

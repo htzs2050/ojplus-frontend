@@ -1,20 +1,20 @@
 <template>
-  <div id="app">
-    <button @click="count++">
+  <!-- <div id="app">
+    <button @click="count">
       Count is: {{ count }}
     </button>
-  </div>
+  </div> -->
 </template>
 
 <script setup lang="ts">
 
-import { createApp } from 'vue'
+// import { createApp } from 'vue'
 
-createApp({
-  data() {
-    return {
-      count: 0
-    }
-  }
-}).mount('#app')
+// createApp({
+//   data() {
+//     return {
+//       count: 0
+//     }
+//   }
+// }).mount('#app')
 </script>

@@ -1,7 +1,8 @@
 <template>
   <baseComponent activeIndex="9"/>
-  <el-color-picker v-model="color" show-alpha :predefine="predefineColors" />
-  <el-tabs :key="forceUpdate"  ref="table" v-model="activeName" class="demo-tabs" @tab-click="handleClick">
+  <!-- <el-color-picker v-model="color" show-alpha :predefine="predefineColors" /> -->
+    <el-color-picker  show-alpha  />
+  <el-tabs ref="table" v-model="activeName" class="demo-tabs" @tab-click="handleClick">
     <el-tab-pane label="User" name="first">User</el-tab-pane>
     <el-tab-pane label="Config" name="second">Config</el-tab-pane>
     <el-tab-pane label="Role" name="third">Role</el-tab-pane>

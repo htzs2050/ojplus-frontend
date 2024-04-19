@@ -9,12 +9,14 @@ import '@/assets/css/element.scss'
 import '@/assets/css/style.scss'
 import '@/assets/css/mavon.scss'
 
+// import App from './App.vue' 
 import App from '@/App.vue'
-import router from './router/index.ts';
-import store from "@/store/index.ts"
+import router from './router/index';
+import store from "@/store/index"
+//此处修改了扩展名
 import axios from './http'
 import mavonEditor from 'mavon-editor'
-import installElementPlus from './plugins/element'
+// import installElementPlus from './plugins/element.'
 // import 'virtual:svg-icons-register'
 const app = createApp(App);
 
