@@ -95,10 +95,7 @@
         width: 100%;
         background-color: rgb(254, 254, 254);
     }
-    .invitation > article,
-    div3 {
-        /* border-radius:15px; */
-    }
+    
     .article {
         /*头像昵称、题目和摘要部分*/
         height: 145px;

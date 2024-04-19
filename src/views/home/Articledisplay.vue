@@ -39,7 +39,7 @@
 							<-editor class="flex-grow" v-model="context" :toolbarsFlag="false" :subfield="false" defaultOpen="preview" boxShadowStyle="none" />
 						</div> -->
 						
-						<el-col style="background-color: rgb(204, 190, 205);">
+						<el-col style="background-color: rgb(255, 255, 255);">
 							<el-col class="discusInfo">
 								<el-row :gutter="24" style="height: 100%;">
 									<el-col :span="8" style="background-color: aqua;height:100%;">
@@ -78,7 +78,7 @@
 							<el-row slot="tableHeader" class="header-content">
 								<el-text style="font-size: 25px;">评论</el-text>
 							</el-row>
-							<Comment />
+							<Comment prop=""/>
 						</el-col>
 					</el-card>
 				</el-col>
@@ -114,6 +114,61 @@ const pasteUser = reactive({
 	email: '',
 	className: '',
 });
+const comments = ref([
+{
+	status: "成功",
+	code: 200,
+	data: [
+		{
+			id: "comment0001",
+			date: "2018-07-05 08:30",
+			ownerId: "talents100020",
+			fromId: "errhefe232213",
+			fromName: "犀利的评论家",
+			fromAvatar: "http://ww4.sinaimg.cn/bmiddle/006DLFVFgy1ft0j2pddjuj30v90uvagf.jpg",
+			likeNum: 3,
+			content: "非常靠谱的程序员",
+			reply: [
+				{
+					id: "34523244545",
+					commentId: "comment0001",
+					fromId: "observer223432",
+					fromName: "夕阳红",
+					fromAvatar: "https://wx4.sinaimg.cn/mw690/69e273f8gy1ft1541dmb7j215o0qv7wh.jpg",
+					toId: "errhefe232213",
+					toName: "犀利的评论",
+					toAvatar: "http://ww4.sinaimg.cn/bmiddle/006DLFVFgy1ft0j2pddjuj30v90uvagf.jpg",
+					content: "赞同，很靠谱，水平很高",
+					date: "2018-07-05 08:35",
+				},
+				{
+					id: "34523244545",
+					commentId: "comment0001",
+					fromId: "observer567422",
+					fromName: "清晨一缕阳光",
+					fromAvatar: "http://imgsrc.baidu.com/imgad/pic/item/c2fdfc039245d688fcba1b80aec27d1ed21b245d.jpg",
+					toId: "observer223432",
+					toName: "夕阳红",
+					toAvatar: "https://wx4.sinaimg.cn/mw690/69e273f8gy1ft1541dmb7j215o0qv7wh.jpg",
+					content: "大神一个！",
+					date: "2018-07-05 08:50",
+				},
+			],
+		},
+		{
+			id: "comment0002",
+			date: "2018-07-05 08:30",
+			ownerId: "talents100020",
+			fromId: "errhefe232213",
+			fromName: "毒蛇郭德纲",
+			fromAvatar: "http://ww1.sinaimg.cn/bmiddle/006DLFVFgy1ft0j2q2p8pj30v90uzmzz.jpg",
+			likeNum: 0,
+			content: "从没见过这么优秀的人",
+			reply: [],
+		},
+	],
+}
+])
 axios.get(`/pastes/${pasteId}/`)
 	.then(response => {
 		// 请求成功后的处理
@@ -128,6 +183,7 @@ axios.get(`/pastes/${pasteId}/`)
 		// 请求失败后的处理
 		context.value = `# 来晚了，这条Paste已过期\n这条Paste已经抵达了它的终点\n每人最多可维持10条Paste，最早发布的Paste会被销毁哦~`
 	})
+
 </script>
 
 <style scoped>

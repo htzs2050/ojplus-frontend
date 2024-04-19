@@ -34,7 +34,7 @@ app.config.globalProperties.$http = axios
 app.use(store)
 app.use(ElementPlus)
 
-app.use(Editor)
+// app.use(Editor)
 app.use(router)
 app.mount('#app')
 
