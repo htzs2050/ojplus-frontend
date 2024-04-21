@@ -15,7 +15,7 @@ import router from './router/index';
 import store from "@/store/index"
 //此处修改了扩展名
 import axios from './http'
-// import Editor from '-editor'
+// import Editor from 'your-module'
 // import installElementPlus from './plugins/element.'
 // import 'virtual:svg-icons-register'
 const app = createApp(App);
@@ -30,7 +30,7 @@ axios.defaults.baseURL = 'https://localhost:4000/api/v1' //被注释
 app.config.globalProperties.$http = axios
 
 
-
+// app.use(Editor)
 app.use(store)
 app.use(ElementPlus)
 

@@ -26,7 +26,7 @@
 								</el-col>
 								<el-col class="flex" :span="8">
 									<div class="flex-grow"></div>
-									<el-button type="primary">分享</el-button>
+									<el-button>分享</el-button>
 								</el-col>
 							</el-row>
 							<el-col style="background-color: aquamarine;height:300px;">
@@ -42,31 +42,45 @@
 						<el-col style="background-color: rgb(255, 255, 255);">
 							<el-col class="discusInfo">
 								<el-row :gutter="24" style="height: 100%;">
-									<el-col :span="8" style="background-color: aqua;height:100%;">
+									<el-col :span="10" style="background-color: rgb(255, 255, 255);height:100%;">
 										<el-row class="fullheight">
-											<el-col :span="8">
-												<el-button type="info" :icon="Message" circle />
-												<el-text>点赞</el-text>
+											<el-col :span="6">
+												<el-button color="aqua"class="icon-noshadow" 
+												:type="buttonStyle" @click="changeColor">
+													<el-icon :size="22"><LikeIcon /></el-icon>
+												</el-button>
 											</el-col>
-											<el-col :span="8">
-												<el-button type="info" :icon="Message" circle />
-												<el-text>收藏</el-text>
+											<el-col :span="6">
+												<el-button color="aqua" class="icon-noshadow" 
+												:type="buttonStyle" @click="changeColor">
+													<el-icon :size="22"><Star /></el-icon>
+												</el-button>
 											</el-col>
-											<el-col :span="8">
-												<el-button type="info" :icon="Message" circle />
-												<el-text>分享</el-text>
+											<el-col :span="6">
+												<el-button color="aqua" class="icon-noshadow"
+												:type="buttonStyle" @click="changeColor">
+													<el-icon :size="22"><Share /></el-icon>
+												</el-button>
+											
 											</el-col>
 										</el-row>
 									</el-col>
-									<el-col :span="8" style="background-color: aqua;">
-										<el-text>nih1</el-text>
+									<el-col :span="8" style="background-color: rgb(255, 255, 255);">
+										<el-text></el-text>
 									</el-col>
-									<el-col :span="8" style="background-color: aqua;">
+									<el-col :span="6" style="background-color: rgb(255, 255, 255);">
 										<el-row class="fullheight">
-											<el-col :span="8"></el-col>
-											<el-col :span="8"></el-col>
-											<el-col :span="8">
-												<el-button type="info" :icon="Message" circle />
+											
+											<el-col :span="24" :offset="6">
+												<el-button color="aqua"class="icon-noshadow">
+													<el-text :size="22">举报</el-text>
+
+													<el-icon :size="22">
+														
+														<More />
+													</el-icon>
+												</el-button>
+												
 												
 											</el-col>
 										</el-row>
@@ -78,7 +92,7 @@
 							<el-row slot="tableHeader" class="header-content">
 								<el-text style="font-size: 25px;">评论</el-text>
 							</el-row>
-							<Comment prop=""/>
+							<Comment />
 						</el-col>
 					</el-card>
 				</el-col>
@@ -96,14 +110,7 @@ import { reactive, ref } from "vue";
 import { useRouter } from 'vue-router'
 
 import Comment from "../../components/Comment.vue";
-import {
-	Check,
-	Delete,
-	Edit,
-	Message,
-	Search,
-	Star,
-  } from '@element-plus/icons-vue'
+import LikeIcon from "@/icon/thumb.vue"
 const router = useRouter()
 const pasteId = router.currentRoute.value.params.id
 const context = ref("")
@@ -114,61 +121,7 @@ const pasteUser = reactive({
 	email: '',
 	className: '',
 });
-const comments = ref([
-{
-	status: "成功",
-	code: 200,
-	data: [
-		{
-			id: "comment0001",
-			date: "2018-07-05 08:30",
-			ownerId: "talents100020",
-			fromId: "errhefe232213",
-			fromName: "犀利的评论家",
-			fromAvatar: "http://ww4.sinaimg.cn/bmiddle/006DLFVFgy1ft0j2pddjuj30v90uvagf.jpg",
-			likeNum: 3,
-			content: "非常靠谱的程序员",
-			reply: [
-				{
-					id: "34523244545",
-					commentId: "comment0001",
-					fromId: "observer223432",
-					fromName: "夕阳红",
-					fromAvatar: "https://wx4.sinaimg.cn/mw690/69e273f8gy1ft1541dmb7j215o0qv7wh.jpg",
-					toId: "errhefe232213",
-					toName: "犀利的评论",
-					toAvatar: "http://ww4.sinaimg.cn/bmiddle/006DLFVFgy1ft0j2pddjuj30v90uvagf.jpg",
-					content: "赞同，很靠谱，水平很高",
-					date: "2018-07-05 08:35",
-				},
-				{
-					id: "34523244545",
-					commentId: "comment0001",
-					fromId: "observer567422",
-					fromName: "清晨一缕阳光",
-					fromAvatar: "http://imgsrc.baidu.com/imgad/pic/item/c2fdfc039245d688fcba1b80aec27d1ed21b245d.jpg",
-					toId: "observer223432",
-					toName: "夕阳红",
-					toAvatar: "https://wx4.sinaimg.cn/mw690/69e273f8gy1ft1541dmb7j215o0qv7wh.jpg",
-					content: "大神一个！",
-					date: "2018-07-05 08:50",
-				},
-			],
-		},
-		{
-			id: "comment0002",
-			date: "2018-07-05 08:30",
-			ownerId: "talents100020",
-			fromId: "errhefe232213",
-			fromName: "毒蛇郭德纲",
-			fromAvatar: "http://ww1.sinaimg.cn/bmiddle/006DLFVFgy1ft0j2q2p8pj30v90uzmzz.jpg",
-			likeNum: 0,
-			content: "从没见过这么优秀的人",
-			reply: [],
-		},
-	],
-}
-])
+
 axios.get(`/pastes/${pasteId}/`)
 	.then(response => {
 		// 请求成功后的处理
@@ -183,7 +136,23 @@ axios.get(`/pastes/${pasteId}/`)
 		// 请求失败后的处理
 		context.value = `# 来晚了，这条Paste已过期\n这条Paste已经抵达了它的终点\n每人最多可维持10条Paste，最早发布的Paste会被销毁哦~`
 	})
-
+	//按钮颜色设置
+	const buttonType = ref('primary');
+	const buttonStyle = ref({ backgroundColor: '#409EFF', color: 'white' });
+	//按钮颜色改色
+	function changeColor() {
+		if (buttonStyle.value.backgroundColor === '#409EFF') {
+		  buttonStyle.value = {
+			backgroundColor: '#67C23A', // 绿色
+			color: 'white'
+		  };
+		} else {
+		  buttonStyle.value = {
+			backgroundColor: '#409EFF', // 蓝色
+			color: 'white'
+		  };
+		}
+	  }
 </script>
 
 <style scoped>
@@ -213,5 +182,14 @@ axios.get(`/pastes/${pasteId}/`)
 .fullheight {
 	height: 100%;
 	align-items: center;
+}
+.icon-noshadow {
+	Box-shadow: None;
+	border: None;
+	background-color: transparent;
+	
+}
+.icon-noshadow:hover {
+	background-color: greenyellow;
 }
 </style>

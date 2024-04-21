@@ -11,6 +11,9 @@ import Test from "../views/test/test.vue"
 import PasteShare from "../views/paste/PasteShare.vue";
 import Community from "../views/home/Community.vue"
 import Articledisplay from "../views/home/Articledisplay.vue"
+import Userinfo from "../components/UserInfo.vue"
+import ProblemList from "../views/problem/ProblemList.vue"
+import ProblemListDetail from "../views/problem/ProblemListDetail.vue"
   // const routes = new Router({//尝试修复
   //   mode: 'history',
   //   base: process.env.BASE_URL,
@@ -56,12 +59,26 @@ import Articledisplay from "../views/home/Articledisplay.vue"
       name: "community",
       component: Community,
     },
-    {
+    {//帖子展示页面
       path: "/articledisplay",
       name: "articledisplay",
       component: Articledisplay,
     },
-    
+    {//个人信息
+      path: "/userinfo",
+      name: "userinfo",
+      component: Userinfo,
+    },
+    {//提单列表
+      path: "/problem",
+      name: "problem",
+      component: ProblemList,
+    },
+    { //题单详情
+      path: "/problemdetail",
+      name: "problemdetail",
+      component: ProblemListDetail,
+    },
    
   ];
 

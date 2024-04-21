@@ -37,21 +37,14 @@
                     </el-row>
                 </el-col>
                 <el-col>
-                    <el-button color="#626aef" text>
+                    <el-button class="icon-noshadow">
                         <!-- <el-button @click="toggleLike(index)" color="#626aef" text> -->
                         <el-icon><LikeIcon /></el-icon>
-                        <el-text> {{ item.likeNum ? "取消点赞" : "点赞" }} ({{ item.likeNum }}) </el-text>
+                        <el-text> {{ item.likeNum }} </el-text>
                     </el-button>
-                    <el-button color="#626aef" text>
+                    <el-button  class="icon-noshadow">
                         <!-- <el-button @click="reply(index)" color="#626aef" text> -->
-                        <el-icon size="20"><ChatRound /></el-icon>回复</el-button
-                    >
-
-                    <el-button @click="fillIcon"
-                        ><el-icon :class="{ 'filled-icon': isFilled }">
-                            <LikeIcon />
-                            <!-- 替换为你的el-icon组件 --> </el-icon
-                        >点击我</el-button
+                        <el-icon size="20"><ChatDotSquare /></el-icon>回复</el-button
                     >
 
                     <!-- 使用动态class绑定来改变icon颜色 -->
@@ -88,25 +81,15 @@
                                 </el-col>
                             </el-row>
                         </el-col>
-                        <el-col>
-                            <el-button color="#626aef" text>
-                                <!-- <el-button @click="toggleLike(index)" color="#626aef" text> -->
-                                <el-icon><LikeIcon /></el-icon>
-                                <el-text> {{ reply.likeNum ? "取消点赞" : "点赞" }} ({{ reply.likeNum }}) </el-text>
-                            </el-button>
-                            <el-button color="#626aef" text>
+                        <el-col> 
+                          
+                            <el-button class="icon-noshadow"  style="color: rgb(0, 0, 0)">
                                 <!-- <el-button @click="reply(index)" color="#626aef" text> -->
-                                <el-icon size="20"><ChatRound /></el-icon>回复</el-button
+                                <el-icon size="20"><ChatDotSquare /></el-icon>回复</el-button
                             >
 
-                            <el-button @click="fillIcon"
-                                ><el-icon :class="{ 'filled-icon': isFilled }">
-                                    <LikeIcon />
-                                    <!-- 替换为你的el-icon组件 --> </el-icon
-                                >点击我</el-button
-                            >
-
-                            <!-- 使用动态class绑定来改变icon颜色 -->
+                           
+                           
                         </el-col>
                     </el-col>
                 </el-col>
@@ -293,5 +276,9 @@
     .right-aligned-col {
       border-left: medium outset rgb(46, 46, 46);
         margin-left: auto;
+    }
+    .icon-noshadow {
+        Box-shadow: None;
+        border: None;
     }
 </style>
