@@ -7,7 +7,7 @@
                 <div class="flex-grow"></div>
                 <el-col :xs="24" :md="12" class="h-100">
                     <el-card class="h-100 flex flex-col" body-class="flex flex-col flex-grow p-0">
-                        <el-text>题目列表</el-text>
+                        <el-text>题单列表</el-text>
                         <el-col class="w-98 content">
                             <el-table :data="tableData">
                                 <el-table-column prop="name" label="编号" />

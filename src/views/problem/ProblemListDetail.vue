@@ -8,7 +8,7 @@
                 <div class="flex-grow"></div>
                 <el-col :xs="24" :md="12" class="h-100">
                     <el-card class="h-30 flex flex-col p-3" body-class="flex flex-col flex-grow p-0">
-                       <h1>题目详情(编号3390)</h1>
+                       <h1>题单详情(编号3390)</h1>
                        <el-col>
                         <el-col class="w-80 content">
                             <h3>程序设计实践</h3>
