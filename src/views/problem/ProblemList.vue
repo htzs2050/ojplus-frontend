@@ -7,12 +7,16 @@
                 <div class="flex-grow"></div>
                 <el-col :xs="24" :md="12" class="h-100">
                     <el-card class="h-100 flex flex-col" body-class="flex flex-col flex-grow p-0">
-                        <el-text>题目列表</el-text>
+                       
                         <el-col class="w-98 content">
+                            <h1 id="h1"><span >题单列表</span></h1>
                             <el-table :data="tableData">
                                 <el-table-column prop="name" label="编号" />
                                 <el-table-column prop="address" label="题目名称" />
                                 <el-table-column prop="date" label="难度" />
+                                <el-table-column prop="date" label="操作" >
+                                    <el-button type="success">详情</el-button>
+                                    </el-table-column>
                             </el-table>
                         </el-col>
                     </el-card>
@@ -48,4 +52,9 @@
         },
     ];
 </script>
-<style scoped></style>
+<style scoped>
+
+#h1 {
+    text-align: center;
+}
+</style>

@@ -1,68 +1,77 @@
 <template>
-    <el-container class="invitation box-top">
-        <el-col class="article">
+    <el-container class="box-top h-100" > 
+        <!-- class="invitation box-top" -->
+        <el-col>
+            <!-- class="article" -->
             <!--      <div style="width: 80px;height: 80px;align-items: center">-->
             <!--        <el-avatar :size="50" src="https://avatars.githubusercontent.com/u/87935282?s=48&v=4" />-->
             <!--        <div>Paimeng</div>-->
             <!--      </div>-->
-            <el-col class="div1">
-                <div class="logo">
-                    <el-avatar :size="35" src="https://avatars.githubusercontent.com/u/87935282?v=4" />
-                </div>
-                <div class="essayinfo">
-                    <div class="nickname">
-                        <el-text style="color: black">{{nickname}}</el-text>
-                    </div>
-                    <div class="flex-container">
-                        <el-text>03-27</el-text>
-                        <el-text>15:28</el-text>
-                        <el-text>{{class}}</el-text>
-                    </div>
-                </div>
-                <div class="timeline"></div>
+            <el-col>
+                <el-row>
+                    <el-col :span="2">
+                        <el-avatar :size="38" src="https://avatars.githubusercontent.com/u/87935282?v=4" />
+                    </el-col>
+                    <el-col :span="22">
+                        <el-row>
+                            <el-col class="nickname">
+                                <el-text style="color: black">{{ nickname }}</el-text>
+                            </el-col>
+                            <el-col>
+                                <el-row class="flex-container">
+                                    <el-text>03-27</el-text>
+                                    <el-text>15:28</el-text>
+                                    <el-text>{{class}}</el-text>
+                                </el-row>
+                            </el-col>
+                        </el-row>
+                    </el-col>
+                    <!-- <el-col></el-col> -->
+                </el-row>
             </el-col>
-            <el-col class="div2">
-                <div class="headline">
+            <el-col>
+                <el-col>
                     <el-text style="font-weight: bold; color: black; font-size: 16px" truncated>{{ title }}</el-text>
-                </div>
-                <div class="abstract">
+                </el-col>
+                <el-col>
                     <el-text line-clamp="3">
                         {{ abstract }}
                     </el-text>
-                </div>
+                </el-col>
             </el-col>
-       
-        <div class="div3">
 
+            <el-col>
+              <el-row>
+                <el-col :xs="8" :lg="4" :sm="8" :md="4"  :xl="8">
+                    <!-- xs控制移动端 md控制电脑端-->
+                    <el-row>
+                        <el-icon size="20"><LikeIcon /></el-icon>
+                        <div class="count-number">
+                            <p>{{ likes }}</p>
+                        </div>
+                    </el-row>
+                </el-col>
 
-            <div>
-                <div class="sta-icon">
-                    <el-icon size="20"><LikeIcon /></el-icon>
-                    <div class="count-number">
-                        <p>{{ likes }}</p>
-                    </div>
-                </div>
-            </div>
+                <el-col :xs="8" :lg="4" :sm="8" :md="4"  :xl="8">
+                    <el-row>
+                        <el-icon size="20"><ChatRound /></el-icon>
+                        <div>
+                            <p>{{ favorites }}</p>
+                        </div>
+                    </el-row>
+                </el-col>
+                <el-col :xs="8" :lg="4" :sm="8" :md="4"  :xl="8">
+                    <el-row>
+                        <el-icon size="20"><Star /></el-icon>
 
-            <div>
-                <div class="sta-icon">
-                    <el-icon size="20"><ChatRound /></el-icon>
-                    <div>
-                        <p>{{ favorites }}</p>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="sta-icon">
-                    <el-icon size="20"><Star /></el-icon>
-
-                    <div>
-                        <p>{{ comments }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-      </el-col>
+                        <div>
+                            <p>{{ comments }}</p>
+                        </div>
+                    </el-row>
+                </el-col>
+              </el-row>
+            </el-col>
+        </el-col>
     </el-container>
 </template>
 <script lang="ts" setup>
@@ -95,10 +104,10 @@
         width: 100%;
         background-color: rgb(254, 254, 254);
     }
-    
+
     .article {
         /*头像昵称、题目和摘要部分*/
-        height: 145px;
+      
         width: 100%;
         /*background-color: brown;*/
         /* display: flex; */
@@ -142,7 +151,7 @@
         align-items: center;
     }
     .flex-container {
-        display: flex;
+        /*display: flex; */
         gap: 10px; /* 设置子元素之间的距离 */
         margin-top: 5px;
     }
@@ -152,10 +161,7 @@
         /* height: 60px; */
         /* padding-left: 20px; */
     }
-    .essayinfo {
-        width: 500px;
-        height: 50px;
-    }
+
     .nickname {
         height: 20px;
         /* padding-top: 10px; */

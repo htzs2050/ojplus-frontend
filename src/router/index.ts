@@ -86,5 +86,14 @@ import ProblemListDetail from "../views/problem/ProblemListDetail.vue"
     history: createWebHistory(),
     routes,
   });
-  
-  export default router;
+  // /src/router/index.ts
+
+// import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+//
+import DesktopHome from "../views/home/DesktopHome.vue"
+import MobileHome from "../views/home/MobileHome.vue"
+// 
+
+export default router;
+
+  // export default router;
