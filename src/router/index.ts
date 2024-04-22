@@ -70,8 +70,8 @@ import ProblemListDetail from "../views/problem/ProblemListDetail.vue"
       component: Userinfo,
     },
     {//提单列表
-      path: "/problem",
-      name: "problem",
+      path: "/problemlist",
+      name: "problemlist",
       component: ProblemList,
     },
     { //题单详情

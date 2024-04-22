@@ -1,8 +1,8 @@
 <template>
 
   <el-affix>
-    <div >
-      <el-row class="border-bottom nav">
+    
+      <el-row class="border-bottom nav mb-3">
         <el-col :xs="0" :sm="0" :md="5"></el-col>
         <el-col :xs="24" :sm="24" :md="4">
           <el-menu :default-active="props.activeIndex" mode="horizontal" :ellipsis="false">
@@ -121,7 +121,7 @@
           <!--        <div class="flex-grow"></div>-->
         </el-col>
       </el-row>
-    </div>
+   
 
   </el-affix>
   <router-view/>
