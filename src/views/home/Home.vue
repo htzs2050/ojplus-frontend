@@ -3,115 +3,123 @@
   <el-header style="backgroundcolor: green"><baseComponent activeIndex="9" /></el-header>
   <div class="main-div">
       <el-container class="main-container">
-          <el-main class="submain" id="hidden_scroll">
-              <el-row class="nav" :gutter="5">
-                  <el-col :span="5" class="nav-col">
-                    <router-link to="/paste">
-                      <el-button class="nav-button" type="success">
-                          <div class="textbox">
-                              <div class="upper" style="height: 45px">
-                                  <span class="underline1">快捷贴码</span>
-                              </div>
-                              <div class="lower">
-                                  <span class="underline2">+50经验</span>
-                              </div>
-                          </div>
-                          <el-icon :size="50" color="white">
-                              <DocumentCopy />
-                          </el-icon>
-                      </el-button>
-                    </router-link>
-                  </el-col>
-                  <el-col :span="5" class="nav-col">
-                      <el-button class="nav-button" type="primary">
-                          <div class="textbox">
-                              <div class="upper" style="height: 45px">
-                                  <span class="underline1">发帖求助</span>
-                              </div>
-                              <div class="lower">
-                                  <span class="underline2">+50经验</span>
-                              </div>
-                          </div>
-                          <el-icon :size="50" color="white">
-                              <Edit />
-                          </el-icon>
-                      </el-button>
-                  </el-col>
-                  <el-col :span="5" class="nav-col">
-                    <router-link to="/test">
-                      <el-button class="nav-button" type="primary" >
-                          <div class="textbox">
-                              <div class="upper" style="height: 45px">
-                                  <span class="underline1">发布题解</span>
-                              </div>
-                              <div class="lower">
-                                  <span class="underline2">+15经验</span>
-                              </div>
-                          </div>
-                          <el-icon :size="50" color="white">
-                              <Finished />
-                          </el-icon>
-                      </el-button>
-                    </router-link>
-                  </el-col>
-
-                  <el-col style="display: flex" :span="9">
-                      <el-col :span="12" style="flex: 1" class="button-container">
-                          <el-button type="default"
-                              >个人中心<el-icon :size="25" color="blue" class="el-icon--right">
-                                  <User />
-                              </el-icon>
-                          </el-button>
-                          <el-button type="default">
-                              随机答疑<el-icon :size="25" color="red" class="el-icon--right">
-                                  <Connection />
-                              </el-icon>
-                          </el-button>
-                      </el-col>
-                      <el-col :span="12" style="flex: 1" class="button-container">
-                          <el-button type="default">
-                              帮助中心<el-icon :size="25" color="green" class="el-icon--right">
-                                  <QuestionFilled />
-                              </el-icon>
-                          </el-button>
-                          <el-button type="default">
-                              意见反馈<el-icon :size="25" color="orange" class="el-icon--right">
-                                  <Promotion />
-                              </el-icon>
-                          </el-button>
-                      </el-col>
-                  </el-col>
-              </el-row>
-              <el-row class="article-nav">
-                  <el-row class="list-nav">
-                    <div v-loading="loading">
-                      <el-tabs v-model="activeTab" type="border-card" @tab-click="handleTabClick" >
-                        
-                          <el-tab-pane label="User" name="user">
-<!--                             
-                              <UserProfile v-for="userData in usersProfileData" :key="userData.userId" v-bind="userData" /> -->
-                            
-                            
-                          
-                        </el-tab-pane>
-                        
-                          
-
-                          <el-tab-pane label="Config" name="config">
-                            <div element-loading-background="white">
-                              <Articles v-for="item in articleks" :key="item.id" v-bind="item" />
+          <el-main class="submain" >
+            <!-- id="hidden_scroll" -->
+              <el-col class="custom-col">
+                <el-row class="nav" :gutter="5">
+                    <el-col :sm="5" :xl="5" :xs="24" :md="5" class="nav-col">
+                      <router-link to="/paste">
+                        <el-button class="nav-button" type="success">
+                            <div class="textbox">
+                                <div class="upper" style="height: 45px">
+                                    <span class="underline1">快捷贴码</span>
+                                </div>
+                                <div class="lower">
+                                    <span class="underline2">+50经验</span>
+                                </div>
                             </div>
-                           
+                            <el-icon :size="50" color="white">
+                                <DocumentCopy />
+                            </el-icon>
+                        </el-button>
+                      </router-link>
+                    </el-col>
+                    <el-col :sm="5" :xl="5" :xs="24" :md="5" class="nav-col">
+                        <el-button class="nav-button" type="primary">
+                            <div class="textbox">
+                                <div class="upper" style="height: 45px">
+                                    <span class="underline1">发帖求助</span>
+                                </div>
+                                <div class="lower">
+                                    <span class="underline2">+50经验</span>
+                                </div>
+                            </div>
+                            <el-icon :size="50" color="white">
+                                <Edit />
+                            </el-icon>
+                        </el-button>
+                    </el-col>
+                    <el-col  :sm="5" :xl="5" :xs="24" :md="5" class="nav-col ">
+                      <router-link to="/test">
+                        <el-button class="nav-button" type="primary" >
+                            <div class="textbox">
+                                <div class="upper" style="height: 45px">
+                                    <span class="underline1">发布题解</span>
+                                </div>
+                                <div class="lower">
+                                    <span class="underline2">+15经验</span>
+                                </div>
+                            </div>
+                            <el-icon :size="50" color="white">
+                                <Finished />
+                            </el-icon>
+                        </el-button>
+                      </router-link>
+                    </el-col>
+  
+                    <el-col :sm="5" :xl="9" :xs="24" :md="9" style="display: flex" :span="9" >
+                        <el-col :span="12" style="flex: 1" class="button-container">
+                            <el-button type="default"
+                                >个人中心<el-icon :size="25" color="blue" class="el-icon--right">
+                                    <User />
+                                </el-icon>
+                            </el-button>
+                            <el-button type="default">
+                                随机答疑<el-icon :size="25" color="red" class="el-icon--right">
+                                    <Connection />
+                                </el-icon>
+                            </el-button>
+                        </el-col>
+                        <el-col :span="12" style="flex: 1" class="button-container">
+                            <el-button type="default">
+                                帮助中心<el-icon :size="25" color="green" class="el-icon--right">
+                                    <QuestionFilled />
+                                </el-icon>
+                            </el-button>
+                            <el-button type="default">
+                                意见反馈<el-icon :size="25" color="orange" class="el-icon--right">
+                                    <Promotion />
+                                </el-icon>
+                            </el-button>
+                        </el-col>
+                    </el-col>
+                </el-row>
+              </el-col>
+            <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+                <!-- :xl="5" :xs="24" :md="24" -->
+                <el-row>
+                    <!-- class="article-nav" -->
+                    <el-row>
+                        <!-- class="list-nav" -->
+                      <div v-loading="loading">
+                        <el-tabs v-model="activeTab" type="border-card" @tab-click="handleTabClick" class="w-100">
+                          
+                            <el-tab-pane label="User" name="user">
+  <!--                             
+                                <UserProfile v-for="userData in usersProfileData" :key="userData.userId" v-bind="userData" /> -->
+                              
+                              
+                            
                           </el-tab-pane>
-                          <el-tab-pane label="Role" name="role">Role Content </el-tab-pane>
-                          <el-tab-pane label="Article" name="article">Article Content</el-tab-pane>
-                          <el-tab-pane label="Task" name="task">Task Content</el-tab-pane>
-                      </el-tabs>
-                    </div>
-                  </el-row>
-              </el-row>
+                          
+                            
+  
+                            <el-tab-pane label="Config" name="config">
+                              <div element-loading-background="white">
+                                <Articles v-for="item in articleks" :key="item.id" v-bind="item" />
+                              </div>
+                             
+                            </el-tab-pane>
+                            <el-tab-pane label="Role" name="role">Role Content </el-tab-pane>
+                            <el-tab-pane label="Article" name="article">Article Content</el-tab-pane>
+                            <!-- <el-tab-pane label="Task" name="task">Task Content</el-tab-pane> -->
+                        </el-tabs>
+                      </div>
+                    </el-row>
+                </el-row>
+            </el-col>
           </el-main>
-          <el-aside class="subaside">
+          <el-aside class="subaside hide-on-mobile">
               <Bulletin
                   maintenance="请遵守社区规则，禁止发布敏感消息，一经发现删帖并上报学校和执法部门"
                   punish="请遵守社区规则，禁止发布敏感消息，一经发现删帖并上报学校和执法部门"
@@ -240,6 +248,13 @@
           padding-right: var(--gutter-medium);
           padding-left: var(--gutter-medium);
       }
+      .hide-on-mobile {
+        display: none;  /* 在移动端隐藏 */
+      }
+      .custom-col {
+        margin-bottom: 240px; /* 增加底部边距，避免重叠 */
+        padding: 10px;       /* 增加内边距 */
+      }
   }
 
   @media (max-width: 575.98px) {
@@ -260,7 +275,7 @@
       /* align-items: center;  */
       margin: 0 auto;
       /* 垂直居中 */
-      height: 100vh; /* 或者其他根据你需求的高度 */
+      height: auto; /* 或者其他根据你需求的高度 */
       width: 100%;
   }
 
@@ -268,12 +283,12 @@
       overflow-y: hidden; /* 隐藏水平滚动条 */
   }
   .main-container {
-      height: 1900px;
+      
       background-color: aqua;
       display: flex;
-      
+      height: auto;
       margin: 0 auto;
-      width: 100px; /* 示例宽度，可以根据需要进行调整 */
+      width: auto;
       /* width: 100px; */
   }
   .common-layout {
@@ -290,8 +305,9 @@
       /* background-color: red; 这里设置的是一个灰色背景，你可以根据需要更改颜色代码 */
       /* width: 200px;
 height: 500px */
+      flex-wrap: wrap;
       background-color: blueviolet;
-      height: 800px;
+      height: auto;
       flex: 10;
   }
   .subaside {

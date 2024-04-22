@@ -1,4 +1,4 @@
-<template>
+`<template>
 	<div class="full-page flex flex-col">
 		<baseComponent activeIndex="3" />
 		<el-container class="flex flex-grow pb-2 ps-1 pe-05">
@@ -192,4 +192,4 @@ axios.get(`/pastes/${pasteId}/`)
 .icon-noshadow:hover {
 	background-color: greenyellow;
 }
-</style>
+</style>`
