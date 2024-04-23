@@ -18,6 +18,9 @@ import axios from './http'
 // import Editor from 'your-module'
 // import installElementPlus from './plugins/element.'
 // import 'virtual:svg-icons-register'
+
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 const app = createApp(App);
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
@@ -33,7 +36,7 @@ app.config.globalProperties.$http = axios
 // app.use(Editor)
 app.use(store)
 app.use(ElementPlus)
-
+app.use(mavonEditor)
 // app.use(Editor)
 app.use(router)
 app.mount('#app')

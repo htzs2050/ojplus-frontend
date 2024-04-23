@@ -1,6 +1,6 @@
 <!-- <el-color-picker v-model="color" show-alpha :predefine="predefineColors" /> -->
 <template>
-  <el-header style="backgroundcolor: green"><baseComponent activeIndex="9" /></el-header>
+  <el-header style="backgroundcolor: green" class="mb-3"><baseComponent activeIndex="9" /></el-header>
   <div class="main-div">
       <el-container class="main-container">
           <el-main class="submain" >
@@ -59,12 +59,12 @@
   
                     <el-col :sm="5" :xl="9" :xs="24" :md="9" style="display: flex" :span="9" >
                         <el-col :span="12" style="flex: 1" class="button-container">
-                            <el-button type="default"
+                            <el-button type="default" 
                                 >个人中心<el-icon :size="25" color="blue" class="el-icon--right">
                                     <User />
                                 </el-icon>
                             </el-button>
-                            <el-button type="default">
+                            <el-button type="default" class="mtop-10">
                                 随机答疑<el-icon :size="25" color="red" class="el-icon--right">
                                     <Connection />
                                 </el-icon>
@@ -85,7 +85,7 @@
                     </el-col>
                 </el-row>
               </el-col>
-            <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+            <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" style="margin-top: 10px;">
                 <!-- :xl="5" :xs="24" :md="24" -->
                 <el-row>
                     <!-- class="article-nav" -->
@@ -306,7 +306,7 @@
       /* width: 200px;
 height: 500px */
       flex-wrap: wrap;
-      background-color: blueviolet;
+      background-color: rgb(255, 255, 255);
       height: auto;
       flex: 10;
   }
@@ -367,11 +367,11 @@ margin-left: 20px; */
   .button-container {
       display: flex;
       flex-direction: column; /* 设置flex容器的主轴方向为垂直方向 
-*/
+*/    
   }
   .button-container > .el-button {
       width: 100%;
-      margin: 0 0 2px;
+      margin: 0 0 5px; /*有异常，浏览器显示错误？？？？？？*/
       height: 40%;
   }
   .el-button + .el-button {
@@ -389,5 +389,11 @@ margin-left: 20px; */
       border: 1px solid #000;
       border-radius: 6px;
       /* margin-top: 300px; */
+  }
+  .mb-10 {
+    margin-bottom: 10px;
+  }
+  .mtop-10 {
+    margin-top: 10xp;
   }
 </style>

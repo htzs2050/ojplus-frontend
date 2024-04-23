@@ -14,7 +14,7 @@ import Articledisplay from "../views/home/Articledisplay.vue"
 import Userinfo from "../components/UserInfo.vue"
 import ProblemList from "../views/problem/ProblemList.vue"
 import ProblemListDetail from "../views/problem/ProblemListDetail.vue"
-import Problem from "../views/problem/Problem.vue"
+import Markd from "../components/Markd.vue"
   // const routes = new Router({//尝试修复
   //   mode: 'history',
   //   base: process.env.BASE_URL,
@@ -70,6 +70,7 @@ import Problem from "../views/problem/Problem.vue"
       name: "userinfo",
       component: Userinfo,
     },
+
     {//题单列表
       path: "/problemlist",
       name: "problemlist",
@@ -80,10 +81,10 @@ import Problem from "../views/problem/Problem.vue"
       name: "problemlistdetail",
       component: ProblemListDetail,
     },
-    {//题目
-      path: "/problem",
-      name: "problem",
-      component: Problem ,
+    { //题单详情
+      path: "/markdown",
+      name: "markdown",
+      component: Markd,
     },
     
   ];

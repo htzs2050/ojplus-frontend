@@ -4,8 +4,8 @@
 		<el-container class="flex flex-grow pb-2 ps-1 pe-05">
 			<el-row class="mt-05 w-100 h-100" :gutter="5">
 				<div class="flex-grow"></div>
-				<el-col :xs="24" :md="12" class="h-100">
-					<el-card class="h-100 flex flex-col" body-class="flex flex-col flex-grow p-0">
+				<el-col :xs="24" :md="20" class="h-100">
+					<el-card class="h-100 flex flex-col no-shadow " body-class="flex flex-col flex-grow p-0">
 						<template #header>
 							<el-row class="card-header flex w-100">
 								<el-col class="flex" :span="8">
@@ -89,7 +89,7 @@
 								</el-row>
 								
 							</el-col>
-							<el-row slot="tableHeader" class="header-content">
+							<el-row slot="tableHeader" class="header-content " >
 								<el-text style="font-size: 25px;">评论</el-text>
 							</el-row>
 							<Comment />

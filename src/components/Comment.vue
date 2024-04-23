@@ -7,14 +7,14 @@
         </el-row>
 
         <div v-for="item in comments" :key="item.ownerId" class="comment">
-            <el-col class="parentComment">
+            <el-col class="parentComment" :class="{ 'popped-out': isPopped }" @click="reply(item.id)">
                 <el-col>
-                    <el-col style="padding: 10px">
+                    <el-col style="padding: 5px 15px 0">
                         <el-row class="fullwidth">
-                            <el-col :span="2" style="margin: 5px;">
-                                <el-avatar :size="35" :src="item.fromAvatar" />
+                            <el-col :span="1" style="margin: 5px">
+                                <el-avatar :size="40" :src="item.fromAvatar" />
                             </el-col>
-                            <el-col :span="20" class="vertical-layout">
+                            <el-col :span="20" class="vertical-layout" style="margin: 5px">
                                 <span>
                                     {{ item.fromName }}
                                 </span>
@@ -27,7 +27,7 @@
                 </el-col>
                 <el-col>
                     <el-row class="fullwidth">
-                        <el-col :span="24">
+                        <el-col :span="24" style="padding: 10px">
                             <el-col class="comment-text">
                                 <el-text>
                                     {{ item.content }}
@@ -37,15 +37,19 @@
                     </el-row>
                 </el-col>
                 <el-col>
-                    <el-button class="icon-noshadow">
-                        <!-- <el-button @click="toggleLike(index)" color="#626aef" text> -->
-                        <el-icon><LikeIcon /></el-icon>
-                        <el-text> {{ item.likeNum }} </el-text>
-                    </el-button>
-                    <el-button  class="icon-noshadow">
-                        <!-- <el-button @click="reply(index)" color="#626aef" text> -->
-                        <el-icon size="20"><ChatDotSquare /></el-icon>回复</el-button
-                    >
+                    <el-row>
+                        <el-col :offset="1">
+                            <el-button class="icon-noshadow">
+                            <!-- <el-button @click="toggleLike(index)" color="#626aef" text> -->
+                            <el-icon><LikeIcon /></el-icon>
+                            <el-text> {{ item.likeNum }} </el-text>
+                        </el-button>
+                        <el-button class="icon-noshadow">
+                            <!-- <el-button @click="reply(index)" color="#626aef" text> -->
+                            <el-icon size="20"><ChatDotSquare /></el-icon>回复</el-button
+                        >
+                        </el-col>
+                    </el-row>
 
                     <!-- 使用动态class绑定来改变icon颜色 -->
                 </el-col>
@@ -54,12 +58,12 @@
                 <el-col v-for="reply in item.reply">
                     <el-col class="parentComment">
                         <el-col>
-                            <el-col style="padding: 10px">
+                            <el-col style="padding: 5px 15px 0">
                                 <el-row class="fullwidth">
-                                    <el-col :span="2" style="margin: 5px;">
-                                        <el-avatar :size="35" :src="item.fromAvatar" />
+                                    <el-col :span="1" style="margin: 5px">
+                                        <el-avatar :size="40" :src="item.fromAvatar" />
                                     </el-col>
-                                    <el-col :span="20" class="vertical-layout">
+                                    <el-col :span="20" class="vertical-layout" style="margin: 5px">
                                         <span>
                                             {{ reply.fromName }}
                                         </span>
@@ -81,15 +85,11 @@
                                 </el-col>
                             </el-row>
                         </el-col>
-                        <el-col> 
-                          
-                            <el-button class="icon-noshadow"  style="color: rgb(0, 0, 0)">
+                        <el-col>
+                            <el-button class="icon-noshadow" style="color: rgb(0, 0, 0)">
                                 <!-- <el-button @click="reply(index)" color="#626aef" text> -->
                                 <el-icon size="20"><ChatDotSquare /></el-icon>回复</el-button
                             >
-
-                           
-                           
                         </el-col>
                     </el-col>
                 </el-col>
@@ -173,7 +173,8 @@
                     toId: "observer223432",
                     toName: "夕阳红",
                     toAvatar: "https://wx4.sinaimg.cn/mw690/69e273f8gy1ft1541dmb7j215o0qv7wh.jpg",
-                    content: "本场春招加时赛的做题页面采用全新「灵动布局」如果你对「灵动布局」不太熟悉，可在题库中选择任一题目.进入做题页面后，在右上角选择布局，通过「帮助」引导了解更多.本场春招加时赛的做题页面采用全新「灵动布局」如果你对「灵动布局」不太熟悉，可在题库中选择任一题目.进入做题页面后，在右上角选择布局，通过「帮助」引导了解更多",
+                    content:
+                        "本场春招加时赛的做题页面采用全新「灵动布局」如果你对「灵动布局」不太熟悉，可在题库中选择任一题目.进入做题页面后，在右上角选择布局，通过「帮助」引导了解更多.本场春招加时赛的做题页面采用全新「灵动布局」如果你对「灵动布局」不太熟悉，可在题库中选择任一题目.进入做题页面后，在右上角选择布局，通过「帮助」引导了解更多",
                     date: "2018-07-05 08:50",
                 },
             ],
@@ -199,7 +200,8 @@
                     toAvatar: "http://ww4.sinaimg.cn/bmiddle/006DLFVFgy1ft0j2pddjuj30v90uvagf.jpg",
                     content: "赞同，很靠谱，水平很高",
                     date: "2018-07-05 08:35",
-                }],
+                },
+            ],
         },
         {
             id: "comment0003",
@@ -238,6 +240,15 @@
     const fillIcon = () => {
         isFilled.value = !isFilled.value;
     };
+    const isPopped = ref(true);
+
+    function showPop() {
+        isPopped.value = true;
+    }
+
+    function hidePop() {
+        isPopped.value = false;
+    }
 </script>
 
 <style scope>
@@ -254,7 +265,6 @@
         background-color: rgb(255, 255, 255);
         height: 100%;
         width: 80%;
-        
     }
     .logo {
         padding: 10px;
@@ -274,11 +284,17 @@
         flex-direction: column;
     }
     .right-aligned-col {
-      border-left: medium outset rgb(46, 46, 46);
+        border-left: medium outset rgb(46, 46, 46);
         margin-left: auto;
     }
     .icon-noshadow {
-        Box-shadow: None;
+        box-shadow: None;
         border: None;
+    }
+    .popped-out {
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        transform: translateY(-3px) scale(1.03); /* 向上移动并轻微放大 */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* 平滑过渡效果 */
     }
 </style>

@@ -9,7 +9,7 @@
 							<el-row class="card-header flex w-100">
 								<el-col class="flex" :span="8">
 									
-									<el-button type="danger">返回</el-button>
+									<el-button type="danger" class="button-mar-10">返回</el-button>
 									<el-button type="primary">保存</el-button>
 									<div class="flex-grow"></div>
 								</el-col>
@@ -25,11 +25,17 @@
 							</el-row>
 						</template>
 						<div class="card-body flex flex-col">
-							<-editor v-if="editModel" class="flex-grow" v-model="advancedContext" :placeholder="`在此处开始编辑\n点击菜单栏【问号图标】以获取【Markdown语法帮助】`" :toolbars="editToolbars" :subfield="false" defaultOpen="edit" boxShadowStyle="none" />
+							<mavon-editor v-if="editModel" class="flex-grow" v-model="advancedContext" :placeholder="`在此处开始编辑\n点击菜单栏【问号图标】以获取【Markdown语法帮助】`" :toolbars="editToolbars" :subfield="false" defaultOpen="edit" boxShadowStyle="none" />
+							
 							<el-scrollbar v-if="!editModel" class="flex-grow h-0">
 								<el-form class="p-3">
 									<el-form-item label="标题">
 										<el-input v-model="form.title" placeholder="简要概况问题" />
+									</el-form-item>
+									<el-form-item label="分类">
+										<el-select v-model="classifi" class="mb-1" placeholder="选择语言">
+											<el-option v-for="item in classifiOption" :key="item.value" :label="item.label" :value="item.value" />
+										</el-select>
 									</el-form-item>
 									<el-form-item label="正文">
 										<el-input :rows="6" type="textarea" v-model="form.text" placeholder="详细描述问题" />
@@ -42,6 +48,7 @@
 									</el-form-item>
 								</el-form>
 							</el-scrollbar>
+							
 						</div>
 					</el-card>
 				</el-col>
@@ -64,8 +71,9 @@
 							</el-row>
 						</template>
 						<div class="card-body flex flex-col">
-							<-editor class="flex-grow" v-show="editModel" v-model="advancedContext" :toolbars="previewToolbars" :subfield="false" defaultOpen="preview" boxShadowStyle="none" />
-							<-editor class="flex-grow" v-show="!editModel" v-model="simpleContext" :toolbars="previewToolbars" :subfield="false" defaultOpen="preview" boxShadowStyle="none" />
+							
+							<mavon-editor class="flex-grow" v-show="editModel" v-model="advancedContext" :toolbars="previewToolbars" :subfield="false" defaultOpen="preview" boxShadowStyle="none" />
+							<mavon-editor class="flex-grow" v-show="!editModel" v-model="simpleContext" :toolbars="previewToolbars" :subfield="false" defaultOpen="preview" boxShadowStyle="none" />
 						</div>
 					</el-card>
 				</el-col>
@@ -147,6 +155,19 @@ const langOptions = [
 		label: 'Rust',
 	},
 ]
+const classifi = ref('分享帖')
+const classifiOption = [
+	{
+		value: 'share',
+		label: '分享帖',
+	},
+	{
+		value: 'help',
+		label: '求助帖',
+	}
+]
+
+
 const editToolbars = {
 	bold: true, // 粗体
 	italic: true, // 斜体
