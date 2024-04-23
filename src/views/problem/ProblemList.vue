@@ -5,12 +5,14 @@
         <el-container class="flex flex-grow pb-2 ps-1 pe-05">
             <el-row class="mt-05 w-100 h-100" :gutter="5">
                 <div class="flex-grow"></div>
+
                 <el-col :xs="24" :md="20" class="h-100">
                     <el-card class="h-100 flex flex-col no-shadow" body-class="flex flex-col flex-grow p-0">
                         <el-col class="w-98 content">
                            <el-row class="mb-10 center-col">
                             <h3 id="h1"><span>题单列表</span></h3>
                            </el-row>
+
 
                             <el-row>
                                 <el-col :span="4"></el-col>
@@ -44,7 +46,9 @@
                                                 </el-checkbox-group>
                                             </el-form-item>
                                             <el-form-item label="题目标签">
+
                                                 <el-select v-model="value" multiple placeholder="选择算法标签" style="width: 240px">
+
                                                     <el-option v-for="item in colors" :key="item.value" :label="item.label" :value="item.value">
                                                         <div class="flex items-center">
                                                             <el-tag :color="item.value" style="margin-right: 8px" size="small" />
@@ -59,13 +63,16 @@
 
                                             <el-form-item>
                                                 <el-col class="center-col" style="align-items: center">
+
                                                     <el-button type="primary" @click="submitForm(ruleFormRef)" class="button-mar-10">
                                                         筛选
                                                     </el-button>
+
                                                     <el-button @click="resetForm(ruleFormRef)">重设</el-button>
                                                 </el-col>
                                             </el-form-item>
                                         </el-form>
+
                                     </el-radio-group>
                                     <el-row>
                                         <el-col :span="20">
@@ -98,6 +105,7 @@
                                     <el-pagination background layout="prev, pager, next" :total="1000" />
                                 
                             </el-col>
+
                         </el-col>
                     </el-card>
                 </el-col>
@@ -111,7 +119,9 @@
     import { Search } from "@element-plus/icons-vue";
     import baseComponent from "@/components/BaseComponent.vue";
 
+
     const problemlist = [
+
         {
             id: "121",
             date: "2016-05-03",
@@ -263,7 +273,9 @@
         label: `${idx + 1}`,
     }));
 
+
     // 实现标签筛选功能
+
     const value = ref<string[]>([]);
     const colors = [
         {
@@ -299,6 +311,7 @@
         value.value.push(color.value);
     });
 
+
     // 搜索功能实现
     const searchForm = reactive({
         keyword: "输入以搜索题单",
@@ -310,17 +323,22 @@
         // 这里可以添加逻辑来处理搜索，比如发送 API 请求
         // 调用 API 获取数据、更新视图等
     };
+
 </script>
 <style scoped>
     #h1 {
         text-align: center;
+
         color: greenyellow;
+
     }
     .center-col {
         margin: 5px;
         font-size: 30px;
         display: flex;
 
+
         justify-content: center; /* 水平居中 */
+
     }
 </style>

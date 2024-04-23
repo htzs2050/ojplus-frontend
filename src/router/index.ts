@@ -71,7 +71,9 @@ import Markd from "../components/Markd.vue"
       component: Userinfo,
     },
 
+
     {//题单列表
+
       path: "/problemlist",
       name: "problemlist",
       component: ProblemList,
