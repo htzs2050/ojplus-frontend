@@ -31,7 +31,7 @@
 							</el-row>
 						</template>
 						<div class="card-body flex flex-col h-0">
-							<-editor class="flex-grow" v-model="context" :toolbarsFlag="false" :subfield="false" defaultOpen="preview" boxShadowStyle="none" />
+							<mavon-editor class="flex-grow" v-model="context" :toolbarsFlag="false" :subfield="false" defaultOpen="preview" boxShadowStyle="none" />
 						</div>
 					</el-card>
 				</el-col>
