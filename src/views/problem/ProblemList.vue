@@ -5,10 +5,14 @@
         <el-container class="flex flex-grow pb-2 ps-1 pe-05">
             <el-row class="mt-05 w-100 h-100" :gutter="5">
                 <div class="flex-grow"></div>
-                <el-col :xs="24" :md="12" class="h-100">
-                    <el-card class="h-100 flex flex-col" body-class="flex flex-col flex-grow p-0">
+
+                <el-col :xs="24" :md="20" class="h-100">
+                    <el-card class="h-100 flex flex-col no-shadow" body-class="flex flex-col flex-grow p-0">
                         <el-col class="w-98 content">
-                            <h1 id="h1"><span>题单列表</span></h1>
+                           <el-row class="mb-10 center-col">
+                            <h3 id="h1"><span>题单列表</span></h3>
+                           </el-row>
+
 
                             <el-row>
                                 <el-col :span="4"></el-col>
@@ -42,7 +46,9 @@
                                                 </el-checkbox-group>
                                             </el-form-item>
                                             <el-form-item label="题目标签">
-                                                <el-select v-model="value" multiple placeholder="Select" style="width: 240px">
+
+                                                <el-select v-model="value" multiple placeholder="选择算法标签" style="width: 240px">
+
                                                     <el-option v-for="item in colors" :key="item.value" :label="item.label" :value="item.value">
                                                         <div class="flex items-center">
                                                             <el-tag :color="item.value" style="margin-right: 8px" size="small" />
@@ -57,39 +63,48 @@
 
                                             <el-form-item>
                                                 <el-col class="center-col" style="align-items: center">
-                                                    <el-button type="primary" @click="submitForm(ruleFormRef)"> 筛选 </el-button>
+
+                                                    <el-button type="primary" @click="submitForm(ruleFormRef)" class="button-mar-10">
+                                                        筛选
+                                                    </el-button>
+
                                                     <el-button @click="resetForm(ruleFormRef)">重设</el-button>
                                                 </el-col>
                                             </el-form-item>
                                         </el-form>
 
-                                        <!-- <el-radio-button value="large">large</el-radio-button>
-                                    <el-radio-button value="default">default</el-radio-button>
-                                    <el-radio-button value="small">small</el-radio-button> -->
                                     </el-radio-group>
                                     <el-row>
-                                      <el-col :span="20">
-                                        <el-form-item label="题单名搜索：">
-                                          <el-input></el-input>
-                                        </el-form-item>
-                                         
-                                      </el-col>
-                                      <el-col :span="4">
-                                          <el-button :icon="Search" type="success"></el-button>
-                                      </el-col>
-                                  </el-row>
+                                        <el-col :span="20">
+                                            <el-form-item label="题单名搜索：">
+                                                <el-input></el-input>
+                                            </el-form-item>
+                                        </el-col>
+                                        <el-col :span="4">
+                                            <el-button :icon="Search" type="success" @click="onSearch"></el-button>
+                                        </el-col>
+                                    </el-row>
                                 </el-col>
                                 <el-col :span="4"></el-col>
                             </el-row>
-                           
-                            <el-table :data="tableData">
-                                <el-table-column prop="name" label="编号" />
-                                <el-table-column prop="address" label="题目名称" />
-                                <el-table-column prop="date" label="难度" />
-                                <el-table-column prop="date" label="操作">
+
+                            <el-radio-group v-model="size" label="size control"> </el-radio-group>
+
+                            <el-table :data="problemlist">
+                                <el-table-column prop="id" label="题单id" />
+                                <el-table-column prop="listName" label="题单名称" />
+                                <el-table-column prop="level" label="难度" />
+                                <el-table-column prop="mark" label="标签" />
+                                <el-table-column prop="date" label="发布日期" />
+                                <el-table-column label="操作">
                                     <el-button type="success">详情</el-button>
                                 </el-table-column>
                             </el-table>
+                            <el-col style="height: 50px;" class="center-col">
+                               
+                                    <el-pagination background layout="prev, pager, next" :total="1000" />
+                                
+                            </el-col>
 
                         </el-col>
                     </el-card>
@@ -104,27 +119,45 @@
     import { Search } from "@element-plus/icons-vue";
     import baseComponent from "@/components/BaseComponent.vue";
 
-    const tableData = [
+
+    const problemlist = [
+
         {
+            id: "121",
             date: "2016-05-03",
-            name: "Tom",
-            address: "No. 189, Grove St, Los Angeles",
+            listName: "Tom",
+            mark: "图论，计算几何", //涉及多属性
+            level: "程设",
         },
         {
-            date: "2016-05-02",
-            name: "Tom",
-            address: "No. 189, Grove St, Los Angeles",
+            id: "121",
+            date: "2016-05-03",
+            listName: "Tom",
+            mark: "图论，计算几何", //涉及多属性
+            level: "程设",
         },
         {
-            date: "2016-05-04",
-            name: "Tom",
-            address: "No. 189, Grove St, Los Angeles",
+            id: "121",
+            date: "2016-05-03",
+            listName: "Tom",
+            mark: "图论，计算几何", //涉及多属性
+            level: "程设",
         },
         {
-            date: "2016-05-01",
-            name: "Tom",
-            address: "No. 189, Grove St, Los Angeles",
+            id: "121",
+            date: "2016-05-03",
+            listName: "Tom",
+            mark: "图论，计算几何", //涉及多属性
+            level: "程设",
         },
+        {
+            id: "121",
+            date: "2016-05-03",
+            listName: "Tom",
+            mark: "图论，计算几何", //涉及多属性
+            level: "程设",
+        },
+        
     ];
     import { reactive, ref } from "vue";
     import type { ComponentSize, FormInstance, FormRules } from "element-plus";
@@ -239,6 +272,10 @@
         value: `${idx + 1}`,
         label: `${idx + 1}`,
     }));
+
+
+    // 实现标签筛选功能
+
     const value = ref<string[]>([]);
     const colors = [
         {
@@ -273,16 +310,34 @@
     colors.forEach((color) => {
         value.value.push(color.value);
     });
+
+
+    // 搜索功能实现
+    const searchForm = reactive({
+        keyword: "输入以搜索题单",
+    });
+
+    // 搜索事件处理函数
+    const onSearch = () => {
+        console.log("进行搜索:", searchForm.keyword);
+        // 这里可以添加逻辑来处理搜索，比如发送 API 请求
+        // 调用 API 获取数据、更新视图等
+    };
+
 </script>
 <style scoped>
     #h1 {
         text-align: center;
+
+        color: greenyellow;
+
     }
     .center-col {
         margin: 5px;
         font-size: 30px;
         display: flex;
-      
+
+
         justify-content: center; /* 水平居中 */
 
     }
