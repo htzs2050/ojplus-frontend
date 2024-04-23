@@ -1,5 +1,5 @@
 <template>
-    <el-container class="box-top h-100" > 
+    <el-container class="box-top h-100 box-mar" > 
         <!-- class="invitation box-top" -->
         <el-col>
             <!-- class="article" -->
@@ -9,10 +9,10 @@
             <!--      </div>-->
             <el-col>
                 <el-row>
-                    <el-col :span="2">
+                    <el-col :span="3">
                         <el-avatar :size="38" src="https://avatars.githubusercontent.com/u/87935282?v=4" />
                     </el-col>
-                    <el-col :span="22">
+                    <el-col :span="20">
                         <el-row>
                             <el-col class="nickname">
                                 <el-text style="color: black">{{ nickname }}</el-text>
@@ -209,6 +209,9 @@
     }
     .box-top {
         border-bottom: 2px solid rgb(223, 222, 222);
+    }
+    .box-mar {
+        margin: 5px;
     }
 </style>
 <!-- https://paste.ubuntu.com/p/YwJxfhQQvv/ -->

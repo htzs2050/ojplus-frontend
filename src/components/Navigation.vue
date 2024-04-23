@@ -13,7 +13,9 @@
                     <el-menu-item size="large">
                         <router-link to="/paste" index="2"> 题库</router-link>
                     </el-menu-item>
-                    <el-menu-item size="large" index="3">发文章</el-menu-item>
+                    <el-menu-item size="large" index="3">
+                      <router-link to="/paste" index="2">发文章</router-link>
+                     </el-menu-item>
                     <themeSwitch class="h-100 ps-1"></themeSwitch>
 
                     <div class="flex-grow"></div>

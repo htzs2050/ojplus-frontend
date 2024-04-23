@@ -203,7 +203,7 @@
         // 更多类别...
     ]);
 </script>
-<style>
+<style scoped>
     :root {
         --gutter-large: 15px;
         --gutter-medium: 10px;

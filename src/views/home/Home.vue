@@ -94,7 +94,7 @@
                       <div v-loading="loading">
                         <el-tabs v-model="activeTab" type="border-card" @tab-click="handleTabClick" class="w-100">
                           
-                            <el-tab-pane label="User" name="user">
+                            <el-tab-pane label="编程入门" name="help">
   <!--                             
                                 <UserProfile v-for="userData in usersProfileData" :key="userData.userId" v-bind="userData" /> -->
                               
@@ -104,14 +104,14 @@
                           
                             
   
-                            <el-tab-pane label="Config" name="config">
+                            <el-tab-pane label="其他" name="share">
                               <div element-loading-background="white">
                                 <Articles v-for="item in articleks" :key="item.id" v-bind="item" />
                               </div>
                              
                             </el-tab-pane>
-                            <el-tab-pane label="Role" name="role">Role Content </el-tab-pane>
-                            <el-tab-pane label="Article" name="article">Article Content</el-tab-pane>
+                            <el-tab-pane label="题目解读" name="role">Role Content </el-tab-pane>
+                            <el-tab-pane label="数据结构" name="article">Article Content</el-tab-pane>
                             <!-- <el-tab-pane label="Task" name="task">Task Content</el-tab-pane> -->
                         </el-tabs>
                       </div>
@@ -276,7 +276,7 @@
       margin: 0 auto;
       /* 垂直居中 */
       height: auto; /* 或者其他根据你需求的高度 */
-      width: 100%;
+      width: 80%;
   }
 
   #hidden_scroll {
@@ -284,7 +284,7 @@
   }
   .main-container {
       
-      background-color: aqua;
+      background-color: rgb(255, 255, 255);
       display: flex;
       height: auto;
       margin: 0 auto;
@@ -300,13 +300,14 @@
   .nav-button {
       height: 100%;
       width: 100%;
+    
   }
   .submain {
       /* background-color: red; 这里设置的是一个灰色背景，你可以根据需要更改颜色代码 */
       /* width: 200px;
 height: 500px */
       flex-wrap: wrap;
-      background-color: rgb(255, 255, 255);
+      
       height: auto;
       flex: 10;
   }
