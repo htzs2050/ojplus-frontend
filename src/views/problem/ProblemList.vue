@@ -3,7 +3,7 @@
         <baseComponent activeIndex="3" />
 
         <el-container class="flex flex-grow pb-2 ps-1 pe-05">
-            <el-row class="mt-05 w-100 h-100" :gutter="5">
+            <el-row class="w-100 h-100" :gutter="5">
                 <div class="flex-grow"></div>
 
                 <el-col :xs="24" :md="20" class="h-100">
@@ -27,7 +27,7 @@
                                             class="demo-ruleForm"
                                             :size="formSize"
                                             status-icon>
-                                            <el-form-item label="发布时间" required>
+                                            <el-form-item label="发布时间" >
                                                 <el-date-picker
                                                     v-model="value1"
                                                     type="daterange"
@@ -102,7 +102,7 @@
                             </el-table>
                             <el-col style="height: 50px;" class="center-col">
                                
-                                    <el-pagination background layout="prev, pager, next" :total="1000" />
+                                    <el-pagination background layout="prev, pager, next" :total="100" />
                                 
                             </el-col>
 
@@ -123,40 +123,34 @@
     const problemlist = [
 
         {
-            id: "121",
-            date: "2016-05-03",
-            listName: "Tom",
-            mark: "图论，计算几何", //涉及多属性
-            level: "程设",
+            id: "1",
+            date: "2023-05-03",
+            listName: "C语言入门",
+            mark: "综合，输入输出，暴力", //涉及多属性
+            level: "入门级",
         },
         {
-            id: "121",
-            date: "2016-05-03",
-            listName: "Tom",
-            mark: "图论，计算几何", //涉及多属性
-            level: "程设",
+            id: "2",
+            date: "2023-01-12",
+            listName: "程序设计实践",
+            mark: "图论，计算几何，数据结构", //涉及多属性
+            level: "程设级",
         },
         {
-            id: "121",
-            date: "2016-05-03",
-            listName: "Tom",
+            id: "3",
+            date: "2024-02-08",
+            listName: "蓝桥杯",
             mark: "图论，计算几何", //涉及多属性
-            level: "程设",
+            level: "比赛级",
         },
         {
-            id: "121",
-            date: "2016-05-03",
-            listName: "Tom",
-            mark: "图论，计算几何", //涉及多属性
+            id: "4",
+            date: "2024-01-03",
+            listName: "天梯赛",
+            mark: "图论，计算几何，数论，快搜", //涉及多属性
             level: "程设",
         },
-        {
-            id: "121",
-            date: "2016-05-03",
-            listName: "Tom",
-            mark: "图论，计算几何", //涉及多属性
-            level: "程设",
-        },
+       
         
     ];
     import { reactive, ref } from "vue";
