@@ -84,7 +84,7 @@ const sendSignup = () => {
     }
     // 实际发送验证码的逻辑在此处
     isLoading.value = true
-    axios.post('/users/', { //post请求
+    axios.post('/user', { //post请求,正常运行，但是跳转异常而且没有写入数据库
         username: form.username,
         password: form.password,
         confirm_password: form.confirm_password,

@@ -55,7 +55,8 @@ const login = () => {
         return
     }
     isLoading.value = true
-    store.dispatch("auth/getToken", form)
+    
+    store.dispatch("/token", form)
         .then((_response: { data: { access: any; refresh: any; }; }) => {
             ElMessage.success("登录成功")
             isLoading.value = false

@@ -33,9 +33,10 @@ const getters = {
     },
 }
 
-const mutations = {
+const mutations = {//2024/4/24
     // 登录弹窗相关
     toggleLoginViewVisible(state: any) {
+        
         state.loginVisible = !state.loginVisible
     },
     changeIndex(state: any, index: string = "1") {
