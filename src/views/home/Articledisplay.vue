@@ -30,7 +30,7 @@
 								</el-col>
 							</el-row>
 							<el-col style="background-color: aquamarine;height:300px;">
-								
+								<Markdisplay />
 							</el-col>
 							
 						</template>
@@ -111,6 +111,7 @@ import { useRouter } from 'vue-router'
 
 import Comment from "../../components/Comment.vue";
 import LikeIcon from "@/icon/thumb.vue"
+import Markdisplay from "../../components/MarkdownEditor.vue"
 const router = useRouter()
 const pasteId = router.currentRoute.value.params.id
 const context = ref("")

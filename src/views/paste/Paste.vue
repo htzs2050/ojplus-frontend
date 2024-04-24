@@ -182,7 +182,7 @@ const createPaste = () => {
 	isLoading.value = true
 	const timestamp = Math.round(Date.now() / 1000); // 获取当前时间戳
 	const exp = validity.value * 60 * 60 + timestamp; // 计算 exp 的值
-	axios.post('/pastes/', {
+	axios.post('http://1.12.250.106:4010/api/v1/paste', {
 		title: form.title,
 		text: form.text,
 		code: form.code,

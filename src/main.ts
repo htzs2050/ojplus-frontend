@@ -29,7 +29,7 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }
 axios
-axios.defaults.baseURL = 'https://localhost:4000/api/v1' //被注释
+axios.defaults.baseURL = 'http://localhost:4000/api/v1'  //被注释
 app.config.globalProperties.$http = axios
 
 

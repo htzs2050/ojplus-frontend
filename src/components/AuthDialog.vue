@@ -56,6 +56,9 @@ import PwdLoginForm from "@/components/Form/PwdLogin.vue"
 import EmailLoginForm from "@/components/Form/EmailLogin.vue"
 import SignupForm from "@/components/Form/Signup.vue"
 import Questions from "@/components/Layout/AuthDialogQuestions.vue"
+import axios from "axios";
+
+
 
 const store = useStore()
 

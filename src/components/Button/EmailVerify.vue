@@ -28,7 +28,7 @@ const sendVerificationCode = () => {
     }
     // 实际发送验证码的逻辑在此处
     isLoading.value = true
-    axios.post('/verification/send/', {
+    axios.post('/verification', {// axios.post('/verification/send/', {
         email: props.email
     })
         .then(_response => {
@@ -48,6 +48,7 @@ const sendVerificationCode = () => {
         })
         .catch(error => {
             // 发送请求失败
+            console.log(error._response)
             isLoading.value = false
             if (typeof error.response.data === 'object' && Object.keys(error.response.data).length > 0) {
                 ElMessage.error((error.response.data.detail))

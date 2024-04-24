@@ -45,7 +45,7 @@ import axios from 'axios';
 import { useStore } from "vuex";
 
 const store = useStore()
-const form = reactive({
+const form = reactive({ //用于将普通对象转换为响应式对象。当响应式对象的属性值被修改时，Vue 会自动跟踪这些变化，并确保界面与状态保持同步。
     username: '',
     email: '',
     code: '',
@@ -94,7 +94,7 @@ const sendSignup = () => {
         .then(_response => {
             // 发送请求成功
             ElMessage.success("注册成功，请登录")
-            store.state.auth.loginIndex = 1
+            store.state.auth.loginIndex = 1 //转圈圈的按钮消失吧
             isLoading.value = false
         })
         .catch(error => {
