@@ -1,5 +1,5 @@
 <template>
-    <el-form :model="form">
+     <el-form :model="form" v-if="!store.state.auth.isLoggedIn">
         <el-form-item>
             <el-input size="large" v-model="form.username" placeholder="输入学号">
                 <!-- <template #prepend>学号</template> -->
