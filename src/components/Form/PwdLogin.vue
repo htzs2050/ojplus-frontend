@@ -20,7 +20,8 @@
                     <el-button class="w-100" size="large" :onclick="gotoSigup">注册</el-button>
                 </el-col>
                 <el-col :span="12" class="pe-0">
-                    <el-button class="w-100" size="large" :onclick="login" :loading="isLoading" type="primary">登录</el-button>
+                    <el-button class="w-100" size="large" :onclick="login" :loading="isLoading"
+                        type="primary">登录</el-button>
                 </el-col>
             </el-row>
         </el-form-item>
@@ -55,15 +56,15 @@ const login = () => {
         return
     }
     isLoading.value = true
-    
+
     store.dispatch("/token", form)
         .then((_response: { data: { access: any; refresh: any; }; }) => {
             ElMessage.success("登录成功")
             isLoading.value = false
-            store.commit('auth/toggleLoginViewVisible')
+            store.commit('auth/toggleLoginViewVisible') // 关闭登录界面
         })
         .catch((_error: any) => {
-            ElMessage.error("登录失败，请检查信息后重试")
+            ElMessage.error("登录失败，请检查信息后重试") // 显示错误消息
             isLoading.value = false
         });
 }

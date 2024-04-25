@@ -15,6 +15,7 @@ import router from './router/index';
 import store from "@/store/index"
 //此处修改了扩展名
 import axios from './http'
+
 // import Editor from 'your-module'
 // import installElementPlus from './plugins/element.'
 // import 'virtual:svg-icons-register'

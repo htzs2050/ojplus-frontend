@@ -43,7 +43,7 @@
           <el-tab-pane v-if="false" label="找回密码" name="4"></el-tab-pane>
         </el-tabs>
         <el-text>登录或注册即代表您同意<a class="color-primary" href="#"> 用户协议 </a>和<a class="color-primary" href="#"> 隐私政策</a></el-text><br><br>
-        <!-- <el-text>开发者QQ: <span class="color-primary-light3">1300207762</span> (20网工周钟华 9:00-19:00)</el-text> -->
+        <!-- <el-text>开发者QQ: <span class="color-primary-light3">1300207762 3093490690</span> (20网工周钟华 MoMo9:00-19:00)</el-text> -->
         <!-- <h4>Tips: 本站不支持IE浏览器，推荐使用Chrome、Edge、Firefox以获得最佳体验</h4> -->
         <!-- <h4>Tips：为确保您的账户安全，若您长达15天未使用本站，将自动安全登出</h4> -->
       </el-col>
