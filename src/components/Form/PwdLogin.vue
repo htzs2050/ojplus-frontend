@@ -1,5 +1,5 @@
 <template>
-     <el-form :model="form" v-if="!store.state.auth.isLoggedIn">
+    <el-form :model="form">
         <el-form-item>
             <el-input size="large" v-model="form.username" placeholder="输入学号">
                 <!-- <template #prepend>学号</template> -->
@@ -51,15 +51,8 @@ const login = () => {
     }
     const [isValidPassword, errorMessage] = Validators.isValidPassword(form.password)
     if (!isValidPassword) {
-        try {
-            await store.dispatch('auth/login', { username: form.username, password: form.password });
-            store.commit('auth/setIsLoggedIn', true);
-        } catch (error) {
-            ElMessage.error("登录失败");
-        }
-    } else {
-        ElMessage.error(errorMessage);
-    }
+        ElMessage.error(errorMessage)
+        return
     }
     isLoading.value = true
     
