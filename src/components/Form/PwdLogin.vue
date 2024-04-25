@@ -51,8 +51,15 @@ const login = () => {
     }
     const [isValidPassword, errorMessage] = Validators.isValidPassword(form.password)
     if (!isValidPassword) {
-        ElMessage.error(errorMessage)
-        return
+        try {
+            await store.dispatch('auth/login', { username: form.username, password: form.password });
+            store.commit('auth/setIsLoggedIn', true);
+        } catch (error) {
+            ElMessage.error("登录失败");
+        }
+    } else {
+        ElMessage.error(errorMessage);
+    }
     }
     isLoading.value = true
     
