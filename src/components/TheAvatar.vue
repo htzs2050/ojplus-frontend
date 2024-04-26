@@ -31,7 +31,6 @@ import { ref, watch, onMounted } from 'vue';
 
 const props = defineProps({
 	email: String,
-	qq: String,
 	id: String,
 	size: String,
 })
@@ -40,7 +39,7 @@ const url = ref('')
 
 let size = ref(props.size || "160")
 
-const updateUrl = () => {
+const updateUrl = () => { 
 	if (props.qq) {
 		url.value = `https://q.qlogo.cn/g?b=qq&nk=${props.qq}&s=${size.value}`
 	} else if (props.email) {

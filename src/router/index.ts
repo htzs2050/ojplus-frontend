@@ -29,7 +29,7 @@ const routes: Array<RouteRecordRaw> = [
         component: Home, //标注组件
     },
     {
-        path: "/test", 
+        path: "/test",
         name: "test",
         component: Test,
     },
@@ -43,11 +43,7 @@ const routes: Array<RouteRecordRaw> = [
         name: "pasteshare",
         component: PasteShare,
     }, //加入这段可能会导致share界面中的返回出问题
-    {
-      path: "/pastes",
-      name: "paste",
-      redirect: "/pastes",  //redirect 重配置
-    },
+
     {
         path: "/pastes/:id",
         name: "pasteShare",

@@ -55,15 +55,20 @@ const login = () => {
         ElMessage.error(errorMessage)
         return
     }
+    console.log("login")
     isLoading.value = true
 
-    store.dispatch("/token", form)
-        .then((_response: { data: { access: any; refresh: any; }; }) => {
+    store.dispatch("auth/getToken", form)
+    
+        .then((_response: { data: { accessToken: string; refreshToken: string; }; }) => { //原来这是any
             ElMessage.success("登录成功")
             isLoading.value = false
+           
             store.commit('auth/toggleLoginViewVisible') // 关闭登录界面
         })
         .catch((_error: any) => {
+            // console.log(_response.data)
+            
             ElMessage.error("登录失败，请检查信息后重试") // 显示错误消息
             isLoading.value = false
         });

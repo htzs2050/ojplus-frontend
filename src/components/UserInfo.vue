@@ -1,11 +1,11 @@
 <template>
     <div class="full-page flex flex-col">
         <baseComponent activeIndex="3" />
-        <el-container class="flex flex-grow pb-2 ps-1 pe-05">
+        <el-container class="flex pb-2">
             <el-row class="mt-05 w-100 h-100" :gutter="5">
                 <div class="flex-grow"></div>
-                <el-col :xs="24" :md="12" class="h-100">
-                    <el-card class="h-100 flex flex-col" body-class="flex flex-col flex-grow p-0">
+                <el-col :xs="24" :md="12">
+                    <el-card class="flex flex-col">
                         <el-col>
                             <el-col>
                                 <el-row>
@@ -45,7 +45,7 @@
                             <el-col class="formclass">
                                 <el-form :model="form" label-width="auto" style="max-width: 600px">
                                     <el-form-item label="UserId">
-                                        <el-input v-model="form.id" readonly></el-input>
+                                        <el-input v-model="form.id" readonly disabled></el-input>
                                     </el-form-item>
                                     <el-form-item label="Name">
                                         <el-input v-model="form.userName" />
@@ -81,7 +81,8 @@
     import theAvatar from "@/components/TheAvatar.vue";
     import axios from "axios";
     import { reactive, ref } from "vue";
-    import { useRouter } from "vue-router";
+    // import { useRouter } from "vue-router";
+    import { useStore } from "vuex";
 
     interface userInfo {
         /**
@@ -152,7 +153,8 @@
       };
 
 */
-    const router = useRouter();
+    const store = useStore();
+    
 
     // do not use same name with ref
     const form = reactive({
@@ -162,10 +164,12 @@
         email: "2229866236@qq.com",
         className: "21计科一班",
     });
-
+    //退出登录已经完成测试
     const logout = () => {
         //退出当前账号
         console.log("logout!");
+        store.commit('auth/clearToken')
+        console.log("logoutFinish!"); 
     };
     const submit = () => {
         console.log("submit!!");
