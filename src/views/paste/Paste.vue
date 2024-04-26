@@ -192,7 +192,7 @@ const createPaste = () => {
 		.then(response => {
 			// 请求成功后的处理
 			isLoading.value = false
-			router.push(`/pastes/${response.data.id}`)
+			router.push(`/pastes/${response.data.id}`)//用router来实现网页跳转
 			ElMessage.success("创建成功")
 		})
 		.catch(error => {

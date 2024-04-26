@@ -59,12 +59,14 @@
                                     <el-form-item label="ClassName">
                                         <el-input v-model="form.className" />
                                     </el-form-item>
+                                    
                                 </el-form>
+                                
                             </el-col>
 
                             <el-col style="height: 40px" class="center-col">
                                 <div><el-button class="button-mar-10" type="danger" @click="logout">登出</el-button></div>
-                                <div><el-button type="warning" @click="submit">修改</el-button></div>
+                                <div><el-button type="warning" @click="getUserInfo">获取</el-button></div>
                             </el-col>
                         </el-col>
                     </el-card>
@@ -153,17 +155,26 @@
       };
 
 */
+
     const store = useStore();
-    
+    import { mapState } from 'vuex';
+    const getUserInfo = () => {
+        store.commit('auth/state')
+        
+    };
 
     // do not use same name with ref
     const form = reactive({
-        id: 0,
-        userName: "吴毓霖",
-        nickName: "202105566221",
-        email: "2229866236@qq.com",
-        className: "21计科一班",
+        id: '',
+        userName: '',
+        nickName: '',
+        email: '',
+        className: '',
     });
+    // userName: store.state.username,
+    //     nickName: store.state.nickname,
+    //     email: store.state.email,
+    //     className: store.state.class,
     //退出登录已经完成测试
     const logout = () => {
         //退出当前账号

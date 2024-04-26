@@ -142,13 +142,30 @@ const actions = {
                     reject(error)
                 })
         })
-    }
+    },
+    //用户个人信息页面
+    async  getUserInfo() {
+        axios.post('/token', {
+            id: localStorage.getItem("userId"),
+            Authorization: localStorage.getItem(),
+        }).then(response => {
+            // 请求成功后的处理
+            isLoading.value = false; // 假设使用Vue3的Composition API
+            router.push(`/data/${response.data.id}`); // 假设response.data有id字段，并且你想导航到特定页面
+            ElMessage.success("数据加载成功"); // 使用Element UI库显示成功消息
+          })
+          .catch(error => {
+            // 请求失败后的处理
+            isLoading.value = false; // 确保加载指示器被关闭
+            Messages.formErrors(error, "加载失败"); // 显示错误消息
+          });
+      },
 }
 
 export default {
     namespaced: true,
-    state,
+    state,  //这里应该定义数据的初始状态。
     getters,
-    mutations,
-    actions
+    mutations,//用于同步变更 store 中的状态
+    actions//用于提交 mutation，而不是直接变更状态,这是管理异步操作的理想位置。
 }
