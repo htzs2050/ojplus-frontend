@@ -43,7 +43,7 @@
                                 </div>
                             </el-col>
                             <el-col class="formclass">
-                                <!-- <el-form label-width="auto" style="max-width: 600px">
+                                <el-form label-width="auto" style="max-width: 600px" :model="form" ref="form">
                                     <el-form-item label="UserId">
                                         <el-input v-model="form.id" readonly disabled></el-input>
                                     </el-form-item>
@@ -59,16 +59,8 @@
                                     <el-form-item label="ClassName">
                                         <el-input v-model="form.className" />
                                     </el-form-item>
-                                </el-form> -->
-                                <el-table :data="k" style="width: 100%">
-                                    <el-table-column prop="id" label="ID" width="50"></el-table-column>
-                                    <el-table-column prop="name" label="姓名" width="120"></el-table-column>
-                                    <el-table-column prop="nickname" label="昵称" width="120"></el-table-column>
-                                    <el-table-column prop="username" label="用户名" width="120"></el-table-column>
-                                    <el-table-column prop="email" label="邮箱" width="180"></el-table-column>
-                                    <el-table-column prop="role" label="角色" width="100"></el-table-column>
-                                    <el-table-column prop="className" label="班级名称" width="150"></el-table-column>
-                                </el-table>
+                                </el-form> 
+                               
                             </el-col>
 
                             <el-col style="height: 40px" class="center-col">
@@ -127,14 +119,15 @@
         exp: 0,
         role: 0,
     });
-    
-    
+   
+    const userId = 23; // Adjust the ID as needed
 
     // 定义 fetchData 函数，运行时自动加载数据
     const fetchUserData = async () => {
-        const userId = 23; // Adjust the ID as needed
+        
 
         try {
+           
             console.log("789321");
             const response = await axios.get(`http://localhost:4523/m1/4220991-3861857-default/users/${userId}`); // ${userId}
             form = response.data;
@@ -144,7 +137,11 @@
         }
     };
     fetchUserData();
-    console.log(form.email);
+    var formlist = [
+        form,
+        form
+    ]
+    
     const logout = () => {
         //退出当前账号
         console.log("logout!");
