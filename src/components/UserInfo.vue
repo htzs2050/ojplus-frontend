@@ -48,10 +48,10 @@
                                         <el-input v-model="form.id" readonly disabled></el-input>
                                     </el-form-item>
                                     <el-form-item label="Name">
-                                        <el-input v-model="form.userName" />
+                                        <el-input v-model="form.username" />
                                     </el-form-item>
                                     <el-form-item label="Nickname">
-                                        <el-input v-model="form.nickName" />
+                                        <el-input v-model="form.nickname" />
                                     </el-form-item>
                                     <el-form-item label="Email">
                                         <el-input v-model="form.email" />
@@ -59,9 +59,7 @@
                                     <el-form-item label="ClassName">
                                         <el-input v-model="form.className" />
                                     </el-form-item>
-                                    
                                 </el-form>
-                                
                             </el-col>
 
                             <el-col style="height: 40px" class="center-col">
@@ -82,7 +80,7 @@
     import baseComponent from "@/components/BaseComponent.vue";
     import theAvatar from "@/components/TheAvatar.vue";
     import axios from "axios";
-    import { reactive, ref } from "vue";
+    import { reactive, ref ,onMounted } from "vue";
     // import { useRouter } from "vue-router";
     import { useStore } from "vuex";
 
@@ -157,35 +155,51 @@
 */
 
     const store = useStore();
-    import { mapState } from 'vuex';
+    import { mapState } from "vuex";
+
     const getUserInfo = () => {
-        store.commit('auth/state')
-        
+        store.commit("auth/state");
     };
 
-    // do not use same name with ref
-    const form = reactive({
-        id: '',
-        userName: '',
-        nickName: '',
-        email: '',
-        className: '',
+    interface UserForm {
+        id: Number;
+        username: string;
+        nickname: string;
+        email: string;
+        className: string;
+    }
+
+    // 使用 ref 创建响应式引用
+    const form = ref<UserForm>({
+        id: 0,
+        username: "吴毓霖",
+        nickname: "202105566221",
+        email: "2229866236@qq.com",
+        className: "21计科一班",
     });
-    // userName: store.state.username,
-    //     nickName: store.state.nickname,
-    //     email: store.state.email,
-    //     className: store.state.class,
-    //退出登录已经完成测试
+
+    // 定义 fetchData 函数，运行时自动加载数据
+    const fetchUserData = async () => {
+        const userId = 21; // Adjust the ID as needed
+        
+        try {
+            const response = await axios.get(`http://localhost:4523/m1/4220991-3861857-default/user/${userId}`);
+            form.value = response.data;
+            console.log(form.value)
+        } catch (error) {
+            console.error("Failed to fetch user data:", error);
+        }
+    };
     const logout = () => {
         //退出当前账号
         console.log("logout!");
-        store.commit('auth/clearToken')
-        console.log("logoutFinish!"); 
+        store.commit("auth/clearToken");
+        console.log("logoutFinish!");
     };
     const submit = () => {
         console.log("submit!!");
     };
-    
+    onMounted(fetchUserData);
 </script>
 
 <style scoped>
