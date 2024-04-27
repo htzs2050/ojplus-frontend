@@ -1,6 +1,6 @@
 <template>
     <div class="full-page flex flex-col">
-        <baseComponent activeIndex="3" />
+        <!-- <baseComponent activeIndex="3" /> -->
         <el-container class="flex pb-2">
             <el-row class="mt-05 w-100 h-100" :gutter="5">
                 <div class="flex-grow"></div>
@@ -43,7 +43,7 @@
                                 </div>
                             </el-col>
                             <el-col class="formclass">
-                                <el-form :model="form" label-width="auto" style="max-width: 600px">
+                                <!-- <el-form label-width="auto" style="max-width: 600px">
                                     <el-form-item label="UserId">
                                         <el-input v-model="form.id" readonly disabled></el-input>
                                     </el-form-item>
@@ -59,12 +59,24 @@
                                     <el-form-item label="ClassName">
                                         <el-input v-model="form.className" />
                                     </el-form-item>
-                                </el-form>
+                                </el-form> -->
+                                <el-table :data="k" style="width: 100%">
+                                    <el-table-column prop="id" label="ID" width="50"></el-table-column>
+                                    <el-table-column prop="name" label="姓名" width="120"></el-table-column>
+                                    <el-table-column prop="nickname" label="昵称" width="120"></el-table-column>
+                                    <el-table-column prop="username" label="用户名" width="120"></el-table-column>
+                                    <el-table-column prop="email" label="邮箱" width="180"></el-table-column>
+                                    <el-table-column prop="role" label="角色" width="100"></el-table-column>
+                                    <el-table-column prop="className" label="班级名称" width="150"></el-table-column>
+                                </el-table>
                             </el-col>
 
                             <el-col style="height: 40px" class="center-col">
                                 <div><el-button class="button-mar-10" type="danger" @click="logout">登出</el-button></div>
-                                <div><el-button type="warning" @click="getUserInfo">获取</el-button></div>
+                                <div>
+                                    <el-button type="warning" @click="getUserInfo">获取</el-button>
+                                    <el-button @click="fetchUserData">加载用户数据</el-button>
+                                </div>
                             </el-col>
                         </el-col>
                     </el-card>
@@ -77,82 +89,16 @@
 </template>
 
 <script setup lang="ts">
+    import { User } from "@/CodeGenerator/api";
     import baseComponent from "@/components/BaseComponent.vue";
     import theAvatar from "@/components/TheAvatar.vue";
     import axios from "axios";
-    import { reactive, ref ,onMounted } from "vue";
+    import { reactive, ref, onMounted, onBeforeMount } from "vue";
     // import { useRouter } from "vue-router";
     import { useStore } from "vuex";
 
-    interface userInfo {
-        /**
-         * 业务状态码
-         */
-        code: number;
-        /**
-         * 响应数据
-         */
-        data: Data;
-        /**
-         * 业务消息
-         */
-        message: string;
-        "01HW2CE35TP74H8G8HQEQYM41Z": any;
-        [property: string]: any;
-    }
+    
 
-    /**
-     * 响应数据
-     */
-    interface Data {
-        /**
-         * 班级
-         */
-        className?: string;
-        /**
-         * 邮箱
-         */
-        email: string;
-        /**
-         * 经验值
-         */
-        exp?: number;
-        /**
-         * 序号
-         */
-        id: number;
-        /**
-         * 姓名
-         */
-        name: string;
-        /**
-         * 昵称
-         */
-        nickname?: string;
-        /**
-         * 权限
-         */
-        role?: number;
-        /**
-         * 用户名，学号/工号
-         */
-        username: string;
-        [property: string]: any;
-    }
-
-    // 处理用户信息
-    /* 
-    const fetchUsers = async () => {
-        try {
-          const response = await fetch('http://127.0.0.1:4523/m1/4220991-3861857-default/user');
-          const userInfo: users[] = await response.json();
-          
-        } catch (error) {
-          console.error('Failed to fetch users', error);
-        }
-      };
-
-*/
 
     const store = useStore();
     import { mapState } from "vuex";
@@ -162,34 +108,43 @@
     };
 
     interface UserForm {
-        id: Number;
+        id: number;
         username: string;
         nickname: string;
         email: string;
         className: string;
+        exp: number;
+        role: number;
     }
 
     // 使用 ref 创建响应式引用
-    const form = ref<UserForm>({
+    var form = reactive<UserForm>({
         id: 0,
-        username: "吴毓霖",
-        nickname: "202105566221",
-        email: "2229866236@qq.com",
-        className: "21计科一班",
+        username: "",
+        nickname: "",
+        email: "",
+        className: "",
+        exp: 0,
+        role: 0,
     });
+    
+    
 
     // 定义 fetchData 函数，运行时自动加载数据
     const fetchUserData = async () => {
-        const userId = 21; // Adjust the ID as needed
-        
+        const userId = 23; // Adjust the ID as needed
+
         try {
-            const response = await axios.get(`http://localhost:4523/m1/4220991-3861857-default/user/${userId}`);
-            form.value = response.data;
-            console.log(form.value)
+            console.log("789321");
+            const response = await axios.get(`http://localhost:4523/m1/4220991-3861857-default/users/${userId}`); // ${userId}
+            form = response.data;
+            console.log(form);
         } catch (error) {
             console.error("Failed to fetch user data:", error);
         }
     };
+    fetchUserData();
+    console.log(form.email);
     const logout = () => {
         //退出当前账号
         console.log("logout!");
@@ -199,7 +154,6 @@
     const submit = () => {
         console.log("submit!!");
     };
-    onMounted(fetchUserData);
 </script>
 
 <style scoped>
