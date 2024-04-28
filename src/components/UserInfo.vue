@@ -1,6 +1,6 @@
 <template>
     <div class="full-page flex flex-col">
-        <!-- <baseComponent activeIndex="3" /> -->
+        <baseComponent activeIndex="3" />
         <el-container class="flex pb-2">
             <el-row class="mt-05 w-100 h-100" :gutter="5">
                 <div class="flex-grow"></div>
@@ -43,24 +43,27 @@
                                 </div>
                             </el-col>
                             <el-col class="formclass">
-                                <el-form label-width="auto" style="max-width: 600px" :model="form" ref="form">
-                                    <el-form-item label="UserId">
-                                        <el-input v-model="form.id" readonly disabled></el-input>
+                                <el-form label-width="auto"   style="max-width: 600px">
+                                    <!-- <el-form-item label="UserId">
+                                        <el-input v-model="form.data.id"></el-input>
+                                    </el-form-item> -->
+                                    <el-form-item label="Name" prop="username">
+                                        <el-input v-model="form.data.username" ></el-input>
                                     </el-form-item>
-                                    <el-form-item label="Name">
-                                        <el-input v-model="form.username" />
-                                    </el-form-item>
-                                    <el-form-item label="Nickname">
-                                        <el-input v-model="form.nickname" />
+                                    <el-form-item label="nickname" >
+                                        <el-input v-model="form.data.nickname" />
                                     </el-form-item>
                                     <el-form-item label="Email">
-                                        <el-input v-model="form.email" />
+                                        <el-input v-model="form.data.email" />
                                     </el-form-item>
                                     <el-form-item label="ClassName">
-                                        <el-input v-model="form.className" />
+                                        <el-input v-model="form.data.className" />
                                     </el-form-item>
-                                </el-form> 
-                               
+                                    
+                                </el-form>
+                                <div style="height: 100px; width: 100px">
+                                    <p>{{ form.id }}</p>
+                                </div>
                             </el-col>
 
                             <el-col style="height: 40px" class="center-col">
@@ -88,9 +91,17 @@
     import { reactive, ref, onMounted, onBeforeMount } from "vue";
     // import { useRouter } from "vue-router";
     import { useStore } from "vuex";
-
-    
-
+    onBeforeMount(() => {
+        fetchUserData();
+        console.log("组件挂载前");
+    //    fetchUserData();
+       
+    });
+    onMounted(() => {
+        console.log("组件挂载完成");
+        // fetchUserData();
+       
+    });
 
     const store = useStore();
     import { mapState } from "vuex";
@@ -103,14 +114,14 @@
         id: number;
         username: string;
         nickname: string;
-        email: string;
+        email: string; 
         className: string;
         exp: number;
         role: number;
     }
-
+    
     // 使用 ref 创建响应式引用
-    var form = reactive<UserForm>({
+    var form = ref<UserForm>({
         id: 0,
         username: "",
         nickname: "",
@@ -119,29 +130,25 @@
         exp: 0,
         role: 0,
     });
-   
-    const userId = 23; // Adjust the ID as needed
 
     // 定义 fetchData 函数，运行时自动加载数据
     const fetchUserData = async () => {
-        
-
+       
+        const userId = 23; // Adjust the ID as needed
         try {
-           
+        
             console.log("789321");
             const response = await axios.get(`http://localhost:4523/m1/4220991-3861857-default/users/${userId}`); // ${userId}
             form = response.data;
-            console.log(form);
+            console.log(form.data.id)
+            console.log(form.data.username)
+            // console.log(form);
         } catch (error) {
             console.error("Failed to fetch user data:", error);
         }
     };
-    fetchUserData();
-    var formlist = [
-        form,
-        form
-    ]
-    
+   
+
     const logout = () => {
         //退出当前账号
         console.log("logout!");

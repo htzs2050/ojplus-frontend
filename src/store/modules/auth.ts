@@ -59,6 +59,8 @@ const mutations = {//2024/4/24
         localStorage.setItem('name', state.name)
         localStorage.setItem('email', state.email)
         localStorage.setItem('qq', state.qq)
+       
+        console.log('Logged in2!');
     },
     // 用户认证相关
     setAccess(state: any, accessToken: string = state.accessToken) {
