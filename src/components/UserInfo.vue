@@ -1,7 +1,7 @@
 <template>
     <div class="full-page flex flex-col">
         <baseComponent activeIndex="3" />
-        <el-container class="flex pb-2">
+        <el-container>
             <el-row class="mt-05 w-100 h-100" :gutter="5">
                 <div class="flex-grow"></div>
                 <el-col :xs="24" :md="12">
@@ -43,33 +43,37 @@
                                 </div>
                             </el-col>
                             <el-col class="formclass">
-                                <el-form label-width="auto"   style="max-width: 600px">
-                                    <!-- <el-form-item label="UserId">
-                                        <el-input v-model="form.data.id"></el-input>
-                                    </el-form-item> -->
+                                <el-form label-width="auto"  style="max-width: 600px"  :model="form.value" v-if="form && form.value"> 
+                                    <!-- v-if="form && form.value" -->
+                                    <el-form-item label="UserId">
+                                        <el-input v-model="form.value.data.id"></el-input>
+                                    </el-form-item>
                                     <el-form-item label="Name" prop="username">
-                                        <el-input v-model="form.data.username" ></el-input>
+                                        <el-input v-model="form.value.data.username" ></el-input>
                                     </el-form-item>
                                     <el-form-item label="nickname" >
-                                        <el-input v-model="form.data.nickname" />
+                                        <el-input v-model="form.value.data.nickname" />
                                     </el-form-item>
                                     <el-form-item label="Email">
-                                        <el-input v-model="form.data.email" />
+                                        <el-input v-model="form.value.data.email" />
                                     </el-form-item>
                                     <el-form-item label="ClassName">
-                                        <el-input v-model="form.data.className" />
+                                        <el-input v-model="form.value.data.className" />
                                     </el-form-item>
                                     
                                 </el-form>
-                                <div style="height: 100px; width: 100px">
-                                    <p>{{ form.id }}</p>
-                                </div>
+                                 <!-- <div style="height: 100px; width: 100px" :model="form">
+                                   <p>{{ form.data.id }}</p>
+                                    <p>{{ form.data.username }}</p>
+                                    <p>{{ form.data.email }}</p>
+                                    <p>{{ form.data.id }}</p>
+                                </div> -->
                             </el-col>
 
                             <el-col style="height: 40px" class="center-col">
                                 <div><el-button class="button-mar-10" type="danger" @click="logout">登出</el-button></div>
                                 <div>
-                                    <el-button type="warning" @click="getUserInfo">获取</el-button>
+                                    <el-button type="warning" @click="updateUserInfo">修改</el-button>
                                     <el-button @click="fetchUserData">加载用户数据</el-button>
                                 </div>
                             </el-col>
@@ -87,29 +91,13 @@
     import { User } from "@/CodeGenerator/api";
     import baseComponent from "@/components/BaseComponent.vue";
     import theAvatar from "@/components/TheAvatar.vue";
+
     import axios from "axios";
     import { reactive, ref, onMounted, onBeforeMount } from "vue";
     // import { useRouter } from "vue-router";
     import { useStore } from "vuex";
-    onBeforeMount(() => {
-        fetchUserData();
-        console.log("组件挂载前");
-    //    fetchUserData();
-       
-    });
-    onMounted(() => {
-        console.log("组件挂载完成");
-        // fetchUserData();
-       
-    });
-
-    const store = useStore();
-    import { mapState } from "vuex";
-
-    const getUserInfo = () => {
-        store.commit("auth/state");
-    };
-
+   
+    
     interface UserForm {
         id: number;
         username: string;
@@ -120,8 +108,7 @@
         role: number;
     }
     
-    // 使用 ref 创建响应式引用
-    var form = ref<UserForm>({
+    var form = reactive<UserForm>({
         id: 0,
         username: "",
         nickname: "",
@@ -130,23 +117,44 @@
         exp: 0,
         role: 0,
     });
+    const fetchUserData = async () => {
+    //    const userId = 2
+       const userId = localStorage.getItem('id'); // Adjust the ID as needed
+       try {
+       
+           console.log("789321");
+           const response = await  axios.get(`http://localhost:4523/m1/4220991-3861857-default/users/${userId}`); // ${userId}
+           form.value = response.data
+           console.log(form.data.username)
+        //    console.log(form.data.id)
+           // console.log(form);
+       } catch (error) {
+           console.error("Failed to fetch user data:", error);
+       }
+   };
+   fetchUserData();
+    onBeforeMount(() => {
+        //fetchUserData();
+        console.log("组件挂载前");
+    //    fetchUserData();
+       
+    });
+    onMounted(() => {
+        // fetchUserData();
+        console.log("组件挂载完成");
+        // fetchUserData();
+       
+    });
+   
+
+    const store = useStore();
+    import { mapState } from "vuex";
+
+    // 使用 ref 创建响应式引用
+    
 
     // 定义 fetchData 函数，运行时自动加载数据
-    const fetchUserData = async () => {
-       
-        const userId = 23; // Adjust the ID as needed
-        try {
-        
-            console.log("789321");
-            const response = await axios.get(`http://localhost:4523/m1/4220991-3861857-default/users/${userId}`); // ${userId}
-            form = response.data;
-            console.log(form.data.id)
-            console.log(form.data.username)
-            // console.log(form);
-        } catch (error) {
-            console.error("Failed to fetch user data:", error);
-        }
-    };
+   
    
 
     const logout = () => {
@@ -155,8 +163,8 @@
         store.commit("auth/clearToken");
         console.log("logoutFinish!");
     };
-    const submit = () => {
-        console.log("submit!!");
+    const updateUserInfo = () => {
+        console.log("update!");
     };
 </script>
 
