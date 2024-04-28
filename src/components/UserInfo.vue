@@ -36,22 +36,22 @@
                                         <el-text>文章 110</el-text>
                                     </div>
                                 </div>
-                                <div class="demo-progress">
-                                    <el-progress :text-inside="true" :stroke-width="26" :percentage="70">
-                                        <span>经验值</span>
+                                <div class="demo-progress" v-if="form && form.value">
+                                    <el-progress :percentage="Exp"   :format="formatPercentage">
+                                      
                                     </el-progress>
                                 </div>
                             </el-col>
                             <el-col class="formclass">
-                                <el-form label-width="auto"  style="max-width: 600px"  :model="form.value" v-if="form && form.value"> 
+                                <el-form label-width="auto" style="max-width: 600px" :model="form.value" v-if="form && form.value">
                                     <!-- v-if="form && form.value" -->
                                     <el-form-item label="UserId">
                                         <el-input v-model="form.value.data.id"></el-input>
                                     </el-form-item>
                                     <el-form-item label="Name" prop="username">
-                                        <el-input v-model="form.value.data.username" ></el-input>
+                                        <el-input v-model="form.value.data.username"></el-input>
                                     </el-form-item>
-                                    <el-form-item label="nickname" >
+                                    <el-form-item label="nickname">
                                         <el-input v-model="form.value.data.nickname" />
                                     </el-form-item>
                                     <el-form-item label="Email">
@@ -60,9 +60,8 @@
                                     <el-form-item label="ClassName">
                                         <el-input v-model="form.value.data.className" />
                                     </el-form-item>
-                                    
                                 </el-form>
-                                 <!-- <div style="height: 100px; width: 100px" :model="form">
+                                <!-- <div style="height: 100px; width: 100px" :model="form">
                                    <p>{{ form.data.id }}</p>
                                     <p>{{ form.data.username }}</p>
                                     <p>{{ form.data.email }}</p>
@@ -74,7 +73,7 @@
                                 <div><el-button class="button-mar-10" type="danger" @click="logout">登出</el-button></div>
                                 <div>
                                     <el-button type="warning" @click="updateUserInfo">修改</el-button>
-                                    <el-button @click="fetchUserData">加载用户数据</el-button>
+                                    <!-- <el-button @click="fetchUserData">加载用户数据</el-button> -->
                                 </div>
                             </el-col>
                         </el-col>
@@ -91,23 +90,22 @@
     import { User } from "@/CodeGenerator/api";
     import baseComponent from "@/components/BaseComponent.vue";
     import theAvatar from "@/components/TheAvatar.vue";
-
+    import { ElMessage } from "element-plus";
     import axios from "axios";
     import { reactive, ref, onMounted, onBeforeMount } from "vue";
     // import { useRouter } from "vue-router";
     import { useStore } from "vuex";
-   
-    
+
     interface UserForm {
         id: number;
         username: string;
         nickname: string;
-        email: string; 
+        email: string;
         className: string;
         exp: number;
         role: number;
     }
-    
+
     var form = reactive<UserForm>({
         id: 0,
         username: "",
@@ -117,45 +115,43 @@
         exp: 0,
         role: 0,
     });
+    const userId = localStorage.getItem("userId");
+    const Exp = 99
     const fetchUserData = async () => {
-    //    const userId = 2
-       const userId = localStorage.getItem('id'); // Adjust the ID as needed
-       try {
-       
-           console.log("789321");
-           const response = await  axios.get(`http://localhost:4523/m1/4220991-3861857-default/users/${userId}`); // ${userId}
-           form.value = response.data
-           console.log(form.data.username)
-        //    console.log(form.data.id)
-           // console.log(form);
-       } catch (error) {
-           console.error("Failed to fetch user data:", error);
-       }
-   };
-   fetchUserData();
+        //    const userId = 2
+        // Adjust the ID as needed
+        try {
+            console.log("789321");
+            const response = await axios.get(`http://localhost:4523/m1/4220991-3861857-default/users/${userId}`); // ${userId}
+            form.value = response.data;
+            console.log(form.data.username);
+        } catch (error) {
+            console.error("Failed to fetch user data:", error);
+        }
+    };
+   
+    fetchUserData();
+    
+    const formatPercentage = (percentage) => {
+        return `${percentage}% 完成`;
+    };
     onBeforeMount(() => {
         //fetchUserData();
         console.log("组件挂载前");
-    //    fetchUserData();
-       
+        //    fetchUserData();
     });
     onMounted(() => {
         // fetchUserData();
         console.log("组件挂载完成");
         // fetchUserData();
-       
     });
-   
 
     const store = useStore();
     import { mapState } from "vuex";
 
     // 使用 ref 创建响应式引用
-    
 
     // 定义 fetchData 函数，运行时自动加载数据
-   
-   
 
     const logout = () => {
         //退出当前账号
@@ -163,8 +159,24 @@
         store.commit("auth/clearToken");
         console.log("logoutFinish!");
     };
-    const updateUserInfo = () => {
-        console.log("update!");
+    // const updateUserInfo = () => {
+    //     console.log("update!");
+    // };
+    const updateUserInfo = async () => {
+        try {
+            const response = await axios.patch(`http://localhost:4523/m1/4220991-3861857-default/users/${userId}`, form.value);
+            console.log(form.value);
+            ElMessage({
+                message: "User information updated successfully",
+                type: "success",
+            });
+        } catch (error) {
+            console.error("Failed to update user info:", error);
+            ElMessage({
+                message: "Failed to update user information",
+                type: "error",
+            });
+        }
     };
 </script>
 

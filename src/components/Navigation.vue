@@ -1,6 +1,6 @@
 <template>
     <el-affix>
-        <el-row class="border-bottom  nav mb-3">
+        <el-row class="border-bottom  nav mb-1">
             <el-col :xs="0" :sm="0" :md="2"></el-col>
             <el-col :xs="24" :sm="24" :md="5">
                 <el-menu :default-active="props.activeIndex" mode="horizontal" :ellipsis="false">

@@ -11,9 +11,11 @@ const state = () => ({
     nickname: localStorage.getItem("nickname") || "",
     name: localStorage.getItem("name") || "",
     email: localStorage.getItem("email") || "",
-    qq: localStorage.getItem("qq") || "",
+    exp: localStorage.getItem("exp") || "",
     accessExp: localStorage.getItem("accessExp") || 0,
     refreshExp: localStorage.getItem("refreshExp") || 0,
+    className: localStorage.getItem("className") || "",
+    disble: localStorage.getItem('disable') || false ,
 })
 
 const getters = {
@@ -56,9 +58,12 @@ const mutations = {//2024/4/24
         localStorage.setItem('userId', state.userId)
         localStorage.setItem('username', state.username)
         localStorage.setItem('nickname', state.nickname)
+        localStorage.setItem('className', state.className)
         localStorage.setItem('name', state.name)
         localStorage.setItem('email', state.email)
-        localStorage.setItem('qq', state.qq)
+        localStorage.setItem('exp', state.exp)
+        localStorage.setItem('disable', state.disable)
+        localStorage.setItem('role', state.role)
        
         console.log('Logged in2!');
     },
@@ -98,9 +103,12 @@ const mutations = {//2024/4/24
         localStorage.removeItem("nickname")
         localStorage.removeItem("name")
         localStorage.removeItem("email")
-        localStorage.removeItem("qq")
+        localStorage.removeItem("exp")
         localStorage.removeItem("accessExp")
         localStorage.removeItem("refreshExp")
+        localStorage.removeItem("className")
+        localStorage.removeItem("role")
+        localStorage.removeItem("disable")
     },
 }
 const actions = { 
