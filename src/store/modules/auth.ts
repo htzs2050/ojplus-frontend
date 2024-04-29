@@ -54,7 +54,7 @@ const mutations = {//2024/4/24
         console.log(res);
         console.log(res.user.email);
         state.email = res.user.email
-        state.userId = res.user.userId
+        state.userId = res.user.id
         state.username = res.user.username 
         state.nickname = res.user.nickname
         state.name = res.user.name
@@ -62,11 +62,12 @@ const mutations = {//2024/4/24
         state.exp = res.user.exp
         state.className = res.user.className
         state.role = res.user.role
+        state.disable = res.user.disable
 
         console.log('Logged in!');
      
         //state.qq = state.email.split("@")[0]
-        // localStorage.setItem('userId',res.user.userId)
+        localStorage.setItem('userId',state.userId)
         // // console.log(state..data.userId)
         localStorage.setItem('username', state.username)
         localStorage.setItem('nickname',state.nickname)

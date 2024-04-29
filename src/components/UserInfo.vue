@@ -122,7 +122,7 @@
         // Adjust the ID as needed
         try {
             console.log("789321");
-            const response = await axios.get(`http://localhost:4523/m1/4220991-3861857-default/users/${userId}`); // ${userId}
+            const response = await axios.get(`http://127.0.0.1:4523/m1/4220991-3861857-default/users/${userId}`); // ${userId}
             form.value = response.data;
             console.log(form.data.username);
         } catch (error) {
