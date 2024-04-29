@@ -16,7 +16,7 @@ export default defineConfig({
     open: true, // 设置服务启动时是否自动打开浏览器
     cors: true, // 允许跨域
     proxy: {
-      '/api/v1': {
+      '/api/v1': {      
         target: 'http://localhost:4010/', // 实际请求地址
         changeOrigin: true,
         // rewrite: (path) => path.replace('/api/v1', ""),

@@ -146,7 +146,6 @@
   import Articles from "../../components/Articles.vue";
   import Bulletin from "../../components/bulletinboard.vue";
 
-  import UserProfileProps from "../../UserProfileProps.ts";
 
   // 在 <script setup> 中定义
   const usersProfileData = ref([

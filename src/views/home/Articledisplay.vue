@@ -45,19 +45,19 @@
 									<el-col :span="10" style="background-color: rgb(255, 255, 255);height:100%;">
 										<el-row class="fullheight">
 											<el-col :span="6">
-												<el-button color="aqua" class="icon-noshadow" 
+												<el-button color="primary" class="icon-noshadow"
 												:type="buttonStyle" @click="changeColor">
 													<el-icon :size="22"><LikeIcon /></el-icon>
 												</el-button>
 											</el-col>
 											<el-col :span="6">
-												<el-button color="aqua" class="icon-noshadow" 
+												<el-button color="primary" class="icon-noshadow" 
 												:type="buttonStyle" @click="changeColor">
 													<el-icon :size="22"><Star /></el-icon>
 												</el-button>
 											</el-col>
 											<el-col :span="6">
-												<el-button color="aqua" class="icon-noshadow"
+												<el-button color="primary" class="icon-noshadow"
 												:type="buttonStyle" @click="changeColor">
 													<el-icon :size="22"><Share /></el-icon>
 												</el-button>
@@ -75,7 +75,7 @@
 												<el-button color="aqua"class="icon-noshadow">
 													<el-text :size="22">举报</el-text>
 
-													<el-icon :size="22">
+													<el-icon size="22">
 														
 														<More />
 													</el-icon>

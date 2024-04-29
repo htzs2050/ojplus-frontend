@@ -38,12 +38,12 @@
 									<el-input v-model="form.title" placeholder="简要概述问题" maxlength="32" show-word-limit />
 								</el-form-item>
 								<el-form-item label="描述">
-									<el-input :rows="6" type="textarea" v-model="form.text" placeholder="详细描述问题(可选)" maxlength="600" show-word-limit />
+									<el-input :rows="6" type="textarea" v-model="form.overview" placeholder="详细描述问题(可选)" maxlength="600" show-word-limit />
 								</el-form-item>
 								<el-form-item label="代码">
-									<el-select v-model="lang" class="mb-1" placeholder="选择语言">
+									<!-- <el-select v-model="lang" class="mb-1" placeholder="选择语言">
 										<el-option v-for="item in langOptions" :key="item.value" :label="item.label" :value="item.value" />
-									</el-select>
+									</el-select> -->
 									<el-input :rows="22" type="textarea" v-model="form.code" placeholder="粘贴代码片段" maxlength="10000" show-word-limit />
 								</el-form-item>
 							</el-form>
@@ -71,7 +71,6 @@ const store = useStore()
 const router = useRouter()
 const form = reactive({
 	title: '',
-	text: '',
 	code: '',
 	overview: '',
 })
@@ -148,18 +147,19 @@ const validityOptions = [
 
 const isLoading = ref(false)
 const createPaste = () => {
-	// if (store.getters['auth/isRefreshExpired']) {
-	// 	store.commit('auth/toggleLoginViewVisible')
-	// 	return
-	// }
-	// if (form.title.trim() === '') {
-	// 	ElMessage.error("还没有输入标题")
-	// 	return
-	// }
-	// if (form.title.length > 32) {
-	// 	ElMessage.error("标题最多只能包含32字符")
-	// 	return
-	// }
+	if (store.getters['auth/isAccessExpired']) {
+		console.log('login??????')
+		store.commit('auth/toggleLoginViewVisible')
+		return
+	}
+	if (form.title.trim() === '') {
+		ElMessage.error("还没有输入标题")
+		return
+	}
+	if (form.title.length > 32) {
+		ElMessage.error("标题最多只能包含32字符")
+		return
+	}
 	// if (form.text.trim() === '' && form.text.length > 600) {
 	// 	ElMessage.error("正文最多只能包含600字符")
 	// 	return
@@ -168,28 +168,29 @@ const createPaste = () => {
 	// 	ElMessage.error("还没有粘贴代码")
 	// 	return
 	// }
-	// if (lang.value.trim() === '') {
-	// 	ElMessage.error("还没有选择代码语言")
-	// 	return
-	// }
-	// if (!validity.value) {
-	// 	ElMessage.error("还没有选择过期时间")
-	// 	return
-	// }
-	// if (form.code.length > 10000) {
-	// 	ElMessage.error("代码最多只能包含10000字符")
-	// 	return
-	// }
+	if (lang.value.trim() === '') {
+		ElMessage.error("还没有选择代码语言")
+		return
+	}
+	if (!validity.value) {
+		ElMessage.error("还没有选择过期时间")
+		return
+	}
+	if (form.code.length > 10000) {
+		ElMessage.error("代码最多只能包含10000字符")
+		return
+	}
+	
 	isLoading.value = true
 	const timestamp = Math.round(Date.now() / 1000); // 获取当前时间戳
 	const exp = validity.value * 60 * 60 + timestamp; // 计算 exp 的值
-	axios.post('http://127.0.0.1:4523/m1/4220991-3861857-default/paste', {
+	axios.post('/paste', {
 		title: form.title,
 		overview: form.overview,
-		code: form.code,
-		
+		code: form.code
 	})
 		.then(response => {
+			console.log(response.data.id)
 			// 请求成功后的处理
 			isLoading.value = false
 			router.push(`/pastes/${response.data.id}`)//用router来实现网页跳转

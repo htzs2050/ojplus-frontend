@@ -37,9 +37,7 @@
                                     </div>
                                 </div>
                                 <div class="demo-progress" v-if="form && form.value">
-                                    <el-progress :percentage="Exp"   :format="formatPercentage">
-                                      
-                                    </el-progress>
+                                    <el-progress :percentage="Exp" :format="formatPercentage"> </el-progress>
                                 </div>
                             </el-col>
                             <el-col class="formclass">
@@ -105,7 +103,7 @@
         exp: number;
         role: number;
     }
-    
+
     var form = reactive<UserForm>({
         id: 0,
         username: "",
@@ -116,22 +114,22 @@
         role: 0,
     });
     const userId = localStorage.getItem("userId");
-    const Exp = 99
+    const Exp = 99;
     const fetchUserData = async () => {
         //    const userId = 2
         // Adjust the ID as needed
         try {
             console.log("789321");
-            const response = await axios.get(`http://127.0.0.1:4523/m1/4220991-3861857-default/users/${userId}`); // ${userId}
+            const response = await axios.get(`/users/${userId}`); // ${userId}
             form.value = response.data;
             console.log(form.data.username);
         } catch (error) {
             console.error("Failed to fetch user data:", error);
         }
     };
-   
+
     fetchUserData();
-    
+
     const formatPercentage = (percentage) => {
         return `${percentage}% 完成`;
     };
@@ -150,7 +148,7 @@
     import { mapState } from "vuex";
 
     // 使用 ref 创建响应式引用
-   
+
     // 定义 fetchData 函数，运行时自动加载数据
 
     const logout = () => {

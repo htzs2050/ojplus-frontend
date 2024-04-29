@@ -21,17 +21,27 @@ const state = () => ({
 
 const getters = {
     isAccessExpired(state: any) { //AccessToken过期
+        console.log(state.accessToken)
         if (!state.accessToken) {
+            
             return true
         }
+        console.log('access')
         const currentTime = Date.now() / 1000;
+        console.log(currentTime)
+        console.log(state.accessExp - 10 < currentTime)
         return state.accessExp - 10 < currentTime;
     },
     isRefreshExpired(state: any) {//RefreshToken过期
+        console.log(state.refreshToken)
         if (!state.refreshToken) {
             return true
         }
+        console.log('fresh')
+       
         const currentTime = Date.now() / 1000;
+        console.log(currentTime)
+        console.log(state.refreshExp - 10 < currentTime)
         return state.refreshExp - 10 < currentTime; //如果过期时间减去10秒的结果小于当前时间，则认为刷新令牌已经或即将在10秒内过期，因此返回 true；否则返回 false。
     },
 }
@@ -175,6 +185,7 @@ const actions = {
     },
     
 }
+// axios.defaults.withCredentials = true; // 添加这行设置
 
 export default {
     namespaced: true,
