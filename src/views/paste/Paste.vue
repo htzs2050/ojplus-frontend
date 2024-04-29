@@ -73,6 +73,7 @@ const form = reactive({
 	title: '',
 	text: '',
 	code: '',
+	overview: '',
 })
 const lang = ref('C++')
 const langOptions = [
@@ -147,47 +148,46 @@ const validityOptions = [
 
 const isLoading = ref(false)
 const createPaste = () => {
-	if (store.getters['auth/isRefreshExpired']) {
-		store.commit('auth/toggleLoginViewVisible')
-		return
-	}
-	if (form.title.trim() === '') {
-		ElMessage.error("还没有输入标题")
-		return
-	}
-	if (form.title.length > 32) {
-		ElMessage.error("标题最多只能包含32字符")
-		return
-	}
-	if (form.text.trim() === '' && form.text.length > 600) {
-		ElMessage.error("正文最多只能包含600字符")
-		return
-	}
-	if (form.code.trim() === '') {
-		ElMessage.error("还没有粘贴代码")
-		return
-	}
-	if (lang.value.trim() === '') {
-		ElMessage.error("还没有选择代码语言")
-		return
-	}
-	if (!validity.value) {
-		ElMessage.error("还没有选择过期时间")
-		return
-	}
-	if (form.code.length > 10000) {
-		ElMessage.error("代码最多只能包含10000字符")
-		return
-	}
+	// if (store.getters['auth/isRefreshExpired']) {
+	// 	store.commit('auth/toggleLoginViewVisible')
+	// 	return
+	// }
+	// if (form.title.trim() === '') {
+	// 	ElMessage.error("还没有输入标题")
+	// 	return
+	// }
+	// if (form.title.length > 32) {
+	// 	ElMessage.error("标题最多只能包含32字符")
+	// 	return
+	// }
+	// if (form.text.trim() === '' && form.text.length > 600) {
+	// 	ElMessage.error("正文最多只能包含600字符")
+	// 	return
+	// }
+	// if (form.code.trim() === '') {
+	// 	ElMessage.error("还没有粘贴代码")
+	// 	return
+	// }
+	// if (lang.value.trim() === '') {
+	// 	ElMessage.error("还没有选择代码语言")
+	// 	return
+	// }
+	// if (!validity.value) {
+	// 	ElMessage.error("还没有选择过期时间")
+	// 	return
+	// }
+	// if (form.code.length > 10000) {
+	// 	ElMessage.error("代码最多只能包含10000字符")
+	// 	return
+	// }
 	isLoading.value = true
 	const timestamp = Math.round(Date.now() / 1000); // 获取当前时间戳
 	const exp = validity.value * 60 * 60 + timestamp; // 计算 exp 的值
-	axios.post('http://localhost:4010/api/v1/paste', {
+	axios.post('http://127.0.0.1:4523/m1/4220991-3861857-default/paste', {
 		title: form.title,
-		text: form.text,
+		overview: form.overview,
 		code: form.code,
-		lang: lang.value,
-		exp: exp,
+		
 	})
 		.then(response => {
 			// 请求成功后的处理

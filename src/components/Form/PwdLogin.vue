@@ -1,7 +1,7 @@
 <template>
     <el-form :model="form">
         <el-form-item>
-            <el-input size="large" v-model="form.username" placeholder="输入学号">
+            <el-input size="large" v-model="form.account" placeholder="输入学号">
                 <!-- <template #prepend>学号</template> -->
             </el-input>
         </el-form-item>
@@ -33,7 +33,7 @@ import { useStore } from "vuex";
 import { ElMessage } from 'element-plus';
 import { Validators } from '@/utils/validators';
 const form = reactive({
-    username: '',
+    account: '',
     password: '',
 })
 const isLoading = ref(false)
@@ -42,11 +42,11 @@ const gotoSigup = () => {
     store.commit('auth/changeIndex', "3")
 }
 const login = () => {
-    if (form.username.trim() === '') {
+    if (form.account.trim() === '') {
         ElMessage.error("请输入学号")
         return
     }
-    if (!Validators.isNumeric(form.username) || form.username.length !== 12) {
+    if (!Validators.isNumeric(form.account) || form.account.length !== 12) {
         ElMessage.error("请核对学号")
         return
     }

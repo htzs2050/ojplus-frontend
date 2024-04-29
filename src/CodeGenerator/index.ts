@@ -12,7 +12,5 @@
  */
 
 
-
-export * from './apis/default-api';
-export * from './apis/token-api';
-
+export * from "./api";
+export * from "./configuration";

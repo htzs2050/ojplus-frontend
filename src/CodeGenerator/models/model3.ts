@@ -13,6 +13,18 @@
 
 
 
-export * from './apis/default-api';
-export * from './apis/token-api';
+/**
+ * 响应数据
+ * @export
+ * @interface Model3
+ */
+export interface Model3 {
+    /**
+     * 贴码ID
+     * @type {number}
+     * @memberof Model3
+     */
+    postId: number;
+}
+
 

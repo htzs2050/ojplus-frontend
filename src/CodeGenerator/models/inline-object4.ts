@@ -13,6 +13,18 @@
 
 
 
-export * from './apis/default-api';
-export * from './apis/token-api';
+/**
+ * 
+ * @export
+ * @interface InlineObject4
+ */
+export interface InlineObject4 {
+    /**
+     * 刷新令牌
+     * @type {string}
+     * @memberof InlineObject4
+     */
+    refreshToken: string;
+}
+
 

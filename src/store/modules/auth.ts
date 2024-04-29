@@ -1,12 +1,13 @@
 import axios from "axios";
 import { jwtDecode } from 'jwt-decode';
-
+// 这些信息从本地存储中获取，如果本地存储中没有对应的值，则使用空字符串或默认值填充。
 const state = () => ({
     loginVisible: false,
     loginIndex: "1",
     accessToken: localStorage.getItem("accessToken") || "", //access改到-
     refreshToken: localStorage.getItem("refreshToken") || "",
     userId: localStorage.getItem("userId") || 0,
+    
     username: localStorage.getItem("username") || "",
     nickname: localStorage.getItem("nickname") || "",
     name: localStorage.getItem("name") || "",
@@ -45,25 +46,37 @@ const mutations = {//2024/4/24
         state.loginIndex = index
     },
     // 用户信息相关（存本地）
-    updateUserInfo(state: any) {
-        console.log('Logged in!');
-        // const tokenPayload = jwtDecode(state.accessToken)
-        // state.userId = tokenPayload.userId
-        // state.username = tokenPayload.username
-        // state.nickname = tokenPayload.nickname
-        // state.name = tokenPayload.name
-        // state.email = tokenPayload.email
+    updateUserInfo(state: any,res: any) {
+        // updateUserInfo(state: any,res: any) {state: any,
+        
+        console.log("state:")
+        // state()
+        console.log(res);
+        console.log(res.user.email);
+        state.email = res.user.email
+        state.userId = res.user.userId
+        state.username = res.user.username 
+        state.nickname = res.user.nickname
+        state.name = res.user.name
 
+        state.exp = res.user.exp
+        state.className = res.user.className
+        state.role = res.user.role
+
+        console.log('Logged in!');
+     
         //state.qq = state.email.split("@")[0]
-        localStorage.setItem('userId', state.userId)
+        // localStorage.setItem('userId',res.user.userId)
+        // // console.log(state..data.userId)
         localStorage.setItem('username', state.username)
-        localStorage.setItem('nickname', state.nickname)
-        localStorage.setItem('className', state.className)
+        localStorage.setItem('nickname',state.nickname)
+        localStorage.setItem('className',state.className)
         localStorage.setItem('name', state.name)
         localStorage.setItem('email', state.email)
         localStorage.setItem('exp', state.exp)
         localStorage.setItem('disable', state.disable)
-        localStorage.setItem('role', state.role)
+        localStorage.setItem('role',state.role)
+        
        
         console.log('Logged in2!');
     },
@@ -71,7 +84,7 @@ const mutations = {//2024/4/24
     setAccess(state: any, accessToken: string = state.accessToken) {
        
         state.accessToken = accessToken
-    
+        
        
         localStorage.setItem('accessToken', accessToken)
         localStorage.setItem('accessExp', state.accessExp)
@@ -118,9 +131,9 @@ const actions = {
                 refreshToken: state.refreshToken,  //refresh: state.refreshToken,
             })
                 .then(response => {
-                    commit("setAccess", response.data.accessToken)
-                    commit("setRefresh", response.data.refreshToken)
-                    commit("updateUserInfo")
+                    commit("setAccess", response.data.data.accessToken)
+                    commit("setRefresh", response.data.data.refreshToken)
+                    commit("updateUserInfo",response.data)
                     resolve(response)
                 })
                 .catch(error => {
@@ -128,22 +141,28 @@ const actions = {
                 });
         })
     },
-    async getToken({ commit }: { state: any, commit: any }, { username, password }: {  username: any, password: any }) { // 根据用户名和密码获取令牌的动作
+    async getToken({ commit }: { state: any, commit: any }, { account, password }: {  account: any, password: any }) { // 根据用户名和密码获取令牌的动作
         // HTTP请求，调用mutation更新令牌
         return new Promise((resolve, reject) => {
             axios.post('/token', {
-                username: username,
+                account: account,
                 password: password,
             })
                 .then(response => {
                     // 请求成功后的处理
-                    
-                    commit("setAccess", response.data.accessToken)
+                    console.log(response.data.data.accessToken)
+                    commit("setAccess",response.data.data.accessToken)
+                   
                     console.log("setAccessFinish")
-                    commit("setRefresh", response.data.refreshToken)
+                    commit("setRefresh", response.data.data.refreshToken)
                     console.log("setRefreshFinish")
-                    commit("updateUserInfo")
+                    // state()
+                    commit("updateUserInfo",response.data.data)//state是必须的，用于更新vuex，这里传入的是第二个参数
+                    // console.log(response.data.data)
+                    
                     console.log("updateUserInfoFinish")
+                
+                    
                     resolve(response)
                 })
                 .catch(error => {
@@ -153,23 +172,7 @@ const actions = {
                 })
         })
     },
-    //用户个人信息页面
-    async  getUserInfo() {
-        axios.post('/token', {
-            id: localStorage.getItem("userId"),
-            Authorization: localStorage.getItem(),
-        }).then(response => {
-            // 请求成功后的处理
-            isLoading.value = false; // 假设使用Vue3的Composition API
-            router.push(`/data/${response.data.id}`); // 假设response.data有id字段，并且你想导航到特定页面
-            ElMessage.success("数据加载成功"); // 使用Element UI库显示成功消息
-          })
-          .catch(error => {
-            // 请求失败后的处理
-            isLoading.value = false; // 确保加载指示器被关闭
-            Messages.formErrors(error, "加载失败"); // 显示错误消息
-          });
-      },
+    
 }
 
 export default {

@@ -13,6 +13,18 @@
 
 
 
-export * from './apis/default-api';
-export * from './apis/token-api';
+/**
+ * 
+ * @export
+ * @interface InlineObject7
+ */
+export interface InlineObject7 {
+    /**
+     * 邮箱
+     * @type {string}
+     * @memberof InlineObject7
+     */
+    email?: string;
+}
+
 

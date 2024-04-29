@@ -12,7 +12,20 @@
  */
 
 
+import { InlineResponse200DataErrors } from './inline-response200-data-errors';
 
-export * from './apis/default-api';
-export * from './apis/token-api';
+/**
+ * 
+ * @export
+ * @interface InlineResponse200Data
+ */
+export interface InlineResponse200Data {
+    /**
+     * 
+     * @type {InlineResponse200DataErrors}
+     * @memberof InlineResponse200Data
+     */
+    errors: InlineResponse200DataErrors;
+}
+
 

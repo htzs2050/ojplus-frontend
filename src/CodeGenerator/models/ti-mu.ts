@@ -13,6 +13,24 @@
 
 
 
-export * from './apis/default-api';
-export * from './apis/token-api';
+/**
+ * 
+ * @export
+ * @interface TiMu
+ */
+export interface TiMu {
+    /**
+     * 标题
+     * @type {string}
+     * @memberof TiMu
+     */
+    title: string;
+    /**
+     * 正文，Markdown
+     * @type {string}
+     * @memberof TiMu
+     */
+    body: string;
+}
+
 

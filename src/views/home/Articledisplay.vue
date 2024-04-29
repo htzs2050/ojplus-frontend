@@ -111,7 +111,7 @@ import { useRouter } from 'vue-router'
 
 import Comment from "../../components/Comment.vue";
 import LikeIcon from "@/icon/thumb.vue"
-import Markdisplay from "../../components/MarkdownEditor.vue"
+// import Markdisplay from "../../components/MarkdownEditor.vue"
 const router = useRouter()
 const pasteId = router.currentRoute.value.params.id
 const context = ref("")

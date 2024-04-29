@@ -13,6 +13,30 @@
 
 
 
-export * from './apis/default-api';
-export * from './apis/token-api';
+/**
+ * 
+ * @export
+ * @interface GuanZhu
+ */
+export interface GuanZhu {
+    /**
+     * 序号
+     * @type {number}
+     * @memberof GuanZhu
+     */
+    id?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GuanZhu
+     */
+    leaderId: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GuanZhu
+     */
+    followerId: number;
+}
+
 

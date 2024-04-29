@@ -13,6 +13,18 @@
 
 
 
-export * from './apis/default-api';
-export * from './apis/token-api';
+/**
+ * 
+ * @export
+ * @interface InlineResponse200DataErrors
+ */
+export interface InlineResponse200DataErrors {
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse200DataErrors
+     */
+    fieldName: string;
+}
+
 
