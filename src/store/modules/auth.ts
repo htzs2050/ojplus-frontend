@@ -196,6 +196,7 @@ const actions = {
                 })
                 .catch((error) => {
                     // 请求失败后的处理
+                    
                     reject(error);
                 });
         });
@@ -217,7 +218,7 @@ const actions = {
                 })
                 .catch((error) => {
                     // 请求失败后的处理
-                   
+                    
                     reject(error);
                 })
         });
