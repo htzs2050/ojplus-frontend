@@ -25,13 +25,17 @@ axios.interceptors.request.use(
     }
 );
 async function addAuthorizationHeader(config:any) {
-    if (store.state.auth.refreshToken && !store.getters["auth/isAccessExpired"]) {
+    if (store.state.auth.refreshToken) {
+        // if (store.state.auth.refreshToken && !store.getters["auth/isAccessExpired"]) {
         console.log('1')
         console.log(store.state.auth.accessToken)
         config.headers.Authorization = `${store.state.auth.accessToken}`;
         console.log( config.headers.Authorization)
         console.log( config.headers)
-    } else if (!config.url.endsWith('/token/refreshToken/') && store.state.auth.refreshToken && !store.getters["auth/isRefreshExpired"]) {
+    } else if (!config.url.endsWith('/token/refreshToken/') && store.state.auth.refreshToken) {
+
+        // else if (!config.url.endsWith('/token/refreshToken/') && store.state.auth.refreshToken && !store.getters["auth/isRefreshExpired"]) {
+
         // 这里是你尝试更新 token 的部分，可以根据你的需求进行调整
         await store.dispatch("auth/refreshToken")
             .then((_response) => {
