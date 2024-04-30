@@ -199,10 +199,12 @@
         const exp = validity.value * 60 * 60 + timestamp; // 计算 exp 的值
         store
             .dispatch("auth/createPaste", form)
-
-            .then((_response: { data: { pasteId: string } }) => {
+			// (_response: { data: { pasteId: string } })
+            .then((_response:  any ) => {
                 //原来这是any
-                router.push(`/pastes/${_response.data.pasteId}`); //用router来实现网页跳转
+				console.log(_response.data.data.pasteId)
+				console.log('_response.data.pasteId')
+                router.push(`/pastes/${_response.data.data.pasteId}`); //用router来实现网页跳转
                 ElMessage.success("创建成功");
             })
             .catch((_error: any) => {

@@ -37,6 +37,7 @@ const getters = {
                 return false;
             });
     },
+ 
     isAccessExpired(state: any) {
         //AccessToken过期
         console.log(state.accessToken);
@@ -208,7 +209,24 @@ const actions = {
             })
                 .then((response) => {
                     console.log('321312!!!!')
-                    console.log(response.data.pasteId)
+                    console.log(response)
+                    console.log(response.data.data.pasteId)
+                    // 请求成功后的处理
+                   
+                    resolve(response);
+                })
+                .catch((error) => {
+                    // 请求失败后的处理
+                   
+                    reject(error);
+                })
+        });
+    },
+    async displayPaste(pasteId:string) {//有待完善
+        return new Promise((resolve, reject) => { 
+            axios.get(`/pastes/${pasteId}/`)
+                .then((response) => {
+                  
                     // 请求成功后的处理
                    
                     resolve(response);
