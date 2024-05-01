@@ -201,12 +201,13 @@ const actions = {
                 });
         });
     },
-    async createPaste({ commit }: { state: any; commit: any }, { title, overview , code }: { title: string, overview: string , code: string  }) {
+    async createPaste({ commit }: { state: any; commit: any }, { title, overview , code , language }: { title: string, overview: string , code: string  , language: string}) {
         return new Promise((resolve, reject) => { 
             axios.post('/paste', {
                 title: title,
                 overview: overview,
-                code: code
+                code: code,
+                language: language
             })
                 .then((response) => {
                     console.log('321312!!!!')
@@ -241,7 +242,7 @@ const actions = {
     },
     
 };
-// axios.defaults.withCredentials = true; // 添加这行设置
+axios.defaults.withCredentials = true; // 添加这行设置
 
 export default {
     namespaced: true,

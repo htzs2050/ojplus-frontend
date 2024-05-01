@@ -45,9 +45,9 @@
                                         show-word-limit />
                                 </el-form-item>
                                 <el-form-item label="代码">
-                                    <el-select v-model="form.language" class="mb-1" placeholder="选择语言">
+                                    <!-- <el-select v-model="lang" class="mb-1" placeholder="选择语言">
 										<el-option v-for="item in langOptions" :key="item.value" :label="item.label" :value="item.value" />
-									</el-select>
+									</el-select> -->
                                     <el-input
                                         :rows="22"
                                         type="textarea"
@@ -81,7 +81,6 @@
         title: "",
         code: "",
         overview: "",
-        language: "",
     });
     const lang = ref("C++");
     const langOptions = [
@@ -174,24 +173,18 @@
             ElMessage.error("标题最多只能包含32字符");
             return;
         }
-        if (form.code.trim() === '' && form.code.length > 10000) {
-        	ElMessage.error("正文最多只能包含10000字符")
-        	return
-        }
-        // if (form.language.trim() === '') {
+        // if (form.text.trim() === '' && form.text.length > 600) {
         // 	ElMessage.error("正文最多只能包含600字符")
         // 	return
         // }
-        if (form.code.trim() === '') {
-        	ElMessage.error("还没有粘贴代码")
-        	return
-        }
-        console.log("还没有选择代码语言")
-        if (form.language.trim() === "") {
+        // if (form.code.trim() === '') {
+        // 	ElMessage.error("还没有粘贴代码")
+        // 	return
+        // }
+        if (lang.value.trim() === "") {
             ElMessage.error("还没有选择代码语言");
             return;
         }
-        console.log("还没有选择代码语言")
         if (!validity.value) {
             ElMessage.error("还没有选择过期时间");
             return;

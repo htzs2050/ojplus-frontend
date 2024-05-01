@@ -25,9 +25,13 @@ import "mavon-editor/dist/css/index.css";
 const app = createApp(App);
 import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 
+
+
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component);
 }
+
+
 axios;
 axios.defaults.baseURL = "http://localhost:4000/api/v1"; //被注释
 app.config.globalProperties.$http = axios;
