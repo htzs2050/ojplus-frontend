@@ -10,8 +10,8 @@
                         <router-link class="no-underline" to="/home">首页</router-link>
                     </el-menu-item>
 
-                    <el-menu-item size="large">
-                        <router-link class="no-underline" to="/problemlist" index="2"> 题库</router-link>
+                    <el-menu-item size="large" index="2">
+                        <router-link class="no-underline" to="/problemlist" > 题库</router-link>
                     </el-menu-item>
                     <el-menu-item size="large" index="3">
                       <router-link class="no-underline" to="/markdown">发文章</router-link>

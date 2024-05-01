@@ -1,27 +1,25 @@
 <template>
     <div v-if="form && form.value">{{ form.value.data.id }}</div>
-    <el-form label-width="auto"  style="max-width: 600px" v-if="form && form.value">
-                                    <el-form-item label="UserId">
-                                        <el-input v-model="form.value.data.id"></el-input>
-                                    </el-form-item>
-                                    <el-form-item label="Name" prop="username">
-                                        <el-input v-model="form.value.data.username" ></el-input>
-                                    </el-form-item>
-                                    <el-form-item label="nickname" >
-                                        <el-input v-model="form.value.data.nickname" />
-                                    </el-form-item>
-                                    <el-form-item label="Email">
-                                        <el-input v-model="form.value.data.email" />
-                                    </el-form-item>
-                                    <el-form-item label="ClassName">
-                                        <el-input v-model="form.value.data.className" />
-                                    </el-form-item>
-                                    
-                                </el-form>
+    <el-form label-width="auto" style="max-width: 600px" v-if="form && form.value">
+        <el-form-item label="UserId">
+            <el-input v-model="form.value.data.id"></el-input>
+        </el-form-item>
+        <el-form-item label="Name" prop="username">
+            <el-input v-model="form.value.data.username"></el-input>
+        </el-form-item>
+        <el-form-item label="nickname">
+            <el-input v-model="form.value.data.nickname" />
+        </el-form-item>
+        <el-form-item label="Email">
+            <el-input v-model="form.value.data.email" />
+        </el-form-item>
+        <el-form-item label="ClassName">
+            <el-input v-model="form.value.data.className" />
+        </el-form-item>
+    </el-form>
 </template>
 
 <script setup lang="ts">
-  
     import axios from "axios";
     import { ElInput } from "element-plus";
     import "element-plus/dist/index.css";
@@ -59,23 +57,20 @@
     //     }
     // }
     const fetchUserData = async () => {
-       
-       const userId = 23; // Adjust the ID as needed
-       try {
-       
-           console.log("789321");
-           const response = await  axios.get(`http://localhost:4523/m1/4220991-3861857-default/users/${userId}`); // ${userId}
-           form.value = response.data; // 确认你的API返回的字段和这里一致
+        const userId = 23; // Adjust the ID as needed
+        try {
+            console.log("789321");
+            const response = await axios.get(`http://localhost:4523/m1/4220991-3861857-default/users/${userId}`); // ${userId}
+            form.value = response.data; // 确认你的API返回的字段和这里一致
             console.log(form.value.data.id);
-       } catch (error) {
-           console.error("Failed to fetch user data:", error);
-       }
-   };
-   onBeforeMount(() => {
+        } catch (error) {
+            console.error("Failed to fetch user data:", error);
+        }
+    };
+    onBeforeMount(() => {
         fetchUserData();
         console.log("组件挂载前");
-    //    fetchUserData();
-       
+        //    fetchUserData();
     });
     // 在组件挂载后立即获取数据
     onMounted(() => {
