@@ -290,3 +290,29 @@ body {
   text-decoration: none; /* 取消下划线 */
   color: inherit; /* 保持原有颜色 */
 }
+.displayhead {//md格式的标题展示
+  min-height: 200px;
+  height: 100%;
+  width: 100%; z-index: 1000;
+}
+.displaymd {//md的纯代码展示
+  min-height: 600px;
+  height: 100%;
+  width: 100%;
+}
+.scrollable-container {
+
+  overflow: hidden; /* 当内容超出容器时隐藏超出部分 */
+}
+.card-scroll {
+  display: flex;
+}
+
+.fixed-element {
+  position: fixed;
+  // top: 50px; /* 从顶部固定 50px */
+  // left: 20px; /* 从左侧固定 20px */
+  // background-color: lightblue;
+  // padding: 10px;
+  // border: 1px solid black;
+}

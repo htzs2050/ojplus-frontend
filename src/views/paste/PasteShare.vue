@@ -163,7 +163,7 @@
         // Adjust the ID as needed
         try {
             const response = await axios
-                .get(`/pastes/${pasteId}/`)
+                .get(`http://1.12.250.106:4010/pastes/${pasteId}/`)
 
                 .then((response) => {
                     paste.value = response.data;
@@ -195,6 +195,7 @@
             console.error("Failed to fetch user data:", error);
         }
     };
+
     function copyText() {
         const textarea = document.createElement("textarea");
         textarea.value = contextCode.value;
@@ -224,21 +225,8 @@
         height: 300px;
         width: 100%;
     }
-    .displaymd {
-        min-height: 600px;
-        height: 100%;
-        width: 100%;
-    }
-    .displayhead {
-        min-height: 200px;
-        height: 100%;
-        width: 100%; z-index: 1000;
-    }
-    .scrollable-container {
-      
-        overflow: hidden; /* 当内容超出容器时隐藏超出部分 */
-      }
-     
+    
+  
 
       
 </style>
