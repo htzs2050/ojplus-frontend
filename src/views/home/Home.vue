@@ -1,6 +1,7 @@
 <!-- <el-color-picker v-model="color" show-alpha :predefine="predefineColors" /> -->
 <template>
-  <el-header style="backgroundcolor: green" class="mb-3"><baseComponent activeIndex="9" /></el-header>
+    <baseComponent class="mb-3"  activeIndex="1" />
+  <!-- <el-header style="backgroundcolor: green" ></el-header> -->
   <div class="main-div">
       <el-container class="main-container">
           <el-main class="submain" >
@@ -25,6 +26,7 @@
                       </router-link>
                     </el-col>
                     <el-col :sm="5" :xl="5" :xs="24" :md="5" class="nav-col">
+                        <router-link to="/markdown">
                         <el-button class="nav-button" type="primary">
                             <div class="textbox">
                                 <div class="upper" style="height: 45px">
@@ -38,9 +40,10 @@
                                 <Edit />
                             </el-icon>
                         </el-button>
+                    </router-link>
                     </el-col>
                     <el-col  :sm="5" :xl="5" :xs="24" :md="5" class="nav-col ">
-                      <router-link to="/test">
+                      <router-link to="/markdown">
                         <el-button class="nav-button" type="primary" >
                             <div class="textbox">
                                 <div class="upper" style="height: 45px">
@@ -59,11 +62,13 @@
   
                     <el-col :sm="5" :xl="9" :xs="24" :md="9" style="display: flex" :span="9" >
                         <el-col :span="12" style="flex: 1" class="button-container">
-                            <el-button type="default" 
+                           
+                            <el-button type="default" @click="pushUserInfo"
                                 >个人中心<el-icon :size="25" color="blue" class="el-icon--right">
                                     <User />
                                 </el-icon>
                             </el-button>
+                      
                             <el-button type="default" class="mtop-10">
                                 随机答疑<el-icon :size="25" color="red" class="el-icon--right">
                                     <Connection />
@@ -145,6 +150,7 @@
 
   import Articles from "../../components/Articles.vue";
   import Bulletin from "../../components/bulletinboard.vue";
+import router from "@/router";
 
 
   // 在 <script setup> 中定义
@@ -208,7 +214,9 @@
   const handleClick = (tab: TabsPaneContext, event: Event) => {
       console.log(tab, event);
   };
-
+  const pushUserInfo = () => {
+    router.push(`/userinfo`);
+  }
   const categories = ref<Category[]>([
       {
           name: "tech",

@@ -1,20 +1,20 @@
 <template>
     <el-affix>
-        <el-row class="border-bottom  nav mb-1">
+        <el-row class="border-bottom  nav">
             <el-col :xs="0" :sm="0" :md="2"></el-col>
-            <el-col :xs="24" :sm="24" :md="5">
-                <el-menu :default-active="props.activeIndex" mode="horizontal" :ellipsis="false">
+            <el-col :xs="24" :sm="24" :md="5" >
+                <el-menu :default-active="props.activeIndex" mode="horizontal" :ellipsis="false" class="h-100">
                     <!--                    <el-menu>-->
                     <div class="flex-grow"></div>
                     <el-menu-item size="large" index="1">
-                        <router-link to="/home">首页</router-link>
+                        <router-link class="no-underline" to="/home">首页</router-link>
                     </el-menu-item>
 
                     <el-menu-item size="large">
-                        <router-link to="/paste" index="2"> 题库</router-link>
+                        <router-link class="no-underline" to="/problemlist" index="2"> 题库</router-link>
                     </el-menu-item>
                     <el-menu-item size="large" index="3">
-                      <router-link to="/paste" index="2">发文章</router-link>
+                      <router-link class="no-underline" to="/markdown">发文章</router-link>
                      </el-menu-item>
                     <themeSwitch class="h-100 ps-1"></themeSwitch>
 
@@ -160,4 +160,5 @@
         text-align: center;
         font-size: 16px;
     }
+
 </style>

@@ -29,10 +29,17 @@ const routes: Array<RouteRecordRaw> = [
         component: Home, //标注组件
     },
     {
-        path: "/test",
-        name: "test",
-        component: Test,
+        //题单列表
+
+        path: "/problemlist",
+        name: "problemlist",
+        component: ProblemList,
     },
+    // {
+    //     path: "/test",
+    //     name: "test",
+    //     component: Test,
+    // },
     {
         path: "/paste",
         name: "paste",
