@@ -113,7 +113,7 @@ const mutations = {
     setAccess(state: any, accessToken: string = state.accessToken) {
         state.accessToken = accessToken;
 
-        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("accessToken", "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjI3MTM4NjQ1MTgsInR5cGUiOiJhY2Nlc3MiLCJ1c2VySUQiOjF9.zqgY0rQMoC-jhSqLEVWz5iy26uEa55GmNtL2VN6SiRPCxc5aYZ4NaEZxM3N9RNcSHwO89rhPrhfQ5J917H63yQ");//固定认证
         localStorage.setItem("accessExp", state.accessExp);
         console.log("setAccess");
     },

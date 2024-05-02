@@ -163,7 +163,7 @@
         // Adjust the ID as needed
         try {
             const response = await axios
-                .get(`http://1.12.250.106:4010/pastes/${pasteId}/`)
+                .get(`/pastes/${pasteId}/`)
 
                 .then((response) => {
                     paste.value = response.data;

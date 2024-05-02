@@ -9,9 +9,9 @@ import { createStore } from "vuex";
 axios.interceptors.request.use(
     async function (config) {
         // 在每个请求发送之前获取最新的认证信息并添加到请求头中
-        console.log('inter')
+        console.log('add')
         await addAuthorizationHeader(config);
-        console.log("interceptors");
+        console.log("addfinish");
        
         return config;
     },
@@ -27,8 +27,10 @@ axios.interceptors.request.use(
 async function addAuthorizationHeader(config:any) {
     if (store.state.auth.refreshToken) {
         // if (store.state.auth.refreshToken && !store.getters["auth/isAccessExpired"]) {
-        console.log('1')
+        console.log('addheader')
         console.log(store.state.auth.accessToken)
+        console.log(`${store.state.auth.accessToken}`)
+        console.log('addheader')
         config.headers.Authorization = `${store.state.auth.accessToken}`;
         console.log( config.headers.Authorization)
         console.log( config.headers)
