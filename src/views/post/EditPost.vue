@@ -27,7 +27,7 @@
                             <mavon-editor
                                 v-if="editModel"
                                 class="flex-grow"
-                                v-model="advancedContext"
+                                v-model="form.body"
                                 :placeholder="`在此处开始编辑\n点击菜单栏【问号图标】以获取【Markdown语法帮助】`"
                                 :toolbars="editToolbars"
                                 :subfield="false"
@@ -44,10 +44,10 @@
                                             <el-option v-for="item in classifiOption" :key="item.value" :label="item.label" :value="item.value" />
                                         </el-select>
                                     </el-form-item>
-                                    <el-form-item label="正文">
+                                    <el-form-item label="概要">
                                         <el-input :rows="6" type="textarea" v-model="form.overview" placeholder="详细描述问题" />
                                     </el-form-item>
-                                    <el-form-item label="代码">
+                                    <el-form-item label="文本">
                                         <!-- <el-select v-model="lang" class="mb-1" placeholder="选择语言">
                                             <el-option v-for="item in langOptions" :key="item.value" :label="item.label" :value="item.value" />
                                         </el-select> -->
@@ -80,7 +80,7 @@
                             <mavon-editor
                                 class="flex-grow"
                                 v-show="editModel"
-                                v-model="advancedContext"
+                                v-model="form.body"
                                 :toolbars="previewToolbars"
                                 :subfield="false"
                                 defaultOpen="preview"
@@ -88,7 +88,7 @@
                             <mavon-editor
                                 class="flex-grow"
                                 v-show="!editModel"
-                                v-model="simpleContext"
+                                v-model="form.body"
                                 :toolbars="previewToolbars"
                                 :subfield="false"
                                 defaultOpen="preview"
@@ -117,34 +117,23 @@
     });
     const simpleContext = ref("");
     const advancedContext = ref("");
-	const isLoading = ref(false);
-   
-		watch(form, (newForm) => {
-        let tempContext = "";
-        if (newForm.title.trim() !== "") {
-            tempContext += `## ${newForm.title}`;
-        }
-        // if (newForm.title.trim() !== "" && (newForm.text.trim() !== "" || newForm.code.trim() !== "")) {
-        //     tempContext += `\n\n`;
-        // }
-        // if (newForm.body.trim() !== "") {
-        //     tempContext += `${newForm.text}`;
-        // }
-        // if (newForm.title.trim() !== "" && newForm.code.trim() !== "") {
-        //     tempContext += `\n\n`;
-        // }
-        // if (newForm.code.trim() !== "") {
-        //     tempContext += `\`\`\`${lang.value}\n${newForm.code}\n\`\`\``;
-        // }
-        if (advancedContext.value == simpleContext.value) {
-            advancedContext.value = tempContext;
-        }
-        simpleContext.value = tempContext;
-    });
+	
 	const createPost = () => { 
 		console.log('CreatePost')
-        isLoading.value = true;
-    
+       
+        if (store.getters["auth/isLogined"]) {
+            console.log("Unlogined!!!!!");
+        }
+        if (form.title.trim() === "") {
+            ElMessage.error("还没有输入标题");
+            return;
+        }
+        if (form.title.length > 32) {
+            ElMessage.error("标题最多只能包含32字符");
+            return;
+        }
+        
+
         store
             .dispatch("post/createPost", form)
             // (_response: { data: { pasteId: string } })

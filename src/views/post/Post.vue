@@ -1,5 +1,5 @@
 
-import post from '@/store/modules/post';
+
 <template>
     <div class="full-page flex flex-col">
         <baseComponent activeIndex="" />
@@ -12,8 +12,8 @@ import post from '@/store/modules/post';
                             <el-row class="card-header flex w-100">
                                 <el-col class="flex" :span="8">
                                     <el-space>
-                                        <!-- <theAvatar :email="postUser.email" /> -->
-                                        <theAvatar :email="postUser.email" />
+                                      
+                                        <!-- <theAvatar :email="post.value.creatorId" /> -->
                                         <div>
                                             <el-text>{{ postUser.nickname }}</el-text
                                             ><br />
@@ -24,7 +24,7 @@ import post from '@/store/modules/post';
                                 </el-col>
                                 <el-col class="flex" :span="8">
                                     <div class="flex-grow"></div>
-                                    <span>Paste</span>
+                                    <span>帖子</span>
                                     <div class="flex-grow"></div>
                                 </el-col>
                                 <el-col class="flex" :span="8">
@@ -32,18 +32,35 @@ import post from '@/store/modules/post';
                                     <el-button>分享</el-button>
                                 </el-col>
                             </el-row>
-                            <el-col style="background-color: aquamarine; height: 300px">
-                                <mavon-editor
-                                    class="displayhead scrollable-container h-100"
-                                    v-model="body"
-                                    :toolbarsFlag="false"
-                                    :subfield="false"
-                                    defaultOpen="preview"
-                                    :editable="false"
-                                    boxShadowStyle="none" />
-                            </el-col>
+                            
                         </template>
-
+                       <el-row>
+                        <el-col style="background-color: aquamarine;">
+                           <el-row>
+                           <el-col>
+                            <mavon-editor
+                            class="posthead scrollable-container h-100"
+                            v-model="head"
+                            :toolbarsFlag="false"
+                            :subfield="false"
+                            defaultOpen="preview"
+                            :editable="false"
+                            boxShadowStyle="none" />
+                           </el-col>
+                           <el-col>
+                            <mavon-editor
+                            class="postbody scrollable-container h-100 "
+                            v-model="body"
+                            :toolbarsFlag="false"
+                            :subfield="false"
+                            defaultOpen="preview"
+                            :editable="false"
+                            boxShadowStyle="none" />
+                           </el-col>
+                           
+                           </el-row>
+                        </el-col>
+                       </el-row>
                         <div class="card-body flex flex-col h-0"></div>
 
                         <el-col style="background-color: rgb(255, 255, 255)">
@@ -52,17 +69,22 @@ import post from '@/store/modules/post';
                                     <el-col :span="10" style="background-color: rgb(255, 255, 255); height: 100%">
                                         <el-row class="fullheight">
                                             <el-col :span="6">
-                                                <el-button color="primary" class="icon-noshadow" :type="buttonStyle" @click="changeColor">
+                                                <el-button color="primary" class="icon-noshadow" :type="buttonStyle" 
+                                                style="color:aqua"
+                                                @click="changeColor">
                                                     <el-icon :size="22"><LikeIcon /></el-icon>
                                                 </el-button>
                                             </el-col>
                                             <el-col :span="6">
-                                                <el-button color="primary" class="icon-noshadow" :type="buttonStyle" @click="changeColor">
+                                                <el-button color="primary" class="icon-noshadow" :type="buttonStyle" 
+                                                style="color:aqua"
+                                                @click="changeColor">
                                                     <el-icon :size="22"><Star /></el-icon>
                                                 </el-button>
                                             </el-col>
                                             <el-col :span="6">
-                                                <el-button color="primary" class="icon-noshadow" :type="buttonStyle" @click="changeColor">
+                                                <el-button color="primary" class="icon-noshadow"
+                                                style="color:aqua" :type="buttonStyle" @click="changeColor">
                                                     <el-icon :size="22"><Share /></el-icon>
                                                 </el-button>
                                             </el-col>
@@ -115,12 +137,12 @@ import post from '@/store/modules/post';
     //     });
     const store = useStore();
     const router = useRouter();
-    const postId = 4;
+    const postId = router.currentRoute.value.params.id;
     console.log(postId);
     const context = ref("");
     const postUser = reactive({
         id: 0,
-        stringusername: "",
+        username: "",
         nickname: "",
         email: "",
         className: "",
@@ -147,7 +169,8 @@ import post from '@/store/modules/post';
         createdAt: "",
         updatedAt: "",
     });
-	var body =  ref('hello');
+    var head = ref('哦呦，你的标题逃走了')
+	var body =  ref('哦呦，帖子正文部分也逃走了');
     const fetchPostData = async () => {
         console.log("fetchPostData", postId);
         try {
@@ -160,6 +183,7 @@ import post from '@/store/modules/post';
                     console.log(response)
 					post.value = response.data.data
 					console.log(post.value)
+                    head.value = `# ${post.value.title}\n## ${post.value.overview}`
 					body.value = `${post.value.body}`
 					console.log(body)
                 })
@@ -167,7 +191,7 @@ import post from '@/store/modules/post';
                     console.log("ErrorpostId");
                     // 请求失败后的处理
 
-                    reject(error);
+                  
                 });
 			
 		}catch(error) {
@@ -211,6 +235,22 @@ import post from '@/store/modules/post';
         //         ElMessage.error("获取失败，请检查信息后重试"); // 显示错误消息
         //         isLoading.value = false;
         //     });
+        const buttonType = ref('primary');
+	const buttonStyle = ref({ backgroundColor: '#409EFF', color: 'white' });
+	//按钮颜色改色
+	function changeColor() {
+		if (buttonStyle.value.backgroundColor === '#409EFF') {
+		  buttonStyle.value = {
+			backgroundColor: '#67C23A', // 绿色
+			color: 'white'
+		  };
+		} else {
+		  buttonStyle.value = {
+			backgroundColor: '#409EFF', // 蓝色
+			color: 'white'
+		  };
+		}
+	  }
 </script>
 
 <style scoped>
@@ -248,6 +288,12 @@ import post from '@/store/modules/post';
     }
     .icon-noshadow:hover {
         background-color: greenyellow;
+    }
+    .posthead {
+        min-height: 200px;
+    }
+    .postbody {
+        min-height: 200px;
     }
 </style>
 `

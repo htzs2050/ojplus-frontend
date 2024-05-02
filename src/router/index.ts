@@ -96,13 +96,13 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
         //帖子编辑
-        path: "/post",
-        name: "post",
+        path: "/editpost",
+        name: "editpost",
         component: EditPost,
     },
     {
         //帖子编辑
-        path: "/posts",
+        path: "/posts/:id",
         name: "post",
         component: PostDisply,
     },
