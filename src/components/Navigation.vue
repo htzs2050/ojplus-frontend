@@ -64,7 +64,7 @@
                     </el-col>
                     <el-col :span="16" class="vertical-center">
                         <el-space v-if="store.getters['auth/isRefreshExpired']">
-                            <avatar :qq="store.state.auth.qq" :icon="UserFilled" />
+                            <avatar :id="store.state.auth.userId" :icon="UserFilled" />
                             <div class="text-center">
                                 <el-text>未登录</el-text><br />
                                 <el-link @click="openLoginView" :underline="false">登录/注册</el-link>
@@ -72,7 +72,7 @@
                         </el-space>
                         <el-dropdown>
                             <el-space v-if="!store.getters['auth/isRefreshExpired']">
-                                <avatar :qq="store.state.auth.qq" :icon="UserFilled" />
+                                <avatar :id="store.state.auth.userId" :icon="UserFilled" />
                                 <div class="text-center">
                                     <el-text>{{ store.state.auth.nickname }}</el-text
                                     ><br />
