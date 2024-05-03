@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 const state = () => ({
     loginVisible: false,
     loginIndex: "1",
-    accessToken: localStorage.getItem("accessToken") || "", //access改到-
+    accessToken: localStorage.getItem("accessToken") || "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjI3MTM4NjQ1MTgsInR5cGUiOiJhY2Nlc3MiLCJ1c2VySUQiOjF9.zqgY0rQMoC-jhSqLEVWz5iy26uEa55GmNtL2VN6SiRPCxc5aYZ4NaEZxM3N9RNcSHwO89rhPrhfQ5J917H63yQ", //access改到-
     refreshToken: localStorage.getItem("refreshToken") || "",
     userId: localStorage.getItem("userId") || 0,
 
@@ -112,8 +112,13 @@ const mutations = {
     // 用户认证相关
     setAccess(state: any, accessToken: string = state.accessToken) {
         state.accessToken = accessToken;
+<<<<<<< HEAD
+        accessToken = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjI3MTM4NjQ1MTgsInR5cGUiOiJhY2Nlc3MiLCJ1c2VySUQiOjF9.zqgY0rQMoC-jhSqLEVWz5iy26uEa55GmNtL2VN6SiRPCxc5aYZ4NaEZxM3N9RNcSHwO89rhPrhfQ5J917H63yQ"
+        localStorage.setItem("accessToken", accessToken);
+=======
 
         localStorage.setItem("accessToken", "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjI3MTM4NjQ1MTgsInR5cGUiOiJhY2Nlc3MiLCJ1c2VySUQiOjF9.zqgY0rQMoC-jhSqLEVWz5iy26uEa55GmNtL2VN6SiRPCxc5aYZ4NaEZxM3N9RNcSHwO89rhPrhfQ5J917H63yQ");//固定认证
+>>>>>>> 2917a9b5b69d76cb3000f8a403ecffcecd3d57e8
         localStorage.setItem("accessExp", state.accessExp);
         console.log("setAccess");
     },
