@@ -10,7 +10,8 @@ import Articledisplay from "../views/home/Articledisplay.vue";
 import Userinfo from "../components/UserInfo.vue";
 import ProblemList from "../views/problem/ProblemList.vue";
 import ProblemListDetail from "../views/problem/ProblemListDetail.vue";
-import Markd from "../components/Markd.vue";
+import EditPost from "../views/post/EditPost.vue";
+import PostDisply from "../views/post/Post.vue"
 import Pro from "../components/Problem.vue";
 // const routes = new Router({//尝试修复
 //   mode: 'history',
@@ -29,10 +30,17 @@ const routes: Array<RouteRecordRaw> = [
         component: Home, //标注组件
     },
     {
-        path: "/test",
-        name: "test",
-        component: Test,
+        //题单列表
+
+        path: "/problemlist",
+        name: "problemlist",
+        component: ProblemList,
     },
+    // {
+    //     path: "/test",
+    //     name: "test",
+    //     component: Test,
+    // },
     {
         path: "/paste",
         name: "paste",
@@ -80,16 +88,23 @@ const routes: Array<RouteRecordRaw> = [
         name: "problemlistdetail",
         component: ProblemListDetail,
     },
-    {
-        //帖子编辑
-        path: "/markdown",
-        name: "markdown",
-        component: Markd,
-    },
+    
     {
         path: "/problem",
         name: "problemDis", //redirect更改线路
         component: Pro,
+    },
+    {
+        //帖子编辑
+        path: "/editpost",
+        name: "editpost",
+        component: EditPost,
+    },
+    {
+        //帖子编辑
+        path: "/posts/:id",
+        name: "post",
+        component: PostDisply,
     },
 ];
 

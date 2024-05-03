@@ -1,6 +1,6 @@
 <template>
     <div class="full-page flex flex-col">
-        <baseComponent activeIndex="3" />
+        <baseComponent activeIndex="" />
         <el-container>
             <el-row class="mt-05 w-100 h-100" :gutter="5">
                 <div class="flex-grow"></div>
@@ -44,10 +44,10 @@
                                 <el-form label-width="auto" style="max-width: 600px" :model="form.value" v-if="form && form.value">
                                     <!-- v-if="form && form.value" -->
                                     <el-form-item label="UserId">
-                                        <el-input v-model="form.value.data.id"></el-input>
+                                        <el-input v-model="form.value.data.id" readonly></el-input>
                                     </el-form-item>
                                     <el-form-item label="Name" prop="username">
-                                        <el-input v-model="form.value.data.username"></el-input>
+                                        <el-input v-model="form.value.data.username" readonly></el-input>
                                     </el-form-item>
                                     <el-form-item label="nickname">
                                         <el-input v-model="form.value.data.nickname" />

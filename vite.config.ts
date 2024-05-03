@@ -17,7 +17,7 @@ export default defineConfig({
     cors: true, // 允许跨域
     proxy: {
       '/api/v1': {      
-        target: 'http://localhost:4010/', // 实际请求地址
+        target: 'http://1.12.250.106:4010/', // 实际请求地址
         changeOrigin: true,
         // rewrite: (path) => path.replace('/api/v1', ""),
       },

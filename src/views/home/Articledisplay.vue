@@ -1,6 +1,6 @@
 `<template>
 	<div class="full-page flex flex-col">
-		<baseComponent activeIndex="3" />
+		<baseComponent activeIndex="" />
 		<el-container class="flex flex-grow pb-2 ps-1 pe-05">
 			<el-row class="mt-05 w-100 h-100" :gutter="5">
 				<div class="flex-grow"></div>
@@ -72,7 +72,7 @@
 										<el-row class="fullheight">
 											
 											<el-col :span="24" :offset="6">
-												<el-button color="aqua"class="icon-noshadow">
+												<el-button color="aqua" class="icon-noshadow">
 													<el-text :size="22">举报</el-text>
 
 													<el-icon size="22">
@@ -113,7 +113,7 @@ import Comment from "../../components/Comment.vue";
 import LikeIcon from "@/icon/thumb.vue"
 // import Markdisplay from "../../components/MarkdownEditor.vue"
 const router = useRouter()
-const pasteId = router.currentRoute.value.params.id
+const postId = router.currentRoute.value.params.id
 const context = ref("")
 const pasteUser = reactive({
 	id: 0,
@@ -123,7 +123,7 @@ const pasteUser = reactive({
 	className: '',
 });
 
-axios.get(`/pastes/${pasteId}/`)
+axios.get(`/pastes/${postId}/`)
 	.then(response => {
 		// 请求成功后的处理
 		pasteUser.id = response.data.user.id

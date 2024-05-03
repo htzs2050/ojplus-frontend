@@ -5,14 +5,17 @@
         
         <el-container class="flex flex-grow pb-2 ps-1 pe-05">
             <el-row class="mt-05 w-100 h-100" :gutter="5">
-                <div class="flex-grow"></div>
-                <el-col :xs="24" :md="12" class="h-100">
+              <div class="flex-grow"></div>
+                <el-col :xs="24" :md="22" class="h-100">
                     <el-card class="h-30 flex flex-col p-3" body-class="flex flex-col flex-grow p-0">
                        <h1>题单详情(编号3390)</h1>
                        <el-col>
                         <el-col class="w-80 content">
                             <h3>程序设计实践</h3>
                             <el-text line-clamp="8">描述：the practice of programming针对程序设计过程中的风格、算法与数据结构、设计与实现、界面、除错、测试、性 能、可移植性、记法等各个方面，系统地讨论了一些常见问题和实用技巧。通过对《程序设计实践(评注版)》的学习，读者可以快速掌握程序 设计的技巧及思想描述：the practice of programming针对程序设计过程中的风格、算法与数据结构、设计与实现、界面、除错、测试、性 能、可移植性、记法等各个方面，系统地讨论了一些常见问题和实用技巧。通过对《程序设计实践(评注版)》的学习，读者可以快速掌握程序 设计的技巧及思想描述：the practice of programming针对程序设计过程中的风格、算法与数据结构、设计与实现、界面、除错、测试、性 能、可移植性、记法等各个方面，系统地讨论了一些常见问题和实用技巧。通过对《程序设计实践(评注版)》的学习，读者可以快速掌握程序 设计的技巧及思想</el-text>
+                            <mavon-editor>
+                              
+                            </mavon-editor>
                             <!-- 建议限制text在200字以内 -->
                                
                        </el-col>
