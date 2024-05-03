@@ -13,7 +13,7 @@
                                 <el-col class="flex" :span="8">
                                     <el-space>
                                       
-                                        <!-- <theAvatar :email="post.value.creatorId" /> -->
+                                        <theAvatar :id="post.value.creatorId" />
                                         <div>
                                             <el-text>{{ postUser.nickname }}</el-text
                                             ><br />

@@ -9,10 +9,10 @@
             <!--      </div>-->
             <el-col>
                 <el-row>
-                    <el-col :xs="4" >
+                    <el-col :xs="4" :lg="2">
                         <el-avatar :size="38" src="https://avatars.githubusercontent.com/u/87935282?v=4" />
                     </el-col>
-                    <el-col :span="19">
+                    <el-col :xs="18" :lg="18">
                         <el-row>
                             <el-col class="nickname">
                                 <el-text style="color: black">{{ nickname }}</el-text>
@@ -29,15 +29,15 @@
                     <!-- <el-col></el-col> -->
                 </el-row>
             </el-col>
-            <el-col>
-                <el-col>
+            <el-col :span="24">
+                <el-row>
                     <el-text style="font-weight: bold; color: black; font-size: 16px" truncated>{{ title }}</el-text>
-                </el-col>
-                <el-col>
+                </el-row>
+                <el-row>
                     <el-text line-clamp="3">
-                        {{ abstract }}
+                        {{ overview }}
                     </el-text>
-                </el-col>
+                </el-row>
             </el-col>
 
             <el-col>
@@ -78,16 +78,51 @@
     import { ref, reactive, toRefs, defineComponent, PropType } from "vue";
     import { Star, ChatRound } from "@element-plus/icons-vue";
     import LikeIcon from "@/icon/thumb.vue";
+    interface postInfo {
+        id: number;
+        title: string;
+        overview: string;
+        body: string;
+        disale: string;
+        created: boolean;
+        creatorId: string;
+        createdAt: string;
+        updatedAt: string;
+    }
+    var post = reactive<postInfo>({
+        id: 0,
+        title: "",
+        overview: "",
+        body: "",
+        disale: "",
+        created: true,
+        creatorId: "",
+        createdAt: "",
+        updatedAt: "",
+    });
+    // interface Tab {
+    //     //这个可以放在.ts文件里，但是要加export
+    //     id: Number;
+    //     nickname: String;
+    //     class: String;
+    //     //time: ;
+    //     title: String;
+    //     abstract: String;
+    //     likes: Number;
+    //     favorites: Number;
+    //     comments: Number;
+    // }
     interface Tab {
         //这个可以放在.ts文件里，但是要加export
-        nickname: String;
-        class: String;
-        //time: ;
-        title: String;
-        abstract: String;
-        likes: Number;
-        favorites: Number;
-        comments: Number;
+        id: number;
+        title: string;
+        overview: string;
+        body: string;
+        disale: string;
+        created: boolean;
+        creatorId: string;
+        createdAt: string;
+        updatedAt: string;
     }
     const props = defineProps<Tab>(); //这里要定义路由参数，否则出错
     const state = reactive({
