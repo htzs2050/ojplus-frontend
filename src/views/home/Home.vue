@@ -26,7 +26,7 @@
                       </router-link>
                     </el-col>
                     <el-col :sm="5" :xl="5" :xs="24" :md="5" class="nav-col">
-                        <router-link to="/markdown">
+                        <router-link to="/editpost">
                         <el-button class="nav-button" type="primary">
                             <div class="textbox">
                                 <div class="upper" style="height: 45px">
@@ -43,7 +43,7 @@
                     </router-link>
                     </el-col>
                     <el-col  :sm="5" :xl="5" :xs="24" :md="5" class="nav-col ">
-                      <router-link to="/markdown">
+                      <router-link to="/editpost">
                         <el-button class="nav-button" type="primary" >
                             <div class="textbox">
                                 <div class="upper" style="height: 45px">
@@ -99,24 +99,17 @@
                       <div v-loading="loading">
                         <el-tabs v-model="activeTab" type="border-card" @tab-click="handleTabClick" class="w-100">
                           
-                            <el-tab-pane label="编程入门" name="help">
-  <!--                             
-                                <UserProfile v-for="userData in usersProfileData" :key="userData.userId" v-bind="userData" /> -->
-                              
-                              
-                            
-                          </el-tab-pane>
+                           
                           
                             
   
-                            <el-tab-pane label="其他" name="share">
+                            <el-tab-pane label="帖文" name="post">
                               <div element-loading-background="white">
                                 <Articles v-for="item in articleks" :key="item.id" v-bind="item" />
                               </div>
                              
                             </el-tab-pane>
-                            <el-tab-pane label="题目解读" name="role">Role Content </el-tab-pane>
-                            <el-tab-pane label="数据结构" name="article">Article Content</el-tab-pane>
+                          
                             <!-- <el-tab-pane label="Task" name="task">Task Content</el-tab-pane> -->
                         </el-tabs>
                       </div>
@@ -126,10 +119,10 @@
           </el-main>
           <el-aside class="subaside hide-on-mobile">
               <Bulletin
-                  maintenance="请遵守社区规则，禁止发布敏感消息，一经发现删帖并上报学校和执法部门"
-                  punish="请遵守社区规则，禁止发布敏感消息，一经发现删帖并上报学校和执法部门"
-                  public="请遵守社区规则，禁止发布敏感消息，一经发现删帖并上报学校和执法部门请遵守社区规则，禁止发布敏感消息，一经发现删帖并上报学校和执法部门请遵守社区规则，禁止发布敏感消息，一经发现删帖并上报学校和执法部门"
-                  mess="请遵守社区规则，禁止发布敏感消息，一经发现删帖并上报学校和执法部门社区规则，禁止发布敏感消息，一经发现删帖并上报学校和执法部门">
+                  maintenance="请务必遵守社区规则，维护社区秩序，禁止发布违法"
+                  punish="2024年3月27日 违规名单"
+                  public="2024年程序设计大赛将于3月31日举行"
+                  mess="平台尚在测试开发中，欢迎指导和提供修改意见">
               </Bulletin>
           </el-aside>
           
@@ -209,7 +202,7 @@ import router from "@/router";
       // 更多文章对象...
   ]);
 
-  const activeTab = ref("user");
+  const activeTab = ref("post");
 
   const handleClick = (tab: TabsPaneContext, event: Event) => {
       console.log(tab, event);
@@ -321,7 +314,7 @@ height: 500px */
   .subaside {
       /* background-color: yellow; */
 
-      background-color: rgb(255, 255, 255);
+         background-color: rgb(255, 255, 255);
       flex: 5;
   }
   .nav {

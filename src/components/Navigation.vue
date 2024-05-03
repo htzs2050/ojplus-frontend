@@ -14,7 +14,7 @@
                         <router-link class="no-underline" to="/problemlist" > 题库</router-link>
                     </el-menu-item>
                     <el-menu-item size="large" index="3">
-                      <router-link class="no-underline" to="/markdown">发文章</router-link>
+                      <router-link class="no-underline" to="/editpost">发帖</router-link>
                      </el-menu-item>
                     <themeSwitch class="h-100 ps-1"></themeSwitch>
 
@@ -82,10 +82,13 @@
                             <template #dropdown>
                                 <el-dropdown-menu>
                                     <el-dropdown-item>
-                                        <el-icon>
-                                            <User />
-                                        </el-icon>
-                                        <el-text> 个人信息 </el-text>
+                                        <router-link to="/userinfo">
+                                            <el-icon>
+                                                <User />
+                                            </el-icon>
+                                            <el-text> 个人信息 </el-text>
+                                        </router-link>
+                                     
                                     </el-dropdown-item>
                                     <el-dropdown-item divided>
                                         <el-icon>

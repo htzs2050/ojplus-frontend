@@ -9,10 +9,10 @@
             <!--      </div>-->
             <el-col>
                 <el-row>
-                    <el-col :span="3">
+                    <el-col :xs="4" >
                         <el-avatar :size="38" src="https://avatars.githubusercontent.com/u/87935282?v=4" />
                     </el-col>
-                    <el-col :span="20">
+                    <el-col :span="19">
                         <el-row>
                             <el-col class="nickname">
                                 <el-text style="color: black">{{ nickname }}</el-text>
